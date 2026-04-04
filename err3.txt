@@ -1,0 +1,35 @@
+
+> zentrixtech@0.0.1 build
+> astro build
+
+[2m08:05:38[22m [34m[types][39m Generated [2m55ms[22m
+[2m08:05:38[22m [34m[build][39m output: [34m"static"[39m
+[2m08:05:38[22m [34m[build][39m mode: [34m"static"[39m
+[2m08:05:38[22m [34m[build][39m directory: [34mE:\zentrixtech\dist\[39m
+[2m08:05:38[22m [34m[build][39m Collecting build info...
+[2m08:05:38[22m [34m[build][39m [32m✓ Completed in 76ms.[39m
+[2m08:05:39[22m [34m[build][39m Building static entrypoints...
+[33m[1m08:05:40[22m [WARN] [vite][39m [33m"matchHostname", "matchPathname", "matchPort" and "matchProtocol" are imported from external module "@astrojs/internal-helpers/remote" but never used in "node_modules/astro/dist/assets/utils/index.js".[39m
+[2m08:05:40[22m [34m[vite][39m [32m✓ built in 1.42s[39m
+[2m08:05:41[22m [34m[vite][39m [32m✓ built in 527ms[39m
+[2m08:05:41[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m08:05:41[22m   [34m├─[39m [2m/about/index.html[22m[31m[1m08:05:41[22m [ERROR][39m NoMatchingRenderer: Unable to render `Target`.
+
+No valid renderer was found for this file extension.
+    at renderFrameworkComponent (file:///E:/zentrixtech/dist/.prerender/chunks/prerender_CeKS7qoc.mjs:4456:15)
+[31m[1m08:05:41[22m [ERROR] [build][39m Caught error rendering /about: NoMatchingRenderer: Unable to render `Target`.
+
+No valid renderer was found for this file extension.
+[31m[NoMatchingRenderer][39m Unable to render `Target`.
+
+No valid renderer was found for this file extension.
+  [1mHint:[22m
+[33m    Did you mean to enable the `@astrojs/react`, `@astrojs/preact`, `@astrojs/solid-js`, `@astrojs/vue` or `@astrojs/svelte` integration?
+    
+    See [4mhttps://docs.astro.build/en/guides/framework-components/[24m for more information on how to install and configure integrations.[39m
+  [1mError reference:[22m
+    [36m[4mhttps://docs.astro.build/en/reference/errors/no-matching-renderer/[24m[39m
+  [1mStack trace:[22m
+[2m    at renderFrameworkComponent (file:///E:/zentrixtech/dist/.prerender/chunks/prerender_CeKS7qoc.mjs:4456:15)[22m

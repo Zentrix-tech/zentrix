@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Layers, Smartphone, Megaphone, CheckCircle2, ArrowRight } from 'lucide-react';
+---
+
+<Layout title="Services">
+  
+  <section class="pt-60 pb-32 bg-white relative overflow-hidden">
+     <div class="container mx-auto px-6">
+        <div class="max-w-4xl section-reveal">
+           <span class="text-[10px] font-black tracking-[0.5em] text-indigo-500 uppercase mb-8 block">Engineering Core</span>
+           <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.9]">Digital <br/><span class="text-slate-300">Capabilities.</span></h1>
+           <p class="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl">
+             We deliver specialized technology solutions that bridge the gap between technical complexity and business growth.
+           </p>
+        </div>
+     </div>
+  </section>
+
+  <!-- Capability Blocks -->
+  <section class="pb-60 bg-white">
+    <div class="container mx-auto px-6">
+      
+      <!-- Web Capability -->
+      <div class="py-5 border-t border-slate-100 group hover:bg-slate-50 transition-colors duration-700 reveal-on-scroll">
+         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-20 px-4 md:px-10">
+            <div class="lg:col-span-1">
+               <span class="text-xs font-black text-slate-300 group-hover:text-indigo-600 transition-colors">01</span>
+            </div>
+            <div class="lg:col-span-4">
+               <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-8 group-hover:translate-x-4 transition-transform duration-700">Web Ecosystems</h2>
+               <div class="flex flex-wrap gap-3">
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">React/Next.js</span>
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">Astro Engine</span>
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">headless cms</span>
+               </div>
+            </div>
+            <div class="lg:col-span-5 lg:col-start-7">
+               <p class="text-lg text-slate-500 font-medium leading-relaxed mb-10">
+                  Engineering high-velocity web platforms with a focus on core web vitals, accessibility, and sub-second interaction times. We build for performance first.
+               </p>
+               <ul class="space-y-4 mb-20">
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Jamstack & Serverless Architecture
+                  </li>
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Custom E-commerce Engines
+                  </li>
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Enterprise SEO Optimization
+                  </li>
+               </ul>
+               <a href="/works" class="inline-flex items-center gap-4 group/at">
+                  <div class="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover/at:bg-indigo-600 transition-all duration-500">
+                     <ArrowRight className="w-5 h-5" />
+                  </div>
+                  <span class="text-[10px] font-black tracking-[0.3em] uppercase text-slate-900">Case Studies</span>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Mobile Capability -->
+      <div class="py-5 border-t border-slate-100 group hover:bg-slate-50 transition-colors duration-700 reveal-on-scroll">
+         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-20 px-4 md:px-10">
+            <div class="lg:col-span-1">
+               <span class="text-xs font-black text-slate-300 group-hover:text-indigo-600 transition-colors">02</span>
+            </div>
+            <div class="lg:col-span-4">
+               <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-8 group-hover:translate-x-4 transition-transform duration-700">Mobile Platforms</h2>
+               <div class="flex flex-wrap gap-3">
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">React Native</span>
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">ios / android</span>
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">biometrics inc</span>
+               </div>
+            </div>
+            <div class="lg:col-span-5 lg:col-start-7">
+               <p class="text-lg text-slate-500 font-medium leading-relaxed mb-10">
+                  Immersive mobile experiences that maximize user retention. From initial prototype to store deployment, we manage the entire lifecycle with native-feel performance.
+               </p>
+               <ul class="space-y-4 mb-20">
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Cross-Platform Synchronicity
+                  </li>
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Real-time Data Sync
+                  </li>
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Advanced Offline Modes
+                  </li>
+               </ul>
+               <a href="/contact" class="inline-flex items-center gap-4 group/at">
+                  <div class="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover/at:bg-indigo-600 transition-all duration-500">
+                     <ArrowRight className="w-5 h-5" />
+                  </div>
+                  <span class="text-[10px] font-black tracking-[0.3em] uppercase text-slate-900">Init App Build</span>
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <!-- Marketing Capability -->
+      <div class="py-5 border-y border-slate-100 group hover:bg-slate-50 transition-colors duration-700 reveal-on-scroll">
+         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-20 px-4 md:px-10">
+            <div class="lg:col-span-1">
+               <span class="text-xs font-black text-slate-300 group-hover:text-indigo-600 transition-colors">03</span>
+            </div>
+            <div class="lg:col-span-4">
+               <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-8 group-hover:translate-x-4 transition-transform duration-700">Growth Engines</h2>
+               <div class="flex flex-wrap gap-3">
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">performance ad</span>
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">growth hacking</span>
+                  <span class="text-[8px] font-black tracking-[0.2em] text-slate-400 border border-slate-100 px-4 py-1.5 rounded-full uppercase">data analytics</span>
+               </div>
+            </div>
+            <div class="lg:col-span-5 lg:col-start-7">
+               <p class="text-lg text-slate-500 font-medium leading-relaxed mb-10">
+                  Data-driven acquisition strategies that focus on customer LTV and brand equity. We track every interaction to optimize your conversion funnel for maximum yield.
+               </p>
+               <ul class="space-y-4 mb-20">
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Multivariate A/B Testing
+                  </li>
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Multi-channel Ad Management
+                  </li>
+                  <li class="flex items-center gap-4 text-sm font-bold text-slate-900">
+                     <CheckCircle2 className="w-4 h-4 text-indigo-500" /> Content Strategy & SEO
+                  </li>
+               </ul>
+               <a href="/contact" class="inline-flex items-center gap-4 group/at">
+                  <div class="w-12 h-12 rounded-full bg-slate-900 text-white flex items-center justify-center group-hover/at:bg-indigo-600 transition-all duration-500">
+                     <ArrowRight className="w-5 h-5" />
+                  </div>
+                  <span class="text-[10px] font-black tracking-[0.3em] uppercase text-slate-900">Accelerate Growth</span>
+               </a>
+            </div>
+         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-40 bg-white">
+     <div class="container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row gap-20">
+           <div class="lg:w-1/3">
+              <span class="text-[10px] font-bold tracking-[0.5em] text-slate-400 uppercase mb-6 block">Execution</span>
+              <h2 class="text-5xl font-black tracking-tighter leading-tight">The Zentrix <br/>Methodology.</h2>
+           </div>
+           <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-12 stagger-container">
+              <div class="stagger-item p-10 rounded-3xl border border-slate-50 hover:border-slate-100 hover:bg-slate-50 transition-all duration-500">
+                 <h3 class="text-xl font-bold mb-6">01. Discovery</h3>
+                 <p class="text-sm font-medium text-slate-500 leading-relaxed">Deep-dive into business logic, user personas, and scaling requirements.</p>
+              </div>
+              <div class="stagger-item p-10 rounded-3xl border border-slate-50 hover:border-slate-100 hover:bg-slate-50 transition-all duration-500">
+                 <h3 class="text-xl font-bold mb-6">02. Engineering</h3>
+                 <p class="text-sm font-medium text-slate-500 leading-relaxed">High-velocity development cycles with weekly checkpoints and rapid iteration.</p>
+              </div>
+              <div class="stagger-item p-10 rounded-3xl border border-slate-50 hover:border-slate-100 hover:bg-slate-50 transition-all duration-500">
+                 <h3 class="text-xl font-bold mb-6">03. Validation</h3>
+                 <p class="text-sm font-medium text-slate-500 leading-relaxed">Rigorous performance auditing, security penetration testing, and UAT.</p>
+              </div>
+              <div class="stagger-item p-10 rounded-3xl border border-slate-50 hover:border-slate-100 hover:bg-slate-50 transition-all duration-500">
+                 <h3 class="text-xl font-bold mb-6">04. Expansion</h3>
+                 <p class="text-sm font-medium text-slate-500 leading-relaxed">Post-launch growth monitoring, infrastructure scaling, and feature rollout.</p>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section>
+
+</Layout>

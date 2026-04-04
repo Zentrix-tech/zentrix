@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Target, Compass, Code2, Cpu, Globe, Database, Briefcase, Zap } from 'lucide-react';
+
+const techStack = [
+  { name: "React", category: "Frontend", icon: "Code2" },
+  { name: "Next.js", category: "Framework", icon: "Zap" },
+  { name: "Astro", category: "Performance", icon: "Cpu" },
+  { name: "Node.js", category: "Backend", icon: "Database" },
+  { name: "Flutter", category: "Mobile", icon: "Smartphone" },
+  { name: "AWS", category: "Cloud", icon: "Globe" },
+  { name: "TypeScript", category: "Language", icon: "Code2" },
+  { name: "PostgreSQL", category: "Database", icon: "Database" }
+];
+---
+
+<Layout title="About">
+  
+  <section class="pt-60 pb-32 bg-white relative overflow-hidden">
+     <div class="container mx-auto px-6">
+        <div class="max-w-4xl section-reveal">
+           <span class="text-[10px] font-black tracking-[0.5em] text-indigo-500 uppercase mb-8 block">Our DNA</span>
+           <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.9]">Engineering <br/><span class="text-slate-300">Excellence.</span></h1>
+           <p class="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl">
+              Zentrix Technology is a specialized engineering lab focused on building high-performance digital platforms for forward-thinking businesses.
+           </p>
+        </div>
+     </div>
+  </section>
+
+  <!-- Mission / Vision -->
+  <section class="pb-40 bg-white">
+     <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+           <div class="reveal-on-scroll">
+              <div class="flex items-center gap-4 mb-8">
+                 <div class="w-10 h-10 border border-slate-100 rounded-xl flex items-center justify-center text-indigo-500">
+                    <Target className="w-5 h-5" />
+                 </div>
+                 <h2 class="text-3xl font-black tracking-tight">Technical Mission</h2>
+              </div>
+              <p class="text-lg text-slate-500 font-medium leading-relaxed mb-8">
+                 We bridge the gap between engineering complexity and user-centric design. Our mission is to empower growth-stage companies with the same technology stacks used by tech giants, optimized for agility and scale.
+              </p>
+              <p class="text-slate-400 font-medium leading-relaxed">
+                 Founded on the principles of performance-first engineering, Zentrix functions as a strategic technical partner rather than a traditional service provider.
+              </p>
+           </div>
+           
+           <div class="relative rounded-[3rem] overflow-hidden aspect-square bg-slate-50 border border-slate-100 shadow-2xl shadow-slate-200/40 reveal-on-scroll">
+              <div class="absolute inset-0 bg-gradient-to-br from-white to-slate-100 flex items-center justify-center overflow-hidden">
+                 <div class="text-[150px] font-black text-slate-100 uppercase select-none tracking-tighter">DNA</div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section>
+
+  <!-- Tech Stack Grid -->
+  <section class="py-40 bg-slate-50 border-y border-slate-100">
+     <div class="container mx-auto px-6">
+        <div class="max-w-xl mb-24">
+           <span class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-6 block">Capabilities</span>
+           <h2 class="text-5xl font-black tracking-tighter mb-8">The Vertical <br/>Stack.</h2>
+           <p class="text-slate-500 font-medium">We leverage a curated, battle-tested stack to ensure maximum performance, security, and developer velocity.</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger-container">
+           {techStack.map((tech) => (
+              <div class="stagger-item group p-10 bg-white rounded-3xl border border-transparent hover:border-indigo-100 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-700">
+                 <div class="text-[10px] font-black tracking-[0.2em] text-indigo-500 uppercase mb-4 opacity-50 group-hover:opacity-100 transition-opacity">
+                    {tech.category}
+                 </div>
+                 <h3 class="text-2xl font-bold text-slate-900 mb-2">{tech.name}</h3>
+              </div>
+           ))}
+        </div>
+     </div>
+  </section>
+
+  <!-- Values / Culture -->
+  <section class="py-40 bg-white">
+     <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center stagger-container">
+           <div class="stagger-item">
+              <div class="w-16 h-16 mx-auto bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                 <Zap className="w-8 h-8" />
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tighter">Performance First</h3>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">Every line of code is optimized for milliseconds, ensuring the best user experience.</p>
+           </div>
+           <div class="stagger-item">
+              <div class="w-16 h-16 mx-auto bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                 <Globe className="w-8 h-8" />
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tighter">Global Scaling</h3>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">Architectures built to handle millions of requests without breaking a sweat.</p>
+           </div>
+           <div class="stagger-item">
+              <div class="w-16 h-16 mx-auto bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-8">
+                 <Briefcase className="w-8 h-8" />
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-4 uppercase tracking-tighter">Strategic Ops</h3>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">We don't just build; we integrate deeply with your business operations.</p>
+           </div>
+        </div>
+     </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-40 bg-indigo-600 mx-6 mb-32 rounded-[3.5rem] relative overflow-hidden">
+      <div class="container mx-auto px-6 text-center max-w-4xl relative z-10">
+         <h2 class="text-5xl md:text-7xl font-black text-white tracking-tight mb-12 leading-[0.9]">Ready to build <br/>with Zentrix?</h2>
+         <a href="/contact" class="inline-flex items-center justify-center px-14 py-6 bg-white text-indigo-600 rounded-full text-[11px] font-black tracking-[0.5em] uppercase hover:bg-slate-900 hover:text-white transition-all duration-700">
+            Start Collaboration
+         </a>
+      </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* Lenis smooth scroll styling */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Page transitions */
+.page-transition {
+  @apply fixed inset-0 z-[100] bg-white pointer-events-none transform translate-y-full origin-bottom;
+}
+
+/* Preloader refinements */
+.preloader {
+  @apply fixed inset-0 z-[150] bg-white flex flex-col items-center justify-center;
+}
+
+/* Typography refinements */
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight font-bold text-slate-900;
+  line-height: 1.1;
+}
+
+p {
+  @apply leading-relaxed text-slate-600;
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+/* Hover lift effect for premium feel */
+.hover-lift {
+  @apply transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)];
+}
+.hover-lift:hover {
+  @apply -translate-y-2 shadow-xl shadow-slate-200/50;
+}
+
+/* Center Logo Header Specifics */
+header {
+  @apply fixed top-0 left-0 w-full z-50 py-6 transition-all duration-500;
+}
+
+header.scrolled {
+  @apply py-4 bg-white/80 backdrop-blur-xl border-b border-slate-100;
+}
+
+/* SVG Hero Animation utility */
+.hero-bg-svg {
+  filter: blur(80px);
+}

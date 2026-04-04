@@ -1,0 +1,264 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Zentrix Technology - Premium Digital Experiences. Web, App, and Digital Growth Solutions." />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | Zentrix Technology</title>
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+	</head>
+	<body data-barba="wrapper" class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-indigo-500 selection:text-white">
+        
+        <!-- Preloader -->
+        <div class="preloader fixed inset-0 z-[150] bg-white flex flex-col items-center justify-center">
+             <div class="relative overflow-hidden w-24 h-24 mb-4">
+                 <img src="/logo.png" alt="Zentrix Logo" class="preloader-logo w-full h-full object-contain" />
+             </div>
+             <div class="h-[1px] w-48 bg-slate-100 relative overflow-hidden">
+                 <div class="preloader-bar absolute top-0 left-0 h-full w-full bg-indigo-500 origin-left scale-x-0"></div>
+             </div>
+        </div>
+
+		<div class="page-transition"></div>
+		
+        <Header />
+        
+        <main data-barba="container" data-barba-namespace={title.toLowerCase()} class="min-h-screen">
+		    <slot />
+        </main>
+
+        <Footer />
+
+        <!-- EmailJS SDK (Universal) -->
+        <script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+		
+		<script>
+      import Lenis from 'lenis';
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+      // @ts-ignore
+      import barba from '@barba/core';
+      
+      gsap.registerPlugin(ScrollTrigger);
+
+      // --- Credentials ---
+      const PUBLIC_KEY = "Hwn19i2dsu59--iK7";
+      const SERVICE_ID = "service_t9v5nqi"; 
+      const TEMPLATE_ID = "template_871z73a";
+
+      // --- Lenis Lifecycle Management ---
+      let lenis: Lenis;
+      
+      const initLenis = () => {
+        lenis = new Lenis({
+          duration: 1, 
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 1.5,
+        });
+
+        function raf(time: number) {
+          lenis?.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+      };
+
+      // --- Contact Form Engine (Barba-Safe) ---
+      const initContactForm = () => {
+          // @ts-ignore
+          const emailjs = window.emailjs;
+          if (!emailjs) return;
+
+          emailjs.init(PUBLIC_KEY);
+
+          const form = document.getElementById('contact-form') as HTMLFormElement;
+          const successOverlay = document.getElementById('form-success');
+          const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+          const btnText = document.getElementById('btn-text');
+          const btnIcon = document.getElementById('btn-icon');
+          const btnLoader = document.getElementById('btn-loader');
+          const resetBtn = document.getElementById('reset-form');
+
+          if (!form) return; // Not on contact page
+
+          form.addEventListener('submit', (e) => {
+              e.preventDefault();
+
+              submitBtn.disabled = true;
+              btnText!.textContent = "Transmitting...";
+              btnIcon?.classList.add('hidden');
+              btnLoader?.classList.remove('hidden');
+
+              // --- GLOBAL VARIABLE MAPPING ---
+              // We send all common versions of keys to ensure they match your EmailJS Template structure
+              const nameVal = (document.getElementById('name') as HTMLInputElement).value;
+              const emailVal = (document.getElementById('email') as HTMLInputElement).value;
+              const messageVal = (document.getElementById('message') as HTMLTextAreaElement).value;
+
+              const templateParams = {
+                  // Names
+                  from_name: nameVal,
+                  user_name: nameVal,
+                  name: nameVal,
+                  
+                  // Emails
+                  from_email: emailVal,
+                  user_email: emailVal,
+                  email: emailVal,
+                  reply_to: emailVal,
+                  
+                  // Content
+                  message: messageVal,
+                  to_name: "Zentrix Technology",
+              };
+
+              emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+                  .then(() => {
+                      form.classList.add('opacity-0', 'pointer-events-none');
+                      successOverlay?.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
+                      successOverlay?.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+                      form.reset();
+                  })
+                  .catch((error: any) => {
+                      console.error('EmailJS Error:', error);
+                      alert('Submission failed. Check your EmailJS account status.');
+                      submitBtn.disabled = false;
+                      btnText!.textContent = "Transmit Inquiry";
+                      btnIcon?.classList.remove('hidden');
+                      btnLoader?.classList.add('hidden');
+                  });
+          });
+
+          resetBtn?.addEventListener('click', () => {
+              form.classList.remove('opacity-0', 'pointer-events-none');
+              successOverlay?.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
+              successOverlay?.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+              submitBtn.disabled = false;
+              btnText!.textContent = "Transmit Inquiry";
+              btnIcon?.classList.remove('hidden');
+              btnLoader?.classList.add('hidden');
+          });
+      };
+
+      // --- Preloader Logic ---
+      const handlePreloader = () => {
+        const tl = gsap.timeline({
+          onComplete: () => {
+            document.querySelector('.preloader')?.remove();
+            lenis?.start();
+            initScrollAnimations();
+            initContactForm(); 
+          }
+        });
+
+        tl.to('.preloader-bar', {
+          scaleX: 1,
+          duration: 0.6,
+          ease: 'power2.inOut'
+        })
+        .to('.preloader-logo', {
+          y: -10,
+          opacity: 0,
+          duration: 0.4,
+          ease: 'power4.in'
+        }, '+=0.1')
+        .to('.preloader-bar', {
+          xPercent: 100,
+          duration: 0.4,
+          ease: 'power4.in'
+        }, '<')
+        .to('.preloader', {
+          yPercent: -100,
+          duration: 0.7,
+          ease: 'power4.inOut'
+        });
+      };
+
+      // --- Global Animations ---
+      const initScrollAnimations = () => {
+        ScrollTrigger.getAll().forEach(t => t.kill());
+        const reveals = document.querySelectorAll('.reveal-on-scroll');
+        reveals.forEach(el => {
+           gsap.fromTo(el,
+             { y: 40, opacity: 0 },
+             {
+               y: 0,
+               opacity: 1,
+               duration: 1,
+               ease: 'power3.out',
+               scrollTrigger: {
+                 trigger: el,
+                 start: 'top 90%',
+                 toggleActions: 'play none none none'
+               }
+             }
+           );
+        });
+        ScrollTrigger.refresh();
+      };
+
+      // --- Page Transitions ---
+      const initBarba = () => {
+        barba.init({
+          sync: true,
+          transitions: [{
+            name: 'lusion-transition',
+            async leave() {
+              lenis?.stop();
+              const tl = gsap.timeline();
+              tl.to('.page-transition', {
+                yPercent: 0,
+                duration: 0.6,
+                ease: 'expo.inOut'
+              });
+              await tl;
+            },
+            async enter() {
+              window.scrollTo(0, 0);
+              lenis?.scrollTo(0, { immediate: true });
+              const tl = gsap.timeline();
+              tl.to('.page-transition', {
+                yPercent: -100,
+                duration: 0.6,
+                ease: 'expo.inOut',
+                onComplete: () => {
+                   gsap.set('.page-transition', { yPercent: 100 });
+                   lenis?.start();
+                   lenis?.resize();
+                   initScrollAnimations();
+                   initContactForm(); 
+                   document.dispatchEvent(new CustomEvent('barba_after'));
+                }
+              });
+            }
+          }]
+        });
+      };
+
+      window.addEventListener('load', () => {
+        initLenis();
+        lenis?.stop();
+        handlePreloader();
+        setTimeout(initBarba, 500);
+      });
+		</script>
+	</body>
+</html>

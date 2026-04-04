@@ -1,0 +1,67 @@
+[2m23:38:25[22m [34m[types][39m Generated [2m109ms[22m
+[2m23:38:25[22m [34m[check][39m Getting diagnostics for Astro files in E:\zentrixtech...
+[96msrc/components/Header.astro[0m:[93m2[0m:[93m25[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'lucide-react' or its corresponding type declarations.
+
+[7m2[0m import { Menu, X } from 'lucide-react';
+[7m [0m [91m                        ~~~~~~~~~~~~~~[0m
+[96msrc/components/Header.astro[0m:[93m2[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m2[0m import { Menu, X } from 'lucide-react';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/layouts/Layout.astro[0m:[93m87[0m:[93m19[0m - [91merror[0m[90m ts(7006): [0mParameter 'data' implicitly has an 'any' type.
+
+[7m87[0m             enter(data) {
+[7m  [0m [91m                  ~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m80[0m:[93m19[0m - [91merror[0m[90m ts(7006): [0mParameter 'data' implicitly has an 'any' type.
+
+[7m80[0m             leave(data) {
+[7m  [0m [91m                  ~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m46[0m:[93m25[0m - [91merror[0m[90m ts(7016): [0mCould not find a declaration file for module '@barba/core'. 'E:/zentrixtech/node_modules/@barba/core/dist/barba.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/barba__core` if it exists or add a new declaration (.d.ts) file containing `declare module '@barba/core';`
+
+[7m46[0m       import barba from '@barba/core';
+[7m  [0m [91m                        ~~~~~~~~~~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m87[0m:[93m19[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m87[0m             enter(data) {
+[7m  [0m [93m                  ~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m80[0m:[93m19[0m - [93mwarning[0m[90m ts(6133): [0m'data' is declared but its value is never read.
+
+[7m80[0m             leave(data) {
+[7m  [0m [93m                  ~~~~[0m
+
+[96msrc/pages/about.astro[0m:[93m3[0m:[93m40[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'lucide-react' or its corresponding type declarations.
+
+[7m3[0m import { Target, Compass, Code2 } from 'lucide-react';
+[7m [0m [91m                                       ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/contact.astro[0m:[93m3[0m:[93m66[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'lucide-react' or its corresponding type declarations.
+
+[7m3[0m import { Mail, MessageSquare, MapPin, Send, MessageCircle } from 'lucide-react';
+[7m [0m [91m                                                                 ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/index.astro[0m:[93m3[0m:[93m94[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'lucide-react' or its corresponding type declarations.
+
+[7m3[0m import { ArrowRight, ChevronRight, Layers, Smartphone, Megaphone, Zap, Shield, Rocket } from 'lucide-react';
+[7m [0m [91m                                                                                             ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/services.astro[0m:[93m3[0m:[93m61[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'lucide-react' or its corresponding type declarations.
+
+[7m3[0m import { Layers, Smartphone, Megaphone, CheckCircle2 } from 'lucide-react';
+[7m [0m [91m                                                            ~~~~~~~~~~~~~~[0m
+[96msrc/pages/services.astro[0m:[93m216[0m:[93m26[0m - [93mwarning[0m[90m ts(6133): [0m'index' is declared but its value is never read.
+
+[7m216[0m     cards.forEach((card, index) => {
+[7m   [0m [93m                         ~~~~~[0m
+
+[96msrc/pages/works.astro[0m:[93m3[0m:[93m42[0m - [91merror[0m[90m ts(2307): [0mCannot find module 'lucide-react' or its corresponding type declarations.
+
+[7m3[0m import { ArrowRight, CheckCircle2 } from 'lucide-react';
+[7m [0m [91m                                         ~~~~~~~~~~~~~~[0m
+
+Result (11 files): 
+- 9 errors
+- 0 warnings
+- 4 hints
+

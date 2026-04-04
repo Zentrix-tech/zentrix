@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
+
+const cases = [
+  {
+    title: "FinCore Analytics Platform",
+    category: "App Development",
+    tagline: "Ultra-fast financial intelligence for institutional investors.",
+    problem: "A major financial startup struggled with legacy data processing systems that took minutes to generate risk reports, creating unacceptable latency for day traders and institutional clients.",
+    solution: "We re-architected their entire frontend using a performance-first reactive framework and implemented WebSockets for real-time data streaming. The UI was completely overhauled for density and clarity.",
+    outcome: [
+      "94% reduction in dashboard load time",
+      "+200% increase in daily active users",
+      "Successfully secured Series B funding post-launch"
+    ],
+    color: "indigo"
+  },
+  {
+    title: "Lumina Health SaaS",
+    category: "Web Development",
+    tagline: "Connecting patient care records with zero-trust safety.",
+    problem: "A regional hospital network relied on disjointed, internal systems for patient onboarding, leading to lost records, severe HIPAA risks, and extremely poor patient satisfaction scores.",
+    solution: "We designed and built a highly secure, unified patient portal. Integrating with their legacy database securely, we provided a frictionless web experience with automated appointment scheduling.",
+    outcome: [
+      "Zero compliance breaches since launch",
+      "Saved 40+ hours per week in admin tasks",
+      "Patient onboarding time reduced from 20 mins to 3 mins"
+    ],
+    color: "violet"
+  },
+  {
+    title: "EcoFuture B2B Portal",
+    category: "Web & Marketing",
+    tagline: "Converting sustainable energy traffic into enterprise contracts.",
+    problem: "A sustainable energy provider had an archaic B2B platform that was difficult to navigate. Their marketing efforts were also driving traffic to this low-converting system.",
+    solution: "Zentrix delivered an end-to-end transformation. We completely rebuilt their frontend to be intuitive and mobile-responsive, then launched a targeted SEO and advertising campaign to drive qualified leads.",
+    outcome: [
+      "315% increase in B2B qualified leads",
+      "Conversion rate optimized from 0.8% to 4.2%",
+      "Ranked #1 for 15+ target industry keywords"
+    ],
+    color: "blue"
+  }
+];
+---
+
+<Layout title="Works">
+  
+  <section class="pt-60 pb-32 bg-white relative overflow-hidden">
+     <div class="container mx-auto px-6">
+        <div class="max-w-4xl section-reveal">
+           <span class="text-[10px] font-black tracking-[0.5em] text-indigo-500 uppercase mb-8 block">Project Archives</span>
+           <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.9]">Selected <br/><span class="text-slate-300">Outcomes.</span></h1>
+           <p class="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl">
+             We don't just deliver projects; we solve fundamental business challenges through engineering excellence and human-centric design.
+           </p>
+        </div>
+     </div>
+  </section>
+
+  <section class="pb-60 bg-white">
+    <div class="container mx-auto px-6">
+      <div class="space-y-60">
+        {cases.map((caseStudy, index) => (
+          <div class="work-block reveal-on-scroll">
+             <div class={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-20 lg:gap-32 items-start`}>
+                
+                <!-- Visual Container -->
+                <div class="w-full lg:w-3/5 group">
+                   <div class="relative rounded-[3rem] overflow-hidden aspect-[16/10] bg-slate-50 border border-slate-100 shadow-2xl shadow-slate-200/40 transition-all duration-1000 group-hover:shadow-indigo-200/50">
+                      <div class="absolute inset-0 bg-gradient-to-br from-white to-slate-100 flex items-center justify-center overflow-hidden">
+                          <!-- Abstract Symbol -->
+                          <div class="text-[20vw] font-black text-slate-200/50 select-none tracking-tighter transform group-hover:scale-110 transition-transform duration-1000 uppercase">
+                             {caseStudy.title.substring(0, 3)}
+                          </div>
+                      </div>
+                      
+                      <!-- Overlay info on image (Lusion inspired) -->
+                      <div class="absolute bottom-10 left-10 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
+                         <span class="text-[9px] font-black tracking-[0.4em] text-slate-900 uppercase bg-white/80 backdrop-blur px-6 py-3 rounded-full">View Details</span>
+                      </div>
+                   </div>
+                </div>
+
+                <!-- Content Area -->
+                <div class="w-full lg:w-2/5 pt-10">
+                   <div class="flex items-center gap-4 mb-8">
+                      <span class="text-[10px] font-black tracking-[0.3em] text-indigo-600 uppercase">{caseStudy.category}</span>
+                      <div class="w-10 h-[1px] bg-slate-200"></div>
+                   </div>
+                   
+                   <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-tight leading-tight">{caseStudy.title}</h2>
+                   <p class="text-lg text-slate-500 font-medium mb-12 italic">"{caseStudy.tagline}"</p>
+                   
+                   <div class="space-y-12">
+                      <div class="case-meta-item">
+                         <h4 class="text-[9px] font-black tracking-[0.4em] text-slate-400 uppercase mb-4">The Challenge</h4>
+                         <p class="text-slate-600 font-medium leading-relaxed">{caseStudy.problem}</p>
+                      </div>
+                      
+                      <div class="case-meta-item">
+                         <h4 class="text-[9px] font-black tracking-[0.4em] text-slate-400 uppercase mb-4">Our strategy</h4>
+                         <p class="text-slate-600 font-medium leading-relaxed">{caseStudy.solution}</p>
+                      </div>
+
+                      <div class="pt-8 border-t border-slate-100">
+                         <h4 class="text-[9px] font-black tracking-[0.4em] text-slate-900 uppercase mb-6">Key Results</h4>
+                         <ul class="space-y-4">
+                            {caseStudy.outcome.map((res) => (
+                               <li class="flex items-start gap-4 text-sm font-bold text-slate-900">
+                                  <div class="w-5 h-5 rounded-full bg-indigo-50 border border-indigo-100 flex items-center justify-center shrink-0 mt-0.5">
+                                     <ArrowRight className="w-3 h-3 text-indigo-500" />
+                                  </div>
+                                  {res}
+                               </li>
+                            ))}
+                         </ul>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-40 bg-slate-900 mx-6 mb-32 rounded-[3.5rem] relative overflow-hidden">
+      <div class="container mx-auto px-6 text-center max-w-4xl relative z-10">
+         <h2 class="text-5xl md:text-7xl font-black text-white tracking-tight mb-12">Built to scale. <br/>Ready to win?</h2>
+         <a href="/contact" class="inline-flex items-center justify-center px-14 py-6 bg-white text-slate-900 rounded-full text-[11px] font-black tracking-[0.5em] uppercase hover:bg-indigo-600 hover:text-white transition-all duration-700">
+            Commence Project
+         </a>
+      </div>
+  </section>
+
+</Layout>
