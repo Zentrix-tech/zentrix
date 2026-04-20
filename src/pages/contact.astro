@@ -5,99 +5,89 @@ import { Mail, MessageSquare, MapPin, Send, MessageCircle, ArrowRight, Loader2, 
 
 <Layout title="Contact">
   
-  <section class="pt-60 pb-32 bg-white relative overflow-hidden">
-     <div class="container mx-auto px-6">
+  <section class="pt-60 pb-32 relative overflow-hidden">
+     <div class="absolute inset-0 topographic-lines opacity-10 pointer-events-none"></div>
+     <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-4xl section-reveal">
-           <span class="text-[10px] font-black tracking-[0.5em] text-indigo-500 uppercase mb-8 block">Project Initiation</span>
-           <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.9]">Start Your <br/><span class="text-slate-300">Transformation.</span></h1>
-           <p class="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl">
+           <span class="text-[10px] font-mono tracking-[0.5em] text-white uppercase mb-8 block">Project Initiation</span>
+           <h1 class="text-7xl md:text-9xl font-serif italic text-white mb-10 leading-[0.85] reveal-up">Start Your <br/><span class="text-white not-italic">Transformation.</span></h1>
+           <p class="text-xl text-white font-mono leading-relaxed max-w-2xl reveal-up">
               We're ready to engineer your company's digital future. Reach out to discuss your architectural and growth objectives.
            </p>
         </div>
      </div>
   </section>
 
-  <section class="pb-60 bg-white">
+  <section class="pb-60">
      <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-20">
            
            <!-- Contact Details -->
            <div class="lg:col-span-5 reveal-on-scroll">
-              <div class="space-y-20">
+              <div class="space-y-24">
                  <div class="contact-item">
-                    <h4 class="text-[9px] font-black tracking-[0.4em] text-slate-400 uppercase mb-6">Correspondence</h4>
-                    <a href="mailto:zentrixtech01@gmail.com" class="text-3xl md:text-4xl font-black text-slate-900 hover:text-indigo-600 transition-colors duration-500 underline decoration-slate-100 underline-offset-[12px] hover:decoration-indigo-100 block mb-10">
+                    <h4 class="text-[9px] font-mono tracking-[0.4em] text-white uppercase mb-8 opacity-50">Correspondence</h4>
+                    <a href="mailto:zentrixtech01@gmail.com" class="text-3xl md:text-5xl font-serif italic text-white hover:opacity-60 transition-all duration-700 block mb-12">
                        zentrixtech01@gmail.com
                     </a>
                     
                     <!-- WhatsApp Integration -->
-                    <a href="https://wa.me/917904645033?text=Hi%20Zentrix%20Technology%2C%20I%20want%20to%20build%20a%20website%20for%20my%20business." target="_blank" class="flex items-center gap-6 group/wa mt-12">
-                       <div class="w-14 h-14 rounded-full border border-emerald-100 bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover/wa:bg-emerald-600 group-hover/wa:text-white transition-all duration-700 shadow-lg shadow-emerald-200/20">
+                    <a href="https://wa.me/917904645033" target="_blank" class="flex items-center gap-8 group/wa mt-16">
+                       <div class="w-16 h-16 rounded-full border border-white bg-white/10 text-white flex items-center justify-center group-hover/wa:bg-white group-hover/wa:text-black transition-all duration-1000">
                           <MessageCircle className="w-6 h-6" />
                        </div>
                        <div class="flex flex-col">
-                          <span class="text-[9px] font-black tracking-[0.3em] text-slate-400 uppercase mb-1">Direct Connect</span>
-                          <span class="text-2xl font-black text-slate-900 tracking-tighter group-hover/wa:text-emerald-700 transition-colors">+91 79046 45033</span>
+                          <span class="text-[9px] font-mono tracking-[0.3em] text-white uppercase mb-2 opacity-50">Direct Channel</span>
+                          <span class="text-2xl font-serif italic text-white tracking-tight group-hover/wa:translate-x-2 transition-transform duration-700">+91 79046 45033</span>
                        </div>
                     </a>
                  </div>
 
                  <div class="contact-item">
-                    <h4 class="text-[9px] font-black tracking-[0.4em] text-slate-400 uppercase mb-6">Social Integration</h4>
-                    <div class="flex items-center gap-10">
-                       <a href="#" class="flex items-center gap-4 group/social">
-                          <div class="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center group-hover/social:bg-slate-900 group-hover/social:text-white transition-all duration-500">
-                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                          </div>
-                          <span class="text-[10px] font-black tracking-[0.2em] uppercase text-slate-900">LinkedIn</span>
-                       </a>
-                    </div>
-                 </div>
-
-                 <div class="contact-item">
-                    <h4 class="text-[9px] font-black tracking-[0.4em] text-slate-400 uppercase mb-6">Operations</h4>
-                    <p class="text-xl font-bold text-slate-900 uppercase tracking-tighter">Remote Globally <br/><span class="text-slate-400 text-sm font-medium tracking-normal">Centralized in Tech Hubs</span></p>
+                    <h4 class="text-[9px] font-mono tracking-[0.4em] text-white uppercase mb-8 opacity-50">Global Nodes</h4>
+                    <p class="text-2xl font-serif italic text-white tracking-tight">Remote Engineering Collective <br/><span class="text-white text-sm font-mono tracking-normal not-italic opacity-50">Centralized in Global Tech Hubs</span></p>
                  </div>
               </div>
            </div>
 
-           <!-- Inquiry Form (Handled by Global Layout Lifecycle) -->
+           <!-- Inquiry Form -->
            <div class="lg:col-span-6 lg:col-start-7 reveal-on-scroll">
-              <div class="bg-slate-50 border border-slate-100 p-10 md:p-16 rounded-[3.5rem] shadow-2xl shadow-indigo-100/20 relative overflow-hidden">
+              <div class="bg-black/40 border border-white/20 p-12 md:p-20 rounded-[1rem] relative overflow-hidden backdrop-blur-lg">
+                 <div class="absolute inset-0 topographic-lines opacity-10 pointer-events-none"></div>
                  
                  <!-- Success Message Overlay -->
-                 <div id="form-success" class="absolute inset-0 bg-white z-20 flex flex-col items-center justify-center text-center p-10 opacity-0 pointer-events-none translate-y-10 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]">
-                    <div class="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center mb-8">
-                       <CheckCircle2 className="w-10 h-10 text-emerald-500" />
+                 <div id="form-success" class="absolute inset-0 bg-black z-20 flex flex-col items-center justify-center text-center p-12 opacity-0 pointer-events-none translate-y-10 transition-all duration-1000">
+                    <div class="w-20 h-20 border border-white rounded-full flex items-center justify-center mb-10">
+                       <CheckCircle2 className="w-8 h-8 text-white" />
                     </div>
-                    <h3 class="text-3xl font-black mb-4">Transmission Successful.</h3>
-                    <p class="text-slate-500 font-medium max-w-[280px]">Our systems have logged your inquiry. Our team will verify and reach out within 24 hours.</p>
-                    <button id="reset-form" class="mt-10 text-[10px] font-black tracking-[0.3em] uppercase text-indigo-600 hover:text-indigo-800 transition-colors">Submit Another</button>
+                    <h3 class="text-3xl font-serif italic text-white mb-6">Transmission Confirmed.</h3>
+                    <p class="text-white font-mono text-xs max-w-[280px]">Our systems have logged your inquiry. Our collective will verify and reach out within 24 hours.</p>
+                    <button id="reset-form" class="mt-12 text-[10px] font-mono tracking-[0.3em] uppercase text-white hover:opacity-60 transition-colors">Submit Another</button>
                  </div>
 
-                 <h3 class="text-3xl font-black tracking-tight mb-12">Submit Inquiry.</h3>
+                 <h3 class="text-4xl font-serif italic text-white mb-16">Inquiry Portal</h3>
                  
-                 <form id="contact-form" class="space-y-12 transition-all duration-500">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                       <div class="form-group border-b border-slate-200 pb-4 focus-within:border-indigo-500 transition-colors">
-                          <label class="text-[9px] font-black tracking-[0.3em] text-slate-400 uppercase block mb-4">Identity</label>
-                          <input type="text" id="name" name="user_name" placeholder="Your Name" class="w-full bg-transparent border-none text-lg font-bold text-slate-900 placeholder:text-slate-200 focus:outline-none focus:ring-0" required />
+                 <form id="contact-form" class="space-y-16 transition-all duration-500">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                       <div class="form-group border-b border-white/40 pb-6 focus-within:border-white transition-colors">
+                          <label class="text-[9px] font-mono tracking-[0.3em] text-white uppercase block mb-4 opacity-50">Identity</label>
+                          <input type="text" id="name" name="user_name" placeholder="ARCHIVE NAME" class="w-full bg-transparent border-none text-lg font-serif italic text-white placeholder:text-white/40 focus:outline-none focus:ring-0 uppercase" required />
                        </div>
-                       <div class="form-group border-b border-slate-200 pb-4 focus-within:border-indigo-500 transition-colors">
-                          <label class="text-[9px] font-black tracking-[0.3em] text-slate-400 uppercase block mb-4">Correspondence</label>
-                          <input type="email" id="email" name="user_email" placeholder="Email@domain.com" class="w-full bg-transparent border-none text-lg font-bold text-slate-900 placeholder:text-slate-200 focus:outline-none focus:ring-0" required />
+                       <div class="form-group border-b border-white/40 pb-6 focus-within:border-white transition-colors">
+                          <label class="text-[9px] font-mono tracking-[0.3em] text-white uppercase block mb-4 opacity-50">Correspondence</label>
+                          <input type="email" id="email" name="user_email" placeholder="EMAIL@PROTOCOL.IO" class="w-full bg-transparent border-none text-lg font-serif italic text-white placeholder:text-white/40 focus:outline-none focus:ring-0 uppercase" required />
                        </div>
                     </div>
 
-                    <div class="form-group border-b border-slate-200 pb-4 focus-within:border-indigo-500 transition-colors">
-                       <label class="text-[9px] font-black tracking-[0.3em] text-slate-400 uppercase block mb-4">Objective</label>
-                       <textarea id="message" name="message" placeholder="Tell us about your project infrastructure needs, timeline, and growth goals..." rows="4" class="w-full bg-transparent border-none text-lg font-bold text-slate-900 placeholder:text-slate-200 focus:outline-none focus:ring-0 resize-none" required></textarea>
+                    <div class="form-group border-b border-white/40 pb-6 focus-within:border-white transition-colors">
+                       <label class="text-[9px] font-mono tracking-[0.3em] text-white uppercase block mb-4 opacity-50">Objective</label>
+                       <textarea id="message" name="message" placeholder="TELL US ABOUT THE DIGITAL ECOSYSTEM YOU WISH TO BUILD..." rows="4" class="w-full bg-transparent border-none text-lg font-serif italic text-white placeholder:text-white/40 focus:outline-none focus:ring-0 resize-none uppercase" required></textarea>
                     </div>
 
-                    <button type="submit" id="submit-btn" class="w-full py-6 bg-slate-900 text-white rounded-full text-[11px] font-black tracking-[0.4em] uppercase hover:bg-indigo-600 transition-all duration-700 flex items-center justify-center gap-4 group disabled:opacity-50 disabled:cursor-wait">
-                       <span id="btn-text">Transmit Inquiry</span>
-                       <ArrowRight id="btn-icon" className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-500" />
-                       <Loader2 id="btn-loader" className="w-4 h-4 animate-spin hidden" />
+                    <button type="submit" id="submit-btn" class="w-full py-8 bg-white text-black rounded-full text-[11px] font-mono tracking-[0.5em] uppercase hover:scale-[1.02] transition-all duration-700 flex items-center justify-center gap-6 group disabled:opacity-50 disabled:cursor-wait">
+                       <span id="btn-text">Initiate Transmission</span>
+                       <ArrowRight id="btn-icon" className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-700" />
+                       <Loader2 id="btn-loader" className="w-5 h-5 animate-spin hidden" />
                     </button>
                  </form>
               </div>
@@ -108,3 +98,41 @@ import { Mail, MessageSquare, MapPin, Send, MessageCircle, ArrowRight, Loader2, 
   </section>
 
 </Layout>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Entrance Animations
+    gsap.from('.reveal-up', {
+      y: 100,
+      opacity: 0,
+      duration: 1.5,
+      stagger: 0.2,
+      ease: 'expo.out'
+    });
+
+    // Scroll Revelations
+    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    reveals.forEach(el => {
+      gsap.from(el, {
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+  });
+
+  document.addEventListener('barba_after', () => {
+     ScrollTrigger.refresh();
+  });
+</script>

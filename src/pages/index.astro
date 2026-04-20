@@ -6,309 +6,199 @@ import { ArrowRight, ChevronRight, Layers, Smartphone, Megaphone, Zap, Shield, R
 <Layout title="Home">
   
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-white">
-    <!-- Ethereal SVG Background -->
-    <div class="absolute inset-0 z-0 pointer-events-none flex items-center justify-center opacity-30">
-      <svg class="hero-bg-svg w-[140%] h-[140%]" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="hero-blur" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="60" />
-          </filter>
-        </defs>
-        <circle cx="300" cy="400" r="180" fill="#e0e7ff" filter="url(#hero-blur)" class="hero-shape hero-shape-1" />
-        <circle cx="700" cy="300" r="220" fill="#f5d0fe" filter="url(#hero-blur)" class="hero-shape hero-shape-2" />
-        <path d="M400,600 Q500,450 650,600 T900,650" stroke="#c7d2fe" stroke-width="2" fill="none" class="hero-line hero-line-1" />
-        <path d="M100,200 Q250,350 400,200 T700,250" stroke="#fbcfe8" stroke-width="2" fill="none" class="hero-line hero-line-2" />
-      </svg>
-    </div>
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Topographic Parallax Background -->
+    <div class="absolute inset-0 z-0 topographic-lines opacity-10 hero-parallax"></div>
+    <div class="absolute inset-0 z-0 technical-grid opacity-10"></div>
+    
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 z-1 bg-gradient-to-b from-black/60 via-transparent to-black/60"></div>
 
     <div class="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
-      <div class="hero-reveal-container px-5 py-1.5 rounded-full border border-slate-100 bg-white shadow-sm mb-10 overflow-hidden">
-         <div class="hero-tag text-[9px] font-black tracking-[0.3em] text-slate-400 uppercase flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
-            Visionary Technology Partners
+      <div class="hero-reveal-container mb-12 overflow-hidden">
+         <div class="hero-tag text-[9px] font-mono tracking-[0.6em] text-white uppercase flex items-center gap-4 reveal-up">
+            <span class="w-12 h-[1px] bg-white"></span>
+            Established MMXVII
+            <span class="w-12 h-[1px] bg-white"></span>
          </div>
       </div>
       
-      <h1 class="hero-title text-6xl md:text-8xl lg:text-[110px] font-black tracking-[-0.04em] text-slate-900 max-w-6xl mb-10 leading-[0.95]">
-        Engineering <span class="hero-italic italic font-normal text-indigo-600/10 hover:text-indigo-600 transition-colors duration-1000 cursor-default">Digital</span> <br class="hidden md:block"/> Dominance.
+      <h1 class="hero-title text-7xl md:text-9xl lg:text-[140px] font-serif italic text-white max-w-6xl mb-12 leading-[0.85] reveal-up">
+        The Art of <br/> <span class="not-italic text-white">Digital</span> <br/> Wilderness.
       </h1>
       
-      <p class="hero-desc text-lg md:text-xl text-slate-500 max-w-2xl mb-14 leading-relaxed font-medium">
-        We bridge the gap between complex engineering and human-centric design. Zentrix builds high-velocity platforms for industry leaders.
+      <p class="hero-desc text-lg md:text-xl text-white max-w-2xl mb-16 leading-relaxed font-mono tracking-tight reveal-up">
+        Bridging high-velocity engineering with the raw essence of human-centric design. Zentrix builds platforms for the era of dominance.
       </p>
       
-      <div class="hero-actions flex flex-col sm:flex-row items-center gap-6">
-        <a href="/contact" class="px-10 py-5 bg-slate-900 text-white rounded-full text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-indigo-600 transition-all duration-300 shadow-2xl shadow-indigo-200/50 flex items-center gap-3 group">
-          Init Project
-          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+      <div class="hero-actions flex flex-col sm:flex-row items-center gap-8 reveal-up">
+        <a href="/contact" class="px-12 py-6 bg-white text-black rounded-full text-[10px] font-black tracking-[0.3em] uppercase hover:bg-white/90 transition-all duration-500 flex items-center gap-4 group">
+          Init Discovery
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </a>
-        <a href="/works" class="px-10 py-5 bg-white text-slate-900 border border-slate-100 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase hover:border-slate-300 transition-all duration-300">
-          Case Studies
+        <a href="/works" class="px-12 py-6 border border-white text-white rounded-full text-[10px] font-black tracking-[0.3em] uppercase hover:bg-white/5 transition-all duration-500">
+          Our Archives
         </a>
       </div>
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-40">
-       <div class="w-[1px] h-12 bg-gradient-to-b from-slate-900 to-transparent"></div>
-       <span class="text-[8px] font-black tracking-[0.4em] uppercase text-slate-900">Scroll</span>
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50">
+       <span class="text-[8px] font-mono tracking-[0.5em] uppercase text-white">Explore</span>
+       <div class="w-[1px] h-16 bg-gradient-to-b from-white to-transparent scroll-line"></div>
     </div>
   </section>
 
-  <!-- Services Grid -->
-  <section class="py-40 bg-white overflow-hidden">
+  <!-- Mission Section (Sticky Effect) -->
+  <section class="relative py-60 overflow-hidden mission-section">
     <div class="container mx-auto px-6">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-32 gap-10">
-        <div class="max-w-2xl">
-          <span class="text-[10px] font-bold tracking-[0.4em] text-indigo-500 uppercase mb-6 block">Capabilities</span>
-          <h2 class="text-5xl md:text-6xl font-black tracking-tighter leading-[0.95] text-slate-900 mb-8 reveal-on-scroll">
-            Core Specialized <br/><span class="text-slate-300">Verticles.</span>
+      <div class="flex flex-col lg:flex-row gap-20 items-start">
+        <div class="lg:w-1/2 sticky top-40">
+          <span class="text-[10px] font-mono tracking-[0.5em] text-white uppercase mb-8 block">Our Ethos</span>
+          <h2 class="text-6xl md:text-8xl font-serif text-white leading-none mb-12">
+            Engineering <br/><span class="italic text-white">Purity</span> <br/>In Every Line.
           </h2>
-          <p class="text-lg text-slate-500 font-medium leading-relaxed max-w-lg">We focus on high-impact technology surfaces that define the modern competitive landscape.</p>
         </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-slate-100 rounded-[2.5rem] overflow-hidden stagger-container">
-        <!-- Service 1 -->
-        <div class="service-block p-12 lg:p-16 bg-white hover:bg-slate-50 transition-colors duration-700 border-b md:border-b-0 md:border-r border-slate-100 group stagger-item">
-          <div class="w-12 h-12 mb-12 text-slate-900 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700">
-             <Layers className="w-full h-full stroke-[1.5px]" />
+        <div class="lg:w-1/2 pt-40 lg:pt-80">
+          <div class="space-y-40">
+            <div class="reveal-on-scroll">
+              <h3 class="text-3xl font-serif text-white mb-6 italic">Uncompromising Performance</h3>
+              <p class="text-xl text-white leading-relaxed font-mono">
+                We don't just build websites. We craft digital ecosystems that breathe with your brand. Every millisecond of latency is a barrier we dismantle with surgical precision.
+              </p>
+            </div>
+            <div class="reveal-on-scroll">
+              <h3 class="text-3xl font-serif text-white mb-6 italic">Visual Sovereignty</h3>
+              <p class="text-xl text-white leading-relaxed font-mono">
+                Design is the skin of technology. We ensure that skin is flawless, premium, and capable of commanding attention in a world of digital noise.
+              </p>
+            </div>
+            <div class="reveal-on-scroll">
+              <h3 class="text-3xl font-serif text-white mb-6 italic">Scalable Resilience</h3>
+              <p class="text-xl text-white leading-relaxed font-mono">
+                Our architectures are built to endure. From day one to one million users, Zentrix platforms scale vertically and horizontally without friction.
+              </p>
+            </div>
           </div>
-          <h3 class="text-2xl font-bold mb-6">Web Ecosystems</h3>
-          <p class="text-sm font-medium text-slate-500 mb-12 leading-relaxed">Enterprise-grade architectures built with precision, focusing on SEO, accessibility, and sub-second performance.</p>
-          <ul class="space-y-3 mb-12">
-             <li class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <span class="w-1 h-1 bg-indigo-500 rounded-full"></span> Next.js / Astro
-             </li>
-             <li class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <span class="w-1 h-1 bg-indigo-500 rounded-full"></span> Cloud Infrastructure
-             </li>
-          </ul>
-        </div>
-        
-        <!-- Service 2 -->
-        <div class="service-block p-12 lg:p-16 bg-white hover:bg-slate-50 transition-colors duration-700 border-b md:border-b-0 md:border-r border-slate-100 group stagger-item">
-          <div class="w-12 h-12 mb-12 text-slate-900 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700">
-             <Smartphone className="w-full h-full stroke-[1.5px]" />
-          </div>
-          <h3 class="text-2xl font-bold mb-6">Mobile Platforms</h3>
-          <p class="text-sm font-medium text-slate-500 mb-12 leading-relaxed">Native-feel cross-platform experiences that maximize user retention through immersive UI/UX design patterns.</p>
-          <ul class="space-y-3 mb-12">
-             <li class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <span class="w-1 h-1 bg-indigo-500 rounded-full"></span> React Native / Flutter
-             </li>
-             <li class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <span class="w-1 h-1 bg-indigo-500 rounded-full"></span> App Store SEO
-             </li>
-          </ul>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="service-block p-12 lg:p-16 bg-white hover:bg-slate-50 transition-colors duration-700 group stagger-item">
-          <div class="w-12 h-12 mb-12 text-slate-900 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-700">
-             <Megaphone className="w-full h-full stroke-[1.5px]" />
-          </div>
-          <h3 class="text-2xl font-bold mb-6">Market Engine</h3>
-          <p class="text-sm font-medium text-slate-500 mb-12 leading-relaxed">Data-driven performance marketing focused on customer acquisition costs and long-term brand equity.</p>
-          <ul class="space-y-3 mb-12">
-             <li class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <span class="w-1 h-1 bg-indigo-500 rounded-full"></span> Growth Hacking
-             </li>
-             <li class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <span class="w-1 h-1 bg-indigo-500 rounded-full"></span> Brand Identity
-             </li>
-          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Case Studies Section -->
-  <section class="py-40 bg-slate-50">
+  <!-- Showcase Section (Grid) -->
+  <section class="py-40">
     <div class="container mx-auto px-6">
-       <div class="mb-32 flex flex-col items-center text-center">
-          <span class="text-[10px] font-bold tracking-[0.4em] text-indigo-500 uppercase mb-6">Proven Success</span>
-          <h2 class="text-5xl md:text-7xl font-black tracking-tight mb-8">Selected Outcomes.</h2>
-          <p class="text-slate-500 font-medium max-w-xl">A deep dive into how we solve architectural and growth challenges for our partners.</p>
-       </div>
-
-       <div class="space-y-40">
-          <!-- Case Study 1 -->
-          <div class="case-study group">
-             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="relative rounded-[2.5rem] overflow-hidden aspect-[4/3] bg-white border border-slate-100 shadow-2xl shadow-slate-200/50 reveal-on-scroll">
-                   <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-white flex items-center justify-center">
-                      <!-- Project Symbol -->
-                      <div class="text-[120px] font-black text-slate-100 uppercase select-none tracking-tighter">FIN</div>
-                   </div>
-                   <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-all duration-700"></div>
-                </div>
-                <div class="reveal-on-scroll">
-                   <div class="flex items-center gap-4 mb-8">
-                      <span class="text-[10px] font-black tracking-[0.2em] text-indigo-600 uppercase bg-indigo-50 px-4 py-1 rounded-full">Fintech</span>
-                   </div>
-                   <h3 class="text-4xl md:text-5xl font-black tracking-tight mb-10 leading-tight">Revamping Global <br/>Wealth Systems.</h3>
-                   
-                   <div class="space-y-12">
-                      <div class="case-meta">
-                         <h4 class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-3">Problem</h4>
-                         <p class="text-slate-600 font-medium">Legacy infrastructure causing sub-par user retention and critical scaling bottle-necks during peak trading.</p>
-                      </div>
-                      <div class="case-meta">
-                         <h4 class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-3">Solution</h4>
-                         <p class="text-slate-600 font-medium">Serverless architecture migration with a custom real-time engine built on Rust and WebSockets.</p>
-                      </div>
-                      <div class="case-meta">
-                         <h4 class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-3">Outcome</h4>
-                         <p class="text-slate-900 font-bold text-xl">+450% Scaling Efficiency & 99.99% Uptime guarantee during black swan events.</p>
-                      </div>
-                   </div>
-
-                   <a href="/works" class="mt-12 inline-flex items-center gap-4 group/btn">
-                      <span class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover/btn:bg-slate-900 group-hover/btn:border-slate-900 group-hover/btn:text-white transition-all duration-500">
-                         <ArrowRight className="w-5 h-5" />
-                      </span>
-                      <span class="text-[10px] font-black tracking-[0.3em] uppercase text-slate-900">Read Case Study</span>
-                   </a>
-                </div>
-             </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 px-1 bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden">
+        <div class="p-16 aspect-square flex flex-col justify-between bg-black/40 hover:bg-black/60 transition-colors duration-700 reveal-on-scroll">
+          <Layers className="w-12 h-12 text-white" />
+          <div>
+            <h4 class="text-2xl font-serif text-white mb-4">Web Core</h4>
+            <p class="text-xs font-mono text-white uppercase tracking-widest">Next.js / Astro / Rust</p>
           </div>
-
-          <!-- Case Study 2 -->
-          <div class="case-study group">
-             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                <div class="order-2 lg:order-1 reveal-on-scroll">
-                    <div class="flex items-center gap-4 mb-8">
-                      <span class="text-[10px] font-black tracking-[0.2em] text-emerald-600 uppercase bg-emerald-50 px-4 py-1 rounded-full">SaaS</span>
-                   </div>
-                   <h3 class="text-4xl md:text-5xl font-black tracking-tight mb-10 leading-tight">Scaling Lumina Health <br/>to 1M Users.</h3>
-                   
-                   <div class="space-y-12">
-                      <div class="case-meta">
-                         <h4 class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-3">Problem</h4>
-                         <p class="text-slate-600 font-medium">High churn due to friction in patient-onboarding and lack of cross-device synchronization.</p>
-                      </div>
-                      <div class="case-meta">
-                         <h4 class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-3">Solution</h4>
-                         <p class="text-slate-600 font-medium">Full React Native overhaul with automated data-sync and biometrics integration for frictionless access.</p>
-                      </div>
-                      <div class="case-meta">
-                         <h4 class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase mb-3">Outcome</h4>
-                         <p class="text-slate-900 font-bold text-xl">User growth surged by 300% in Q3 with a 60% reduction in customer support tickets.</p>
-                      </div>
-                   </div>
-
-                   <a href="/works" class="mt-12 inline-flex items-center gap-4 group/btn">
-                      <span class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover/btn:bg-slate-900 group-hover/btn:border-slate-900 group-hover/btn:text-white transition-all duration-500">
-                         <ArrowRight className="w-5 h-5" />
-                      </span>
-                      <span class="text-[10px] font-black tracking-[0.3em] uppercase text-slate-900">Read Case Study</span>
-                   </a>
-                </div>
-                <div class="order-1 lg:order-2 relative rounded-[2.5rem] overflow-hidden aspect-[4/3] bg-white border border-slate-100 shadow-2xl shadow-slate-200/50 reveal-on-scroll">
-                   <div class="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-white flex items-center justify-center">
-                      <div class="text-[120px] font-black text-slate-100 uppercase select-none tracking-tighter">MED</div>
-                   </div>
-                   <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/5 transition-all duration-700"></div>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
-  </section>
-
-  <!-- Values / Why Us -->
-  <section class="py-40 bg-white">
-     <div class="container mx-auto px-6">
-        <div class="flex flex-col lg:flex-row gap-20">
-           <div class="lg:w-1/3">
-              <span class="text-[10px] font-bold tracking-[0.4em] text-slate-400 uppercase mb-6 block">Our DNA</span>
-              <h2 class="text-5xl font-black tracking-tighter mb-10 leading-tight">Built on <br/>Uncompromised <br/>Performance.</h2>
-           </div>
-           
-           <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-12 stagger-container">
-              <div class="stagger-item">
-                 <div class="w-10 h-10 mb-8 border border-slate-100 rounded-xl flex items-center justify-center">
-                    <Zap className="w-5 h-5 text-indigo-500" />
-                 </div>
-                 <h3 class="text-xl font-bold mb-4">Atomic Velocity</h3>
-                 <p class="text-sm font-medium text-slate-500 leading-relaxed">We ship fast without breaking things. Our CI/CD pipelines are engineered for safety at extreme speeds.</p>
-              </div>
-              <div class="stagger-item">
-                 <div class="w-10 h-10 mb-8 border border-slate-100 rounded-xl flex items-center justify-center">
-                    <Rocket className="w-5 h-5 text-indigo-500" />
-                 </div>
-                 <h3 class="text-xl font-bold mb-4">Vertical Scaling</h3>
-                 <p class="text-sm font-medium text-slate-500 leading-relaxed">Future-proof architecture that grows with your user base, not your infra bill.</p>
-              </div>
-              <div class="stagger-item">
-                 <div class="w-10 h-10 mb-8 border border-slate-100 rounded-xl flex items-center justify-center">
-                    <Shield className="w-5 h-5 text-indigo-500" />
-                 </div>
-                 <h3 class="text-xl font-bold mb-4">Zero-Trust Security</h3>
-                 <p class="text-sm font-medium text-slate-500 leading-relaxed">Security isn't a feature; it's the core. We implement SOC2-ready protocols from day one.</p>
-              </div>
-              <div class="stagger-item">
-                 <div class="w-10 h-10 mb-8 border border-slate-100 rounded-xl flex items-center justify-center">
-                    <ArrowRight className="w-5 h-5 text-indigo-500" />
-                 </div>
-                 <h3 class="text-xl font-bold mb-4">Human Intelligence</h3>
-                 <p class="text-sm font-medium text-slate-500 leading-relaxed">AI-assisted workflows combined with world-class engineering talent for superior output.</p>
-              </div>
-           </div>
         </div>
-     </div>
+        <div class="p-16 aspect-square flex flex-col justify-between bg-black/40 hover:bg-black/60 transition-colors duration-700 reveal-on-scroll">
+          <Smartphone className="w-12 h-12 text-white" />
+          <div>
+            <h4 class="text-2xl font-serif text-white mb-4">Mobile Hub</h4>
+            <p class="text-xs font-mono text-white uppercase tracking-widest">React Native / Swift</p>
+          </div>
+        </div>
+        <div class="p-16 aspect-square flex flex-col justify-between bg-black/40 hover:bg-black/60 transition-colors duration-700 reveal-on-scroll">
+          <Zap className="w-12 h-12 text-white" />
+          <div>
+            <h4 class="text-2xl font-serif text-white mb-4">Speed Engine</h4>
+            <p class="text-xs font-mono text-white uppercase tracking-widest">Global Edge Edge / CDN</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-40 bg-slate-900 rounded-[3rem] mx-6 mb-32 overflow-hidden relative">
-     <div class="absolute inset-0 opacity-10 pointer-events-none">
-        <svg class="w-full h-full" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
-           <circle cx="500" cy="500" r="400" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 10" />
-           <circle cx="500" cy="500" r="300" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 10" />
-           <circle cx="500" cy="500" r="200" fill="none" stroke="white" stroke-width="0.5" stroke-dasharray="2 10" />
-        </svg>
-     </div>
-     
-     <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
-        <h2 class="text-6xl md:text-8xl font-black tracking-[-0.04em] text-white mb-12 leading-[0.9]">Ready to Build <br/>the Future?</h2>
-        <a href="/contact" class="inline-flex items-center justify-center px-14 py-6 bg-indigo-600 text-white rounded-full text-[11px] font-black tracking-[0.4em] uppercase hover:bg-white hover:text-slate-900 transition-all duration-700 shadow-2xl shadow-indigo-600/20">
-           Start a Conversation
-        </a>
-     </div>
+  <section class="py-60 text-center relative overflow-hidden">
+    <div class="absolute inset-0 topographic-lines opacity-10 cta-parallax"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <h2 class="text-7xl md:text-[160px] font-serif italic text-white leading-none mb-20 reveal-up">
+        Ready for <br/> <span class="not-italic text-white">Ascension?</span>
+      </h2>
+      <a href="/contact" class="inline-block px-16 py-8 bg-white text-black rounded-full text-[12px] font-black tracking-[0.4em] uppercase hover:scale-105 transition-transform duration-700">
+        Contact the Collective
+      </a>
+    </div>
   </section>
 
 </Layout>
 
 <script>
   import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Hero Animations
+    // Hero Entrance
     const heroTl = gsap.timeline({ delay: 1.5 });
     
-    heroTl.from('.hero-tag', { y: 20, opacity: 0, duration: 1, ease: 'power4.out' })
-          .from('.hero-title', { y: 50, opacity: 0, duration: 1.5, ease: 'power4.out' }, '-=0.8')
-          .from('.hero-desc', { y: 30, opacity: 0, duration: 1, ease: 'power4.out' }, '-=1')
-          .from('.hero-actions', { y: 30, opacity: 0, duration: 1, ease: 'power4.out' }, '-=0.8');
+    heroTl.from('.reveal-up', {
+      y: 100,
+      opacity: 0,
+      duration: 1.5,
+      stagger: 0.2,
+      ease: 'expo.out'
+    });
 
-    // Float shapes
-    gsap.to('.hero-shape-1', {
-       x: 50, y: 30, duration: 20, repeat: -1, yoyo: true, ease: 'sine.inOut'
+    // Parallax Backgrounds
+    gsap.to('.hero-parallax', {
+      yPercent: 30,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'section',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
     });
-    gsap.to('.hero-shape-2', {
-       x: -40, y: -20, duration: 15, repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 2
+
+    gsap.to('.cta-parallax', {
+      yPercent: -20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: 'section',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
     });
-    
-    // Line animations
-    gsap.from('.hero-line', {
-       strokeDasharray: '0 1000',
-       strokeDashoffset: 0,
-       duration: 3,
-       stagger: 0.5,
-       ease: 'power2.inOut',
-       delay: 2
+
+    // Scroll Indicator Animation
+    gsap.to('.scroll-line', {
+      scaleY: 0,
+      transformOrigin: 'bottom',
+      repeat: -1,
+      duration: 1.5,
+      ease: 'power2.inOut'
     });
+
+    // Text Reveal Animations
+    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    reveals.forEach(el => {
+      gsap.from(el, {
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: 'expo.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
+  });
+
+  // Handle Barba events
+  document.addEventListener('barba_after', () => {
+     // Re-init ScrollTrigger if needed
+     ScrollTrigger.refresh();
   });
 </script>
