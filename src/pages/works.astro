@@ -1,177 +1,145 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
-const cases = [
-  {
-    title: "FinCore Analytics",
-    category: "App Ecosystem",
-    tagline: "Ultra-fast financial intelligence for institutional investors.",
-    problem: "A major financial startup struggled with legacy data processing systems that took minutes to generate risk reports.",
-    solution: "We re-architected their entire frontend using a performance-first reactive framework and implemented WebSockets.",
-    outcome: [
-      "94% reduction in dashboard latency",
-      "Real-time institutional streaming",
-      "Successful Series B funding round"
-    ],
-    symbol: "FC"
-  },
-  {
-    title: "Lumina Health",
-    category: "Web Infrastructure",
-    tagline: "Connecting patient care records with zero-trust safety.",
-    problem: "A regional hospital network relied on disjointed, internal systems for patient onboarding, leading to data loss.",
-    solution: "We designed and built a highly secure, unified patient portal integrating with their legacy database securely.",
-    outcome: [
-      "Zero compliance breaches since launch",
-      "HIPAA compliant architecture",
-      "70% reduction in admin overhead"
-    ],
-    symbol: "LH"
-  },
-  {
-    title: "EcoFuture Portal",
-    category: "Growth Platform",
-    tagline: "Converting sustainable energy traffic into enterprise contracts.",
-    problem: "A sustainable energy provider had an archaic B2B platform that was difficult to navigate and convert.",
-    solution: "Zentrix delivered an end-to-end transformation. We completely rebuilt their frontend to be intuitive.",
-    outcome: [
-      "315% increase in B2B qualified leads",
-      "Custom enterprise funnel optimization",
-      "Ranked #1 for target industry keywords"
-    ],
-    symbol: "EF"
-  }
+const projects = [
+  { id: 1, title: 'E-Commerce Platform', category: 'Web Development', desc: 'A high-converting headless e-commerce experience built for a premium lifestyle brand. Increased conversions by 45%.', image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Next.js', 'Shopify Plus', 'Framer Motion'], color: 'var(--v4)' },
+  { id: 2, title: 'Fintech Mobile App', category: 'App Development', desc: 'A secure, intuitive personal finance app for iOS and Android. Reached 100k+ downloads in the first month.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600', tags: ['React Native', 'Node.js', 'AWS'], color: 'var(--v5)' },
+  { id: 3, title: 'B2B SaaS Marketing', category: 'Digital Marketing', desc: 'Comprehensive inbound marketing strategy that generated a 3x increase in qualified enterprise leads.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Content Strategy', 'HubSpot', 'SEO'], color: 'var(--v3)' },
+  { id: 4, title: 'Real Estate Meta Ads', category: 'Meta Ads', desc: 'Targeted lead generation campaign that reduced cost-per-lead by 60% while improving lead quality.', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Facebook Ads', 'Retargeting', 'Lead Gen'], color: 'var(--v4)' },
 ];
 ---
+<Layout title="Our Work" description="Explore our portfolio of successful digital projects. See how Zentrix Technology helps businesses achieve real growth through web, app, and marketing solutions.">
 
-<Layout title="Works">
-  
-  <section class="pt-60 pb-32 relative overflow-hidden">
-     <div class="absolute inset-0 topographic-lines opacity-10 pointer-events-none"></div>
-     <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-4xl section-reveal">
-           <span class="text-[10px] font-mono tracking-[0.5em] text-white uppercase mb-8 block">Project Archives</span>
-           <h1 class="text-7xl md:text-9xl font-serif italic text-white mb-10 leading-[0.85] reveal-up">Selected <br/><span class="text-white not-italic">Artifacts.</span></h1>
-           <p class="text-xl text-white font-mono leading-relaxed max-w-2xl reveal-up">
-              A curated documentation of engineering challenges solved and digital sovereignty established for our partners.
-           </p>
-        </div>
-     </div>
-  </section>
+<!-- Hero -->
+<section class="work-hero" aria-labelledby="work-h1">
+  <div class="blob blob-violet" style="width:700px;height:700px;top:-200px;left:-150px;opacity:0.45;" aria-hidden="true"></div>
+  <div class="blob blob-cyan" style="width:500px;height:500px;bottom:-100px;right:-100px;opacity:0.3;" aria-hidden="true"></div>
+  <div class="bg-grid" style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
 
-  <section class="pb-60">
-    <div class="container mx-auto px-6">
-      <div class="space-y-60">
-        {cases.map((caseStudy, index) => (
-          <div class="work-block reveal-on-scroll">
-             <div class={`flex flex-col ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-20 lg:gap-32 items-center`}>
-                
-                <!-- Visual Container -->
-                <div class="w-full lg:w-3/5 group">
-                   <div class="relative rounded-[1rem] overflow-hidden aspect-[16/10] bg-black/40 border border-white/20 transition-all duration-1000 group-hover:border-white">
-                      <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
-                          <!-- Abstract Symbol -->
-                          <div class="text-[15vw] font-serif italic text-white select-none opacity-20 tracking-tighter transform group-hover:scale-110 group-hover:opacity-40 transition-transform duration-[2s]">
-                             {caseStudy.symbol}
-                          </div>
-                      </div>
-                      
-                      <!-- Overlay info on image -->
-                      <div class="absolute bottom-12 left-12 opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-1000">
-                         <span class="text-[10px] font-mono tracking-[0.5em] text-black uppercase bg-white px-8 py-4 rounded-full">Archive View</span>
-                      </div>
-                   </div>
-                </div>
+  <div class="container-z stagger-group" style="position:relative;z-index:2;text-align:center;">
+    <p class="label stagger-child" style="justify-content:center;">Our Portfolio</p>
+    <h1 id="work-h1" class="stagger-child" style="font-size:var(--display);font-weight:800;letter-spacing:-0.05em;line-height:1.03;margin:1.25rem 0 1.5rem;">
+      Featured <span class="text-gradient">Work</span>
+    </h1>
+    <p class="stagger-child" style="font-size:1.125rem;color:var(--t2);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;">
+      A selection of our best projects showcasing digital solutions that drive real business results.
+    </p>
+  </div>
+</section>
 
-                <!-- Content Area -->
-                <div class="w-full lg:w-2/5">
-                   <div class="flex items-center gap-6 mb-10">
-                      <span class="text-[9px] font-mono tracking-[0.4em] text-white uppercase">{caseStudy.category}</span>
-                      <div class="w-12 h-[1px] bg-white"></div>
-                   </div>
-                   
-                   <h2 class="text-5xl md:text-6xl font-serif italic text-white mb-8 tracking-tight leading-none">{caseStudy.title}</h2>
-                   <p class="text-lg text-white font-mono mb-12">"{caseStudy.tagline}"</p>
-                   
-                   <div class="space-y-12">
-                      <div class="case-meta-item">
-                         <h4 class="text-[9px] font-mono tracking-[0.5em] text-white uppercase mb-4">The Challenge</h4>
-                         <p class="text-white font-mono text-sm leading-relaxed">{caseStudy.problem}</p>
-                      </div>
-                      
-                      <div class="case-meta-item">
-                         <h4 class="text-[9px] font-mono tracking-[0.5em] text-white uppercase mb-4">The Solution</h4>
-                         <p class="text-white font-mono text-sm leading-relaxed">{caseStudy.solution}</p>
-                      </div>
-
-                      <div class="pt-10 border-t border-white/10">
-                         <h4 class="text-[9px] font-mono tracking-[0.5em] text-white uppercase mb-8">Key Metrics</h4>
-                         <ul class="space-y-6">
-                            {caseStudy.outcome.map((res) => (
-                               <li class="flex items-start gap-4 text-xs font-mono text-white">
-                                  <ArrowRight className="w-4 h-4 text-white shrink-0" />
-                                  {res}
-                               </li>
-                            ))}
-                         </ul>
-                      </div>
-                   </div>
-                </div>
-             </div>
+<!-- Projects Grid -->
+<section style="padding:clamp(4rem,7vw,7rem) 0;" aria-label="Projects grid">
+  <div class="container-z">
+    <div class="work-grid">
+      {projects.map((p, i) => (
+        <div class="work-card reveal" data-delay={`${(i % 2) * 0.1}`}>
+          <!-- Image Container -->
+          <div class="work-img-wrap">
+            <img src={p.image} alt={p.title} class="work-img" loading="lazy" />
+            <div class="work-overlay" style={`background:linear-gradient(to top, rgba(5,8,15,0.9), transparent);`}></div>
+            <div class="work-category-tag" style={`background:${p.color}15;color:${p.color};border:1px solid ${p.color}30;`}>
+              {p.category}
+            </div>
           </div>
-        ))}
-      </div>
+          <!-- Content -->
+          <div class="work-content">
+            <h2 class="work-title">{p.title}</h2>
+            <p class="work-desc">{p.desc}</p>
+            <div class="work-tags">
+              {p.tags.map(t => <span class="tech-tag" style={`color:${p.color};border-color:${p.color}30;background:${p.color}10;`}>{t}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="py-60 mx-6 mb-32 rounded-[1rem] relative overflow-hidden border border-white/10">
-      <div class="absolute inset-0 topographic-lines opacity-10 pointer-events-none"></div>
-      <div class="container mx-auto px-6 text-center max-w-4xl relative z-10">
-         <h2 class="text-6xl md:text-8xl font-serif italic text-white tracking-tight mb-16 leading-none">Built to scale. <br/><span class="not-italic text-white">Ready to win?</span></h2>
-         <a href="/contact" class="inline-flex items-center justify-center px-16 py-8 bg-white text-black rounded-full text-[11px] font-mono tracking-[0.6em] uppercase hover:scale-105 transition-all duration-700">
-            Init Project
-         </a>
-      </div>
-  </section>
+<!-- CTA -->
+<section style="padding:var(--section-y) 0;background:var(--void);text-align:center;position:relative;overflow:hidden;" aria-labelledby="work-cta-h">
+  <div class="blob blob-violet" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.4;" aria-hidden="true"></div>
+  <div class="container-z stagger-group" style="position:relative;z-index:1;">
+    <p class="label stagger-child" style="justify-content:center;">Ready to grow?</p>
+    <h2 id="work-cta-h" class="stagger-child" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;max-width:16ch;margin:1rem auto 2rem;">
+      Your Project Could Be <span class="text-gradient">Next</span>
+    </h2>
+    <div class="stagger-child" style="display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;">
+      <a href="/contact" class="btn-primary" id="work-final-cta">Start Your Project →</a>
+    </div>
+  </div>
+</section>
 
 </Layout>
 
-<script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+<style>
+.work-hero {
+  position: relative; overflow: hidden;
+  padding: clamp(7rem,13vw,10rem) 0 clamp(4rem,7vw,6rem);
+}
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+}
+@media (min-width: 768px) {
+  .work-grid { grid-template-columns: 1fr 1fr; gap: 4rem 2.5rem; }
+}
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Entrance Animations
-    gsap.from('.reveal-up', {
-      y: 100,
-      opacity: 0,
-      duration: 1.5,
-      stagger: 0.2,
-      ease: 'expo.out'
-    });
-
-    // Scroll Revelations
-    const blocks = document.querySelectorAll('.work-block');
-    blocks.forEach(block => {
-      gsap.from(block, {
-        y: 100,
-        opacity: 0,
-        duration: 1.5,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: block,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
-      });
-    });
-  });
-
-  document.addEventListener('barba_after', () => {
-     ScrollTrigger.refresh();
-  });
-</script>
+/* ── Work Card ── */
+.work-card {
+  display: flex; flex-direction: column; gap: 1.5rem;
+  group: work; /* logical group */
+}
+.work-img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--b1);
+  background: var(--surface);
+  transition: border-color 400ms, transform 400ms var(--expo), box-shadow 400ms;
+}
+.work-card:hover .work-img-wrap {
+  border-color: rgba(124,58,237,0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(124,58,237,0.1);
+}
+.work-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 600ms var(--expo), filter 600ms;
+  filter: grayscale(10%) contrast(1.1);
+}
+.work-card:hover .work-img {
+  transform: scale(1.05);
+  filter: grayscale(0%) contrast(1.1);
+}
+.work-overlay {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 400ms;
+}
+.work-card:hover .work-overlay { opacity: 0.8; }
+.work-category-tag {
+  position: absolute; top: 1.25rem; left: 1.25rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.35rem 0.875rem;
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  z-index: 2;
+}
+.work-content { display: flex; flex-direction: column; gap: 0.875rem; }
+.work-title {
+  font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em;
+  color: var(--t1); line-height: 1.2;
+  transition: color 200ms;
+}
+.work-card:hover .work-title { color: var(--v5); }
+.work-desc {
+  font-size: 0.9375rem; color: var(--t2); line-height: 1.7;
+}
+.work-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+</style>

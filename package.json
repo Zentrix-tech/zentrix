@@ -12,9 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
+    "@astrojs/check": "^0.9.2",
     "@astrojs/react": "^5.0.2",
-    "@barba/core": "^2.10.3",
     "@studio-freight/lenis": "^1.0.42",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
@@ -27,5 +26,8 @@
     "react-dom": "^19.2.4",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "yaml": "^2.9.0"
   }
 }

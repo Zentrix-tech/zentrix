@@ -1,212 +1,232 @@
 ---
-import { Menu, X } from "lucide-react";
+const pages = [
+  { href: '/', label: 'Home' },
+  { href: '/services', label: 'Services' },
+  { href: '/works', label: 'Work' },
+  { href: '/about', label: 'About' },
+];
+const currentPath = Astro.url.pathname;
 ---
 
-<header
-  id="site-header"
-  class="fixed top-0 left-0 w-full z-50 py-10 px-6 md:px-12 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
->
-  <div class="max-w-[1440px] mx-auto w-full flex items-center justify-between">
-    <!-- Left: Logo -->
-    <div class="flex items-start">
-      <a href="/" class="flex flex-col items-start group">
-        <span
-          class="text-[12px] font-mono tracking-[0.5em] text-white uppercase opacity-80"
-          >Zentrix</span
-        >
-        <span
-          class="text-[8px] font-mono tracking-[0.4em] text-white/30 uppercase mt-1"
-          >Technology Collective</span
-        >
-      </a>
-    </div>
+<header id="site-header" role="banner">
+  <div class="container-z header-inner">
 
-    <!-- Right: Navigation (Hidden on mobile) -->
-    <nav class="hidden lg:flex items-center gap-16">
-      <a
-        href="/"
-        class="nav-link text-[10px] font-mono tracking-[0.4em] text-white/60 hover:text-white transition-colors uppercase"
-        >Home</a
-      >
-      <a
-        href="/services"
-        class="nav-link text-[10px] font-mono tracking-[0.4em] text-white/60 hover:text-white transition-colors uppercase"
-        >Service</a
-      >
-      <a
-        href="/works"
-        class="nav-link text-[10px] font-mono tracking-[0.4em] text-white/60 hover:text-white transition-colors uppercase"
-        >Works</a
-      >
-      <a
-        href="/about"
-        class="nav-link text-[10px] font-mono tracking-[0.4em] text-white/60 hover:text-white transition-colors uppercase"
-        >About</a
-      >
-      <a
-        href="/contact"
-        class="px-10 py-4 rounded-full border border-white/20 text-white text-[10px] font-mono tracking-[0.4em] uppercase hover:bg-white hover:text-black transition-all duration-700"
-        >Contact</a
-      >
+    <!-- Logo -->
+    <a href="/" class="logo" aria-label="Zentrix Technology Home">
+      <span class="logo-mark">Z</span>
+      <span class="logo-name">zentrix</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="desktop-nav" aria-label="Main navigation" role="navigation">
+      {pages.map(p => (
+        <a
+          href={p.href}
+          class="nav-link"
+          aria-current={currentPath === p.href ? 'page' : undefined}
+          id={`nav-${p.label.toLowerCase()}`}
+        >
+          {p.label}
+        </a>
+      ))}
     </nav>
 
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-trigger"
-      data-state="closed"
-      class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-2 focus:outline-none transition-all duration-500 relative z-[70]"
-    >
-      <span
-        class="w-8 h-[1px] bg-white block origin-center transition-transform duration-500"
-      ></span>
-      <span
-        class="w-8 h-[1px] bg-white block origin-center transition-transform duration-500"
-      ></span>
-    </button>
-  </div>
-
-  <!-- Mobile Overlay -->
-  <div
-    id="mobile-nav-overlay"
-    class="fixed inset-0 bg-[#0a0a0a] z-[60] flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]"
-  >
-    <div class="flex flex-col items-center gap-12">
-      <a
-        href="/"
-        class="mobile-nav-link text-6xl md:text-8xl font-serif italic text-white/20 hover:text-white transition-colors duration-700"
-        >Archives</a
+    <!-- CTA + Hamburger -->
+    <div class="header-actions">
+      <a href="/contact" class="btn-primary btn-sm" id="nav-contact-cta">
+        Let's Talk
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <button
+        id="menu-btn"
+        class="hamburger"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-sheet"
       >
-      <a
-        href="/services"
-        class="mobile-nav-link text-6xl md:text-8xl font-serif italic text-white/20 hover:text-white transition-colors duration-700"
-        >Verticles</a
-      >
-      <a
-        href="/works"
-        class="mobile-nav-link text-6xl md:text-8xl font-serif italic text-white/20 hover:text-white transition-colors duration-700"
-        >Selected Works</a
-      >
-      <a
-        href="/about"
-        class="mobile-nav-link text-6xl md:text-8xl font-serif italic text-white/20 hover:text-white transition-colors duration-700"
-        >The Ethos</a
-      >
-      <a
-        href="/contact"
-        class="mobile-nav-link text-6xl md:text-8xl font-serif italic text-white/20 hover:text-white transition-colors duration-700"
-        >Contact</a
-      >
+        <span class="ham-line"></span>
+        <span class="ham-line"></span>
+      </button>
     </div>
   </div>
 </header>
 
+<!-- Mobile Sheet -->
+<div id="sheet-backdrop" aria-hidden="true"></div>
+<nav
+  id="mobile-sheet"
+  role="navigation"
+  aria-label="Mobile navigation"
+  aria-hidden="true"
+>
+  <div class="sheet-header">
+    <span class="logo" style="pointer-events:none;">
+      <span class="logo-mark">Z</span>
+      <span class="logo-name">zentrix</span>
+    </span>
+    <button id="sheet-close" aria-label="Close navigation">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="sheet-links">
+    {pages.map(p => (
+      <a
+        href={p.href}
+        class="sheet-link"
+        aria-current={currentPath === p.href ? 'page' : undefined}
+      >
+        {p.label}
+      </a>
+    ))}
+    <a href="/contact" class="sheet-link sheet-link-cta">Contact →</a>
+  </div>
+
+  <div class="sheet-footer">
+    <p style="font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--t3);">Get in touch</p>
+    <a href="tel:6380957425" style="font-size:1rem;font-weight:700;color:var(--t1);margin-top:0.25rem;display:block;">6380957425</a>
+    <a href="mailto:zentrixtech01@gmail.com" style="font-size:0.8rem;color:var(--t2);margin-top:0.25rem;display:block;">zentrixtech01@gmail.com</a>
+    <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;">
+      <span style="width:7px;height:7px;background:var(--emerald);border-radius:50%;display:inline-block;" class="pulse"></span>
+      <span style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;">Accepting projects</span>
+    </div>
+  </div>
+</nav>
+
 <style>
-  .nav-link {
-    position: relative;
-  }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: #ffffff;
-    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  .nav-link:hover::after {
-    width: 100%;
-  }
+/* ── Header Layout ── */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 2rem;
+}
 
-  header.scrolled {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
+/* ── Logo ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.logo-mark {
+  width: 34px; height: 34px;
+  background: var(--gradient);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+  box-shadow: 0 4px 20px var(--v-glow);
+  letter-spacing: 0;
+  transition: box-shadow 300ms, transform 300ms;
+}
+.logo:hover .logo-mark { box-shadow: 0 8px 30px var(--v-glow); transform: rotate(-5deg) scale(1.05); }
+.logo-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--t1);
+  transition: color 200ms;
+}
+.logo:hover .logo-name { color: var(--v5); }
 
-  #mobile-menu-trigger[data-state="open"] span:nth-child(1) {
-    transform: translateY(4.5px) rotate(45deg);
-    width: 32px;
-  }
-  #mobile-menu-trigger[data-state="open"] span:nth-child(2) {
-    transform: translateY(-4.5px) rotate(-45deg);
-    width: 32px;
-  }
+/* ── Desktop nav ── */
+.desktop-nav {
+  display: none;
+  align-items: center;
+  gap: 2.5rem;
+  flex: 1;
+  justify-content: center;
+}
+@media (min-width: 768px) { .desktop-nav { display: flex; } }
+
+/* ── Actions ── */
+.header-actions { display: flex; align-items: center; gap: 1rem; }
+.btn-sm { height: 40px !important; padding: 0 1.25rem !important; font-size: 0.8rem !important; border-radius: 6px !important; }
+
+/* ── Hamburger ── */
+.hamburger {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: transparent; border: none;
+  cursor: pointer; padding: 0;
+}
+@media (min-width: 768px) { .hamburger { display: none; } }
+.ham-line {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--t2);
+  transition: transform 300ms var(--expo), opacity 200ms, background 200ms;
+}
+.hamburger:hover .ham-line { background: var(--t1); }
+.hamburger[aria-expanded="true"] .ham-line:first-child { transform: translateY(3.25px) rotate(45deg); }
+.hamburger[aria-expanded="true"] .ham-line:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+/* ── Mobile Sheet ── */
+.sheet-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--b1);
+}
+.sheet-header button {
+  background: none; border: none;
+  color: var(--t2); cursor: pointer;
+  transition: color 150ms;
+}
+.sheet-header button:hover { color: var(--t1); }
+.sheet-links {
+  padding: 1rem 0;
+}
+.sheet-link-cta {
+  color: var(--v4) !important;
+  border-left-color: transparent !important;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+.sheet-footer {
+  position: absolute; bottom: 2rem; left: 1.75rem;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
 </style>
 
 <script>
-  import gsap from "gsap";
+  const header = document.getElementById('site-header');
+  const menuBtn = document.getElementById('menu-btn');
+  const sheet = document.getElementById('mobile-sheet');
+  const backdrop = document.getElementById('sheet-backdrop');
+  const closeBtn = document.getElementById('sheet-close');
 
-  const initHeader = () => {
-    const trigger = document.getElementById("mobile-menu-trigger");
-    const overlay = document.getElementById("mobile-nav-overlay");
-    const links = document.querySelectorAll(".mobile-nav-link");
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
 
-    if (!trigger || trigger.getAttribute("data-init")) return;
-    trigger.setAttribute("data-init", "true");
-
-    let isOpen = false;
-
-    const toggleMenu = () => {
-      isOpen = !isOpen;
-      trigger.setAttribute("data-state", isOpen ? "open" : "closed");
-
-      if (isOpen) {
-        gsap.to(overlay, {
-          opacity: 1,
-          pointerEvents: "auto",
-          duration: 1,
-          ease: "expo.inOut",
-        });
-        gsap.fromTo(
-          links,
-          {
-            opacity: 0,
-            y: 100,
-            skewY: 10,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            skewY: 0,
-            duration: 1.5,
-            stagger: 0.1,
-            ease: "expo.out",
-            delay: 0.2,
-          },
-        );
-      } else {
-        gsap.to(overlay, {
-          opacity: 0,
-          pointerEvents: "none",
-          duration: 0.8,
-          ease: "expo.inOut",
-        });
-      }
-    };
-
-    trigger.addEventListener("click", toggleMenu);
-
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (isOpen) toggleMenu();
-      });
-    });
-
-    const header = document.getElementById("site-header");
-    const handleScroll = () => {
-      if (window.scrollY > 50) header?.classList.add("scrolled");
-      else header?.classList.remove("scrolled");
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    // Initial check
-    handleScroll();
+  const openSheet = () => {
+    sheet?.classList.add('open');
+    backdrop?.classList.add('open');
+    sheet?.setAttribute('aria-hidden', 'false');
+    menuBtn?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeSheet = () => {
+    sheet?.classList.remove('open');
+    backdrop?.classList.remove('open');
+    sheet?.setAttribute('aria-hidden', 'true');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   };
 
-  document.addEventListener("DOMContentLoaded", initHeader);
-  // Support Barba navigation
-  document.addEventListener("barba_after", initHeader);
+  menuBtn?.addEventListener('click', openSheet);
+  closeBtn?.addEventListener('click', closeSheet);
+  backdrop?.addEventListener('click', closeSheet);
+  sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSheet();
+  });
 </script>

@@ -1,210 +1,196 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Layers, Smartphone, Megaphone, CheckCircle2, ArrowRight } from 'lucide-react';
+
+const services = [
+  { id:'web',  num:'01', emoji:'🖥️', title:'Web Development',        color:'var(--v4)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'High-performance websites built for Core Web Vitals, SEO, and maximum conversion. From marketing pages to complex SaaS platforms.',       tags:['React','Next.js','Astro','TypeScript','PostgreSQL'],  features:['Custom design & development','E-commerce & CMS','Performance optimization','SEO-first architecture','Web App development'] },
+  { id:'app',  num:'02', emoji:'📱', title:'App Development',         color:'var(--v5)', colorDim:'var(--v-dim)',   colorBorder:'var(--v-border)',   desc:'Cross-platform mobile apps with native performance. From initial wireframes to both App Stores on time and on budget.',             tags:['React Native','Flutter','iOS','Android','Firebase'],  features:['iOS & Android apps','Cross-platform development','UI/UX design','Backend API integration','App Store submission'] },
+  { id:'mkt',  num:'03', emoji:'📣', title:'Digital Marketing',       color:'var(--v3)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'Full-service digital marketing that grows your brand online. Content strategy, email automation, and social media management.',          tags:['Content Strategy','Email Marketing','Social Media','Analytics'], features:['Content marketing strategy','Email campaign automation','Social media management','Brand positioning','Conversion funnel optimization'] },
+  { id:'meta', num:'04', emoji:'🎯', title:'Meta Ads Management',     color:'var(--v4)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'Expert Facebook & Instagram advertising that generates qualified leads and maximizes your ad spend with precision targeting.',        tags:['Facebook Ads','Instagram Ads','Retargeting','ROAS'],  features:['Campaign strategy & setup','Audience research','Creative design','A/B testing','Performance reporting'] },
+  { id:'seo',  num:'05', emoji:'🔍', title:'SEO Optimization',        color:'var(--v5)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'Dominate search rankings and drive organic traffic that actually converts. Technical SEO, content strategy, and link building.',       tags:['Technical SEO','Content SEO','Link Building','Local SEO'], features:['Technical audit & fixes','Keyword research','On-page optimization','Link building','Monthly analytics reporting'] },
+];
 ---
+<Layout title="Services" description="Zentrix Technology services — Web Development, App Development, Digital Marketing, Meta Ads & SEO Optimization. Digital solutions for real growth.">
 
-<Layout title="Services">
-  
-  <section class="pt-60 pb-32 relative overflow-hidden">
-     <div class="absolute inset-0 topographic-lines opacity-10 pointer-events-none"></div>
-     <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-4xl section-reveal">
-           <span class="text-[10px] font-mono tracking-[0.5em] text-white uppercase mb-8 block">Engineering Core</span>
-           <h1 class="text-7xl md:text-9xl font-serif italic text-white mb-10 leading-[0.85] reveal-up">Digital <br/><span class="text-white not-italic">Capabilities.</span></h1>
-           <p class="text-xl text-white font-mono leading-relaxed max-w-2xl reveal-up">
-             We deliver specialized technology solutions that bridge the gap between technical complexity and business growth.
-           </p>
+<!-- Hero -->
+<section class="svc-hero" aria-labelledby="svc-h1">
+  <div class="blob blob-violet" style="width:700px;height:700px;top:-200px;right:-200px;opacity:0.5;" aria-hidden="true"></div>
+  <div class="blob blob-cyan" style="width:500px;height:500px;bottom:-100px;left:-150px;opacity:0.35;" aria-hidden="true"></div>
+  <div class="bg-grid" style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
+
+  <div class="container-z stagger-group" style="position:relative;z-index:2;text-align:center;">
+    <p class="label stagger-child" style="justify-content:center;">What We Build</p>
+    <h1 id="svc-h1" class="stagger-child" style="font-size:var(--display);font-weight:800;letter-spacing:-0.05em;line-height:1.03;margin:1.25rem 0 1.5rem;">
+      Our <span class="text-gradient">Services</span>
+    </h1>
+    <p class="stagger-child" style="font-size:1.125rem;color:var(--t2);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;">
+      Five specialized areas, one mission — help your business grow online.
+    </p>
+    <div class="stagger-child" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="/contact" class="btn-primary" id="svc-hero-cta">Get Started →</a>
+      <a href="#web" class="btn-secondary" id="svc-explore-link">Explore All →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+{services.map((s, i) => (
+  <section id={s.id} class={`service-section ${i % 2 === 1 ? 'service-section-alt' : ''}`} aria-labelledby={`svc-${s.id}-h`}>
+    <div class="container-z service-split">
+
+      <!-- Text -->
+      <div class={`service-text ${i % 2 === 0 ? 'reveal-left' : 'reveal-right'}`}>
+        <div class="svc-num-tag" style={`color:${s.color};`}>
+          <span style={`width:20px;height:1px;background:${s.color};opacity:0.5;display:inline-block;`}></span>
+          {s.num} — {s.title}
         </div>
-     </div>
-  </section>
+        <h2 id={`svc-${s.id}-h`} class="service-title">{s.title}</h2>
+        <p class="service-desc">{s.desc}</p>
 
-  <!-- Capability Blocks -->
-  <section class="pb-60">
-    <div class="container mx-auto px-6">
-      
-      <!-- Web Capability -->
-      <div class="py-5 border-t border-white/10 bg-black/20 group transition-colors duration-700 reveal-on-scroll">
-         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-20 px-4 md:px-10">
-            <div class="lg:col-span-1">
-               <span class="text-xs font-mono text-white group-hover:text-white transition-colors">01</span>
-            </div>
-            <div class="lg:col-span-4">
-               <h2 class="text-4xl md:text-6xl font-serif italic text-white mb-8 group-hover:translate-x-4 transition-transform duration-700">Web Systems</h2>
-               <div class="flex flex-wrap gap-3">
-                  <span class="text-[8px] font-mono tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 rounded-full uppercase">React / Next.js</span>
-                  <span class="text-[8px] font-mono tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 rounded-full uppercase">Astro Engine</span>
-               </div>
-            </div>
-            <div class="lg:col-span-5 lg:col-start-7">
-               <p class="text-lg text-white font-mono leading-relaxed mb-10">
-                  Engineering high-velocity web platforms with a focus on core web vitals, accessibility, and sub-second interaction times. We build for performance first.
-               </p>
-               <ul class="space-y-4 mb-20">
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Jamstack Architecture
-                  </li>
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Custom E-commerce
-                  </li>
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Enterprise SEO
-                  </li>
-               </ul>
-               <a href="/works" class="inline-flex items-center gap-6 group/at">
-                  <div class="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center group-hover/at:bg-white group-hover/at:text-black transition-all duration-700">
-                     <ArrowRight className="w-5 h-5" />
-                  </div>
-                  <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-white">Archives</span>
-               </a>
-            </div>
-         </div>
+        <ul class="feature-list">
+          {s.features.map(f => (
+            <li class="feature-item">
+              <span class="feat-check" style={`color:${s.color};border-color:${s.colorBorder};background:${s.colorDim};`}>✓</span>
+              {f}
+            </li>
+          ))}
+        </ul>
+
+        <a href="/contact" class="btn-primary" id={`svc-${s.id}-cta`} style="margin-top:2rem;">
+          Get Started →
+        </a>
       </div>
 
-      <!-- Mobile Capability -->
-      <div class="py-5 border-t border-white/10 bg-black/20 group transition-colors duration-700 reveal-on-scroll">
-         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-20 px-4 md:px-10">
-            <div class="lg:col-span-1">
-               <span class="text-xs font-mono text-white group-hover:text-white transition-colors">02</span>
+      <!-- Visual -->
+      <div class={`service-visual ${i % 2 === 0 ? 'reveal-right' : 'reveal-left'}`}>
+        <div class="svc-card" style={`border-color:${s.colorBorder};`}>
+          <div class="svc-card-top" style={`background:${s.colorDim};border-bottom-color:${s.colorBorder}15;`}>
+            <span class="svc-emoji">{s.emoji}</span>
+            <div>
+              <p class="svc-card-num" style={`color:${s.color};`}>{s.num}</p>
+              <h3 class="svc-card-title">{s.title}</h3>
             </div>
-            <div class="lg:col-span-4">
-               <h2 class="text-4xl md:text-6xl font-serif italic text-white mb-8 group-hover:translate-x-4 transition-transform duration-700">Mobile Hub</h2>
-               <div class="flex flex-wrap gap-3">
-                  <span class="text-[8px] font-mono tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 rounded-full uppercase">React Native</span>
-                  <span class="text-[8px] font-mono tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 rounded-full uppercase">ios / android</span>
-               </div>
-            </div>
-            <div class="lg:col-span-5 lg:col-start-7">
-               <p class="text-lg text-white font-mono leading-relaxed mb-10">
-                  Immersive mobile experiences that maximize user retention. From initial prototype to store deployment, we manage the entire lifecycle with native-feel performance.
-               </p>
-               <ul class="space-y-4 mb-20">
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Cross-Platform Sync
-                  </li>
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Real-time Data
-                  </li>
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Biometrics integration
-                  </li>
-               </ul>
-               <a href="/contact" class="inline-flex items-center gap-6 group/at">
-                  <div class="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center group-hover/at:bg-white group-hover/at:text-black transition-all duration-700">
-                     <ArrowRight className="w-5 h-5" />
-                  </div>
-                  <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-white">Discovery</span>
-               </a>
-            </div>
-         </div>
+          </div>
+          <div class="svc-card-body">
+            <ul class="feature-list" style="margin-top:0;">
+              {s.features.map(f => (
+                <li class="feature-item" style="font-size:0.85rem;">
+                  <span class="feat-check" style={`color:${s.color};border-color:${s.colorBorder};background:${s.colorDim};width:16px;height:16px;font-size:0.5rem;`}>✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="svc-card-glow" style={`background:radial-gradient(circle at 50% 100%, ${s.colorDim} 0%, transparent 70%);`}></div>
+        </div>
       </div>
-
-      <!-- Marketing Capability -->
-      <div class="py-5 border-y border-white/10 bg-black/20 group transition-colors duration-700 reveal-on-scroll">
-         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 py-20 px-4 md:px-10">
-            <div class="lg:col-span-1">
-               <span class="text-xs font-mono text-white group-hover:text-white transition-colors">03</span>
-            </div>
-            <div class="lg:col-span-4">
-               <h2 class="text-4xl md:text-6xl font-serif italic text-white mb-8 group-hover:translate-x-4 transition-transform duration-700">Growth Engine</h2>
-               <div class="flex flex-wrap gap-3">
-                  <span class="text-[8px] font-mono tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 rounded-full uppercase">performance ad</span>
-                  <span class="text-[8px] font-mono tracking-[0.2em] text-white border border-white/20 px-4 py-1.5 rounded-full uppercase">data analytics</span>
-               </div>
-            </div>
-            <div class="lg:col-span-5 lg:col-start-7">
-               <p class="text-lg text-white font-mono leading-relaxed mb-10">
-                  Data-driven acquisition strategies that focus on customer LTV and brand equity. We track every interaction to optimize your conversion funnel for maximum yield.
-               </p>
-               <ul class="space-y-4 mb-20">
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Multivariate A/B Testing
-                  </li>
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> Multi-channel Ads
-                  </li>
-                  <li class="flex items-center gap-4 text-sm font-mono text-white">
-                     <CheckCircle2 className="w-4 h-4 text-white" /> SEO Content
-                  </li>
-               </ul>
-               <a href="/contact" class="inline-flex items-center gap-6 group/at">
-                  <div class="w-14 h-14 rounded-full border border-white text-white flex items-center justify-center group-hover/at:bg-white group-hover/at:text-black transition-all duration-700">
-                     <ArrowRight className="w-5 h-5" />
-                  </div>
-                  <span class="text-[10px] font-mono tracking-[0.3em] uppercase text-white">Scale</span>
-               </a>
-            </div>
-         </div>
-      </div>
-
     </div>
   </section>
+))}
 
-  <!-- Process Section -->
-  <section class="py-40">
-     <div class="container mx-auto px-6">
-        <div class="flex flex-col lg:flex-row gap-20">
-           <div class="lg:w-1/3">
-              <span class="text-[10px] font-mono tracking-[0.5em] text-white uppercase mb-6 block">Execution</span>
-              <h2 class="text-5xl md:text-7xl font-serif text-white leading-none">The Zentrix <br/><span class="italic text-white">Protocol.</span></h2>
-           </div>
-           <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-1">
-              <div class="p-12 border border-white/10 hover:bg-white/10 transition-all duration-500 reveal-on-scroll">
-                 <h3 class="text-xl font-serif italic text-white mb-6">01. Discovery</h3>
-                 <p class="text-sm font-mono text-white leading-relaxed">Deep-dive into business logic, user personas, and scaling requirements.</p>
-              </div>
-              <div class="p-12 border border-white/10 hover:bg-white/10 transition-all duration-500 reveal-on-scroll">
-                 <h3 class="text-xl font-serif italic text-white mb-6">02. Engineering</h3>
-                 <p class="text-sm font-mono text-white leading-relaxed">High-velocity development cycles with weekly checkpoints and rapid iteration.</p>
-              </div>
-              <div class="p-12 border border-white/10 hover:bg-white/10 transition-all duration-500 reveal-on-scroll">
-                 <h3 class="text-xl font-serif italic text-white mb-6">03. Validation</h3>
-                 <p class="text-sm font-mono text-white leading-relaxed">Rigorous performance auditing, security penetration testing, and UAT.</p>
-              </div>
-              <div class="p-12 border border-white/10 hover:bg-white/10 transition-all duration-500 reveal-on-scroll">
-                 <h3 class="text-xl font-serif italic text-white mb-6">04. Expansion</h3>
-                 <p class="text-sm font-mono text-white leading-relaxed">Post-launch growth monitoring, infrastructure scaling, and feature rollout.</p>
-              </div>
-           </div>
-        </div>
-     </div>
-  </section>
+<!-- CTA -->
+<section class="section-pad" style="background:var(--void);text-align:center;position:relative;overflow:hidden;" aria-labelledby="svc-cta-h">
+  <div class="blob blob-violet" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.45;" aria-hidden="true"></div>
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="container-z stagger-group" style="position:relative;z-index:1;">
+    <p class="label stagger-child" style="justify-content:center;">Next Step</p>
+    <h2 id="svc-cta-h" class="stagger-child" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;max-width:16ch;margin:1rem auto 1.5rem;">
+      Let's Build Your Digital <span class="text-gradient">Success Story</span>
+    </h2>
+    <div class="stagger-child" style="display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;">
+      <a href="/contact" class="btn-primary" id="svc-final-cta">Start a Project →</a>
+      <a href="tel:6380957425" class="btn-secondary" id="svc-call">📞 6380957425</a>
+    </div>
+  </div>
+</section>
 
 </Layout>
 
-<script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Entrance Animations
-    gsap.from('.reveal-up', {
-      y: 100,
-      opacity: 0,
-      duration: 1.5,
-      stagger: 0.2,
-      ease: 'expo.out'
-    });
-
-    // Scroll Revelations
-    const reveals = document.querySelectorAll('.reveal-on-scroll');
-    reveals.forEach(el => {
-      gsap.from(el, {
-        y: 60,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
-      });
-    });
-  });
-
-  document.addEventListener('barba_after', () => {
-     ScrollTrigger.refresh();
-  });
-</script>
+<style>
+.svc-hero {
+  position: relative; overflow: hidden;
+  padding: clamp(7rem,13vw,10rem) 0 clamp(5rem,9vw,8rem);
+}
+.service-section {
+  padding: clamp(5rem, 9vw, 9rem) 0;
+  position: relative;
+}
+.service-section-alt { background: var(--surface); }
+.service-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .service-split { grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .service-section-alt .service-text { order: 2; }
+  .service-section-alt .service-visual { order: 1; }
+}
+.svc-num-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.service-title {
+  font-size: var(--h2);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.25rem;
+  line-height: 1.07;
+}
+.service-desc {
+  font-size: 1rem;
+  color: var(--t2);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 460px;
+}
+.feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+.feature-item {
+  display: flex; align-items: center; gap: 0.875rem;
+  font-size: 0.9375rem; color: var(--t2);
+}
+.feat-check {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid; display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem; font-weight: 800; flex-shrink: 0;
+}
+.svc-card {
+  background: var(--surface);
+  border: 1px solid;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.35);
+}
+.svc-card-top {
+  display: flex; align-items: center; gap: 1.25rem;
+  padding: 1.75rem;
+  border-bottom: 1px solid;
+}
+.svc-emoji { font-size: 2.5rem; }
+.svc-card-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.svc-card-title {
+  font-size: 1.25rem; font-weight: 800; letter-spacing: -0.03em; color: var(--t1);
+}
+.svc-card-body { padding: 1.75rem; }
+.svc-tags-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.svc-card-glow { position: absolute; inset: 0; pointer-events: none; }
+.cta-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  background: var(--gradient-glow);
+  filter: blur(120px);
+  border-radius: 50%; opacity: 0.3;
+  pointer-events: none;
+}
+.section-pad { padding: var(--section-y) 0; }
+</style>

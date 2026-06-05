@@ -1,204 +1,531 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { ArrowRight, ChevronRight, Layers, Smartphone, Megaphone, Zap, Shield, Rocket } from 'lucide-react';
+
+const services = [
+  { num: '01', title: 'Web Development', desc: 'Blazing-fast websites and platforms built for SEO, speed, and maximum conversion. From landing pages to complex web applications.', tags: ['React', 'Next.js', 'Astro', 'TypeScript'], id: 'web' },
+  { num: '02', title: 'App Development', desc: 'Cross-platform mobile apps with native feel on iOS and Android. From idea to App Store — fast.', tags: ['React Native', 'Flutter', 'iOS', 'Android'], id: 'app' },
+  { num: '03', title: 'Digital Marketing', desc: 'Data-driven campaigns that grow your brand. Content strategy, email automation, and social media management.', tags: ['Content', 'Email', 'Social', 'Analytics'], id: 'marketing' },
+  { num: '04', title: 'Meta Ads Management', desc: 'Precision-targeted Facebook & Instagram ads that generate qualified leads and maximize ROAS.', tags: ['Facebook', 'Instagram', 'Retargeting', 'ROAS'], id: 'meta' },
+  { num: '05', title: 'SEO Optimization', desc: 'Dominate search rankings and drive organic traffic that converts. Technical SEO, content, and link building.', tags: ['Technical SEO', 'Content', 'Link Building', 'Local SEO'], id: 'seo' },
+];
+
+const whys = [
+  { num: '01', icon: '📈', title: 'Increase Visibility', desc: 'Get found everywhere your customers are — search engines, social media, and across every digital touchpoint. We build your presence from the ground up.', stat: '+340%', statLabel: 'Average Traffic Growth' },
+  { num: '02', icon: '🎯', title: 'Generate Quality Leads', desc: 'Precision-targeted campaigns that attract genuinely interested prospects ready to buy. No wasted spend, only leads that convert into real customers.', stat: '+180%', statLabel: 'Average Lead Volume' },
+  { num: '03', icon: '💰', title: 'Boost Sales & Conversions', desc: 'Turn visitors into loyal customers with optimized funnels, persuasive copy, and strategic calls-to-action powered by data and behavioral insights.', stat: '+95%', statLabel: 'Average Conversion Lift' },
+];
 ---
+<Layout title="Home" description="Zentrix Technology — Digital Solutions For Real Growth. Simple. Smart. Effective. Web Development, App Development, Digital Marketing, Meta Ads & SEO.">
 
-<Layout title="Home">
-  
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Topographic Parallax Background -->
-    <div class="absolute inset-0 z-0 topographic-lines opacity-10 hero-parallax"></div>
-    <div class="absolute inset-0 z-0 technical-grid opacity-10"></div>
-    
-    <!-- Gradient Overlay -->
-    <div class="absolute inset-0 z-1 bg-gradient-to-b from-black/60 via-transparent to-black/60"></div>
+<!-- ════════════════════════════════
+     HERO
+     ════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-h1">
 
-    <div class="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
-      <div class="hero-reveal-container mb-12 overflow-hidden">
-         <div class="hero-tag text-[9px] font-mono tracking-[0.6em] text-white uppercase flex items-center gap-4 reveal-up">
-            <span class="w-12 h-[1px] bg-white"></span>
-            Established MMXVII
-            <span class="w-12 h-[1px] bg-white"></span>
-         </div>
+  <!-- Animated blobs -->
+  <div class="blob blob-violet" style="width:900px;height:900px;top:-300px;left:-300px;opacity:0.7;" aria-hidden="true"></div>
+  <div class="blob blob-cyan" style="width:700px;height:700px;bottom:-200px;right:-200px;opacity:0.6;" aria-hidden="true"></div>
+  <div class="blob blob-indigo" style="width:500px;height:500px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.4;" aria-hidden="true"></div>
+
+  <!-- Grid -->
+  <div class="bg-grid" style="position:absolute;inset:0;z-index:0;pointer-events:none;" aria-hidden="true"></div>
+
+  <div class="container-z hero-grid">
+
+    <!-- Left: Copy -->
+    <div class="hero-copy" style="position:relative;z-index:2;">
+
+      <!-- Live badge -->
+      <div class="hero-badge reveal" data-delay="0">
+        <span style="width:7px;height:7px;background:var(--emerald);border-radius:50%;display:inline-block;" class="pulse"></span>
+        Currently Accepting Projects
       </div>
-      
-      <h1 class="hero-title text-7xl md:text-9xl lg:text-[140px] font-serif italic text-white max-w-6xl mb-12 leading-[0.85] reveal-up">
-        The Art of <br/> <span class="not-italic text-white">Digital</span> <br/> Wilderness.
+
+      <!-- Giant type -->
+      <h1 id="hero-h1" class="hero-title">
+        <span class="ht-line reveal" data-delay="0.06"><span class="ht-ghost">We Build</span></span>
+        <span class="ht-line reveal" data-delay="0.13"><span class="ht-solid">Digital</span><span class="ht-accent">.</span></span>
+        <span class="ht-line reveal" data-delay="0.20"><span class="ht-outline">Solutions</span></span>
+        <span class="ht-line reveal" data-delay="0.27"><span class="ht-ghost">For Real</span></span>
+        <span class="ht-line reveal" data-delay="0.34"><span class="ht-gradient">Growth.</span></span>
       </h1>
-      
-      <p class="hero-desc text-lg md:text-xl text-white max-w-2xl mb-16 leading-relaxed font-mono tracking-tight reveal-up">
-        Bridging high-velocity engineering with the raw essence of human-centric design. Zentrix builds platforms for the era of dominance.
+
+      <p class="hero-sub reveal" data-delay="0.42">
+        Simple. Smart. Effective. — We craft digital experiences<br class="hr-break"/>
+        that drive visibility, quality leads, and real conversions.
       </p>
-      
-      <div class="hero-actions flex flex-col sm:flex-row items-center gap-8 reveal-up">
-        <a href="/contact" class="px-12 py-6 bg-white text-black rounded-full text-[10px] font-black tracking-[0.3em] uppercase hover:bg-white/90 transition-all duration-500 flex items-center gap-4 group">
-          Init Discovery
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+
+      <div class="hero-ctas reveal" data-delay="0.50">
+        <a href="/contact" class="btn-primary" id="hero-cta">
+          Start a Project
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
-        <a href="/works" class="px-12 py-6 border border-white text-white rounded-full text-[10px] font-black tracking-[0.3em] uppercase hover:bg-white/5 transition-all duration-500">
-          Our Archives
-        </a>
+        <a href="/services" class="btn-secondary" id="hero-svc">Explore Services</a>
+      </div>
+
+      <!-- Trust -->
+      <div class="hero-trust reveal" data-delay="0.58">
+        {['Increase Visibility', 'Generate Leads', 'Boost Conversions'].map(t => (
+          <span class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            {t}
+          </span>
+        ))}
       </div>
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50">
-       <span class="text-[8px] font-mono tracking-[0.5em] uppercase text-white">Explore</span>
-       <div class="w-[1px] h-16 bg-gradient-to-b from-white to-transparent scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- Mission Section (Sticky Effect) -->
-  <section class="relative py-60 overflow-hidden mission-section">
-    <div class="container mx-auto px-6">
-      <div class="flex flex-col lg:flex-row gap-20 items-start">
-        <div class="lg:w-1/2 sticky top-40">
-          <span class="text-[10px] font-mono tracking-[0.5em] text-white uppercase mb-8 block">Our Ethos</span>
-          <h2 class="text-6xl md:text-8xl font-serif text-white leading-none mb-12">
-            Engineering <br/><span class="italic text-white">Purity</span> <br/>In Every Line.
-          </h2>
+    <!-- Right: Visual -->
+    <div class="hero-visual reveal-right" data-delay="0.15" style="position:relative;z-index:2;">
+      <div class="hero-terminal">
+        <div class="terminal-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="t-title">zentrix ~ digital-growth</span>
         </div>
-        <div class="lg:w-1/2 pt-40 lg:pt-80">
-          <div class="space-y-40">
-            <div class="reveal-on-scroll">
-              <h3 class="text-3xl font-serif text-white mb-6 italic">Uncompromising Performance</h3>
-              <p class="text-xl text-white leading-relaxed font-mono">
-                We don't just build websites. We craft digital ecosystems that breathe with your brand. Every millisecond of latency is a barrier we dismantle with surgical precision.
-              </p>
-            </div>
-            <div class="reveal-on-scroll">
-              <h3 class="text-3xl font-serif text-white mb-6 italic">Visual Sovereignty</h3>
-              <p class="text-xl text-white leading-relaxed font-mono">
-                Design is the skin of technology. We ensure that skin is flawless, premium, and capable of commanding attention in a world of digital noise.
-              </p>
-            </div>
-            <div class="reveal-on-scroll">
-              <h3 class="text-3xl font-serif text-white mb-6 italic">Scalable Resilience</h3>
-              <p class="text-xl text-white leading-relaxed font-mono">
-                Our architectures are built to endure. From day one to one million users, Zentrix platforms scale vertically and horizontally without friction.
-              </p>
-            </div>
-          </div>
+        <div class="terminal-body">
+          <p><span class="t-dim">$ </span><span class="t-v">zentrix</span> run --strategy=growth</p>
+          <p class="t-dim">▶  Optimizing digital presence…</p>
+          <p class="t-green">✓  Website performance: 98/100</p>
+          <p class="t-dim">▶  Launching Meta Ads pipeline…</p>
+          <p class="t-green">✓  Lead generation: Active</p>
+          <p class="t-dim">▶  SEO crawler analyzing…</p>
+          <p class="t-green">✓  Keyword rankings: Improving</p>
+          <p class="t-dim">─────────────────────────────</p>
+          <p><span class="t-dim">Visibility  </span><span class="t-c">+340%</span> <span class="t-green">↑</span></p>
+          <p><span class="t-dim">Leads       </span><span class="t-c">+180%</span> <span class="t-green">↑</span></p>
+          <p><span class="t-dim">Conversions </span><span class="t-c">+95%&nbsp; </span> <span class="t-green">↑</span></p>
+          <p class="t-dim">$ <span class="t-cursor"></span></p>
+        </div>
+      </div>
+
+      <!-- Badge 1 -->
+      <div class="float-badge float-badge-a" style="bottom:-24px;left:-28px;" aria-hidden="true">
+        <div class="badge-icon" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">🚀</div>
+        <div>
+          <div class="badge-title">Live Campaign</div>
+          <div class="badge-sub">Meta Ads Active</div>
+        </div>
+      </div>
+
+      <!-- Badge 2 -->
+      <div class="float-badge float-badge-b" style="top:-20px;right:-24px;" aria-hidden="true">
+        <div class="badge-icon" style="background:var(--v-dim);border:1px solid var(--v-border);">📈</div>
+        <div>
+          <div class="badge-title">SEO Ranking</div>
+          <div class="badge-sub">Top 3 Results</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Showcase Section (Grid) -->
-  <section class="py-40">
-    <div class="container mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 px-1 bg-white/5 border border-white/10 rounded-[3rem] overflow-hidden">
-        <div class="p-16 aspect-square flex flex-col justify-between bg-black/40 hover:bg-black/60 transition-colors duration-700 reveal-on-scroll">
-          <Layers className="w-12 h-12 text-white" />
-          <div>
-            <h4 class="text-2xl font-serif text-white mb-4">Web Core</h4>
-            <p class="text-xs font-mono text-white uppercase tracking-widest">Next.js / Astro / Rust</p>
-          </div>
-        </div>
-        <div class="p-16 aspect-square flex flex-col justify-between bg-black/40 hover:bg-black/60 transition-colors duration-700 reveal-on-scroll">
-          <Smartphone className="w-12 h-12 text-white" />
-          <div>
-            <h4 class="text-2xl font-serif text-white mb-4">Mobile Hub</h4>
-            <p class="text-xs font-mono text-white uppercase tracking-widest">React Native / Swift</p>
-          </div>
-        </div>
-        <div class="p-16 aspect-square flex flex-col justify-between bg-black/40 hover:bg-black/60 transition-colors duration-700 reveal-on-scroll">
-          <Zap className="w-12 h-12 text-white" />
-          <div>
-            <h4 class="text-2xl font-serif text-white mb-4">Speed Engine</h4>
-            <p class="text-xs font-mono text-white uppercase tracking-widest">Global Edge Edge / CDN</p>
-          </div>
-        </div>
+  <!-- Scroll -->
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="scroll-cue">
+      <span class="scroll-cue-label">Scroll</span>
+      <div class="scroll-cue-track"><div class="scroll-cue-runner"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     MARQUEE
+     ════════════════════════════════ -->
+<div class="marquee-belt" aria-hidden="true">
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      {Array(2).fill(null).map(() => (
+        <>
+          <span class="marquee-item">Web Development <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">App Development <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Digital Marketing <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Meta Ads Management <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">SEO Optimization <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Real Growth. Real Results. <span class="marquee-dot">◆</span></span>
+        </>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     STATS
+     ════════════════════════════════ -->
+<section class="stats-section" aria-label="Key metrics">
+  <div class="container-z">
+    <div class="stats-grid">
+      <div class="stat-block reveal">
+        <span class="stat-xl" style="background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-counter="100" data-suffix="+">100+</span>
+        <span class="stat-label-sm">Projects Delivered</span>
+        <div class="stat-rule" style="background:var(--gradient);"></div>
+      </div>
+      <div class="stat-block reveal" data-delay="0.08">
+        <span class="stat-xl" style="color:var(--c4);" data-counter="5">5</span>
+        <span class="stat-label-sm">Core Services</span>
+        <div class="stat-rule" style="background:var(--c3);"></div>
+      </div>
+      <div class="stat-block reveal" data-delay="0.16">
+        <span class="stat-xl" style="color:var(--v4);" data-counter="340" data-suffix="%">340%</span>
+        <span class="stat-label-sm">Avg Visibility Growth</span>
+        <div class="stat-rule" style="background:var(--v3);"></div>
+      </div>
+      <div class="stat-block reveal" data-delay="0.24">
+        <span class="stat-xl" style="color:var(--emerald);" data-counter="99" data-suffix="%">99%</span>
+        <span class="stat-label-sm">Client Satisfaction</span>
+        <div class="stat-rule" style="background:var(--emerald);"></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="py-60 text-center relative overflow-hidden">
-    <div class="absolute inset-0 topographic-lines opacity-10 cta-parallax"></div>
-    <div class="container mx-auto px-6 relative z-10">
-      <h2 class="text-7xl md:text-[160px] font-serif italic text-white leading-none mb-20 reveal-up">
-        Ready for <br/> <span class="not-italic text-white">Ascension?</span>
-      </h2>
-      <a href="/contact" class="inline-block px-16 py-8 bg-white text-black rounded-full text-[12px] font-black tracking-[0.4em] uppercase hover:scale-105 transition-transform duration-700">
-        Contact the Collective
+<!-- ════════════════════════════════
+     SERVICES
+     ════════════════════════════════ -->
+<section class="section-pad" id="services" aria-labelledby="svc-heading">
+  <div class="container-z">
+
+    <div class="svc-hdr">
+      <div>
+        <p class="label reveal">What We Do</p>
+        <h2 id="svc-heading" class="reveal" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;max-width:14ch;margin-top:1rem;">
+          Everything You Need<br/>to <span class="text-gradient">Grow Online</span>
+        </h2>
+      </div>
+      <a href="/services" class="btn-ghost reveal" id="svc-all-link" aria-label="View all services">
+        All Services →
       </a>
     </div>
-  </section>
+
+    <div class="svc-accordion reveal">
+      {services.map(s => (
+        <div class="svc-item" id={`svc-${s.id}`} tabindex="0" role="button" aria-expanded="false">
+          <div class="svc-row-trigger">
+            <span class="svc-num-big">{s.num}</span>
+            <span class="svc-name-big">{s.title}</span>
+            <span class="svc-arrow-icon" aria-hidden="true">+</span>
+          </div>
+          <div class="svc-detail" aria-hidden="true">
+            <div class="svc-detail-inner">
+              <div class="svc-detail-content">
+                <div style="grid-column: 1 / -1;">
+                  <p class="svc-detail-desc">{s.desc}</p>
+                  <a href={`/services#${s.id}`} class="svc-cta" id={`svc-cta-${s.id}`}>
+                    Explore Service <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     WHY ZENTRIX
+     ════════════════════════════════ -->
+<section class="why-section" aria-labelledby="why-heading">
+  <div class="blob blob-violet" style="width:600px;height:600px;top:0;left:-200px;opacity:0.4;" aria-hidden="true"></div>
+  <div class="blob blob-cyan" style="width:500px;height:500px;bottom:0;right:-150px;opacity:0.3;" aria-hidden="true"></div>
+  <div class="container-z" style="position:relative;z-index:1;">
+
+    <div class="why-head stagger-group">
+      <p class="label stagger-child">Why Zentrix</p>
+      <h2 id="why-heading" class="stagger-child" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;max-width:16ch;">
+        We Help You Grow <span class="text-gradient">Online</span>
+      </h2>
+    </div>
+
+    {whys.map((w, i) => (
+      <div class={`why-row ${i % 2 === 1 ? 'reverse' : ''}`}>
+        <!-- Text -->
+        <div class={i % 2 === 0 ? 'reveal-left' : 'reveal-right'}>
+          <p class="why-num-label-tag">{w.num}</p>
+          <h3 class="why-title">{w.title}</h3>
+          <p class="why-desc">{w.desc}</p>
+          <div class="why-stat-chip">
+            <span class="why-stat-num">{w.stat}</span>
+            <span class="why-stat-label">{w.statLabel}</span>
+          </div>
+          <a href="/contact" class="btn-ghost" id={`why-cta-${w.num}`}>
+            Start Growing <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Visual -->
+        <div class={`why-icon-box ${i % 2 === 0 ? 'reveal-right' : 'reveal-left'}`}>
+          <div class="blob blob-violet" style="width:250px;height:250px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.25;" aria-hidden="true"></div>
+          <span class="why-icon-huge" role="img" aria-label={w.title}>{w.icon}</span>
+          <span class="why-num-label">{w.num} / 03</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     CTA
+     ════════════════════════════════ -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="blob blob-violet" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.5;" aria-hidden="true"></div>
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="container-z cta-inner">
+    <p class="label reveal" style="justify-content:center;margin-bottom:1.5rem;">Next Step</p>
+    <h2 id="cta-heading" class="reveal cta-title">
+      Ready to Drive<br/>
+      <span class="text-gradient">Real Growth?</span>
+    </h2>
+    <p class="reveal" style="font-size:1.0625rem;color:var(--t2);max-width:400px;margin:2rem auto;line-height:1.8;" data-delay="0.05">
+      Simple. Smart. Effective. — Let's build your digital success story.
+    </p>
+    <div class="cta-btns reveal" data-delay="0.12">
+      <a href="/contact" class="btn-primary" id="cta-btn">
+        Start Your Project
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="tel:6380957425" class="btn-secondary" id="cta-call">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.36 6.36l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 15.92z"/></svg>
+        6380957425
+      </a>
+    </div>
+    <p class="reveal" style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--t3);margin-top:2rem;letter-spacing:0.1em;" data-delay="0.18">
+      zentrixtech01@gmail.com · zentrix-technology.vercel.app
+    </p>
+  </div>
+</section>
 
 </Layout>
 
+<style>
+/* ── Hero ── */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(7rem,14vw,10rem) 0 clamp(6rem,12vw,9rem);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+  position: relative; z-index: 2;
+}
+@media (min-width: 1100px) {
+  .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: 5rem; }
+}
+.hero-copy { max-width: 680px; }
+
+/* Live badge */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  background: rgba(16,185,129,0.07);
+  border: 1px solid rgba(16,185,129,0.18);
+  border-radius: 100px;
+  padding: 0.375rem 1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  margin-bottom: 2.5rem;
+  width: fit-content;
+}
+
+/* Hero Type */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 2rem;
+}
+.ht-line { display: block; line-height: 1.02; }
+.ht-ghost {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: var(--display);
+  font-weight: 200;
+  color: var(--t3);
+  letter-spacing: -0.05em;
+  display: block;
+}
+.ht-solid {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: var(--display);
+  font-weight: 900;
+  color: var(--t1);
+  letter-spacing: -0.05em;
+  display: inline-block;
+}
+.ht-accent {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: calc(var(--display) * 0.25);
+  font-weight: 900;
+  color: var(--v3);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  vertical-align: bottom;
+  animation: pulse 3s ease-in-out infinite;
+}
+.ht-outline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: var(--display);
+  font-weight: 900;
+  -webkit-text-stroke: 2px rgba(124,58,237,0.4);
+  color: transparent;
+  letter-spacing: -0.05em;
+  display: block;
+  transition: -webkit-text-stroke-color 400ms;
+}
+.ht-outline:hover { -webkit-text-stroke-color: var(--v3); }
+.ht-gradient {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: var(--display);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.1875rem);
+  color: var(--t2);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+}
+.hr-break { display: none; }
+@media (min-width: 768px) { .hr-break { display: inline; } }
+
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.25rem; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.trust-pill {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(124,58,237,0.06);
+  border: 1px solid var(--v-border);
+  border-radius: 100px;
+  padding: 0.35rem 0.875rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--t2);
+}
+.trust-pill svg { stroke: var(--emerald); }
+
+.hero-visual { position: relative; }
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* ── Marquee Belt ── */
+.marquee-belt {
+  background: var(--surface);
+  border-top: 1px solid var(--b1);
+  border-bottom: 1px solid var(--b1);
+  padding: 1.125rem 0;
+}
+
+/* ── Stats ── */
+.stats-section {
+  padding: clamp(5rem, 9vw, 8rem) 0;
+  background: var(--void);
+  position: relative;
+  overflow: hidden;
+}
+.stats-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.04) 0%, rgba(6,182,212,0.03) 100%);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(3rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem);
+  position: relative; z-index: 1;
+}
+@media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+.stat-block { position: relative; padding-bottom: 1.5rem; }
+.stat-rule {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 60%;
+  height: 2px;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* ── Services ── */
+.svc-hdr {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: clamp(3rem, 5vw, 4rem);
+}
+
+/* ── Why ── */
+.why-section {
+  background: var(--surface);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+.why-head { margin-bottom: clamp(4rem, 7vw, 6.5rem); }
+
+/* ── CTA ── */
+.cta-section {
+  position: relative; overflow: hidden;
+  padding: var(--section-y) 0;
+  background: var(--void);
+  text-align: center;
+}
+.cta-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  background: var(--gradient-glow);
+  filter: blur(120px);
+  border-radius: 50%;
+  opacity: 0.35;
+  pointer-events: none;
+}
+.cta-inner { position: relative; z-index: 1; }
+.cta-title {
+  font-size: var(--h1);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.07;
+  max-width: 14ch;
+  margin: 0 auto;
+}
+.cta-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+</style>
+
 <script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // Hero Entrance
-    const heroTl = gsap.timeline({ delay: 1.5 });
-    
-    heroTl.from('.reveal-up', {
-      y: 100,
-      opacity: 0,
-      duration: 1.5,
-      stagger: 0.2,
-      ease: 'expo.out'
-    });
-
-    // Parallax Backgrounds
-    gsap.to('.hero-parallax', {
-      yPercent: 30,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: 'section',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-
-    gsap.to('.cta-parallax', {
-      yPercent: -20,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: 'section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
-    });
-
-    // Scroll Indicator Animation
-    gsap.to('.scroll-line', {
-      scaleY: 0,
-      transformOrigin: 'bottom',
-      repeat: -1,
-      duration: 1.5,
-      ease: 'power2.inOut'
-    });
-
-    // Text Reveal Animations
-    const reveals = document.querySelectorAll('.reveal-on-scroll');
-    reveals.forEach(el => {
-      gsap.from(el, {
-        y: 60,
-        opacity: 0,
-        duration: 1.2,
-        ease: 'expo.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
-        }
+  /* Accordion */
+  const initAcc = () => {
+    const items = document.querySelectorAll('.svc-item');
+    const toggle = (el: Element) => {
+      const open = el.classList.contains('open');
+      items.forEach(i => { i.classList.remove('open'); i.setAttribute('aria-expanded','false'); });
+      if (!open) { el.classList.add('open'); el.setAttribute('aria-expanded','true'); }
+    };
+    items.forEach(item => {
+      item.querySelector('.svc-row-trigger')?.addEventListener('click', () => toggle(item));
+      item.addEventListener('keydown', (e: Event) => {
+        const ke = e as KeyboardEvent;
+        if (ke.key === 'Enter' || ke.key === ' ') { e.preventDefault(); toggle(item); }
       });
     });
-  });
-
-  // Handle Barba events
-  document.addEventListener('barba_after', () => {
-     // Re-init ScrollTrigger if needed
-     ScrollTrigger.refresh();
-  });
+    if (items[0]) toggle(items[0]);
+  };
+  document.addEventListener('astro:page-load', initAcc);
 </script>

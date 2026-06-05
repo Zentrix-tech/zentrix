@@ -1,272 +1,469 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
-	title: string;
+  title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "Zentrix Technology — Digital Solutions For Real Growth. Simple. Smart. Effective. We build digital experiences that drive results."
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-technology.vercel.app');
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Zentrix Technology - Premium Digital Experiences. Web, App, and Digital Growth Solutions." />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title} | Zentrix Technology</title>
-		
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-	</head>
-	<body data-barba="wrapper" class="text-white font-sans antialiased overflow-x-hidden selection:bg-white selection:text-black">
-        
-        <!-- Global Background Design -->
-        <div class="noise-overlay"></div>
-        <div class="ambient-glow"></div>
-        
-        <!-- Preloader -->
-        <div class="preloader fixed inset-0 z-[150] bg-black flex flex-col items-center justify-center">
-             <div class="relative overflow-hidden mb-12">
-                 <div class="preloader-text text-white text-[10px] font-mono tracking-[0.8em] uppercase">Zentrix Technology</div>
-             </div>
-             <div class="h-[1px] w-64 bg-white/20 relative overflow-hidden">
-                 <div class="preloader-bar absolute top-0 left-0 h-full w-full bg-white origin-left scale-x-0"></div>
-             </div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
 
-		<div class="page-transition bg-black"></div>
-		
-        <Header />
-        
-        <main data-barba="container" data-barba-namespace={title.toLowerCase()} class="min-h-screen">
-		    <slot />
-        </main>
+    <!-- OG / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | Zentrix Technology`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | Zentrix Technology`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/og-image.jpg" />
 
-        <Footer />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Zentrix Technology</title>
 
-        <!-- EmailJS SDK (Universal) -->
-        <script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-		
-		<script>
+    <!-- Premium Fonts: Plus Jakarta Sans + Inter + Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Inter:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Zentrix Technology",
+      "url": "https://zentrix-technology.vercel.app",
+      "logo": "https://zentrix-technology.vercel.app/logo.png",
+      "email": "zentrixtech01@gmail.com",
+      "telephone": "+916380957425",
+      "description": "Digital Solutions For Real Growth. Web Development, App Development, Digital Marketing, Meta Ads, SEO.",
+      "areaServed": "Worldwide",
+      "sameAs": [
+        "https://www.linkedin.com/company/zentrix-technology"
+      ]
+    }
+    </script>
+    <ClientRouter />
+  </head>
+
+  <body class="antialiased overflow-x-hidden">
+
+    <!-- Custom Cursor (desktop) -->
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="preloader-logo">
+        <div class="preloader-icon">Z</div>
+        <span class="preloader-wordmark">Zentrix</span>
+        <span class="preloader-sub">Technology</span>
+      </div>
+      <div class="preloader-bar-track">
+        <div class="preloader-bar-fill" id="preloader-bar"></div>
+      </div>
+      <span class="preloader-counter" id="preloader-counter">0%</span>
+    </div>
+
+    <!-- Page transition curtain -->
+    <div class="page-transition" id="page-transition" aria-hidden="true"></div>
+
+    <Header />
+
+    <main class="min-h-screen" style="padding-top:72px;">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- EmailJS -->
+    <script is:inline src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
       import Lenis from 'lenis';
       import gsap from 'gsap';
       import { ScrollTrigger } from 'gsap/ScrollTrigger';
-      // @ts-ignore
-      import barba from '@barba/core';
-      
+
       gsap.registerPlugin(ScrollTrigger);
 
-      // --- Credentials ---
-      const PUBLIC_KEY = "Hwn19i2dsu59--iK7";
-      const SERVICE_ID = "service_t9v5nqi"; 
-      const TEMPLATE_ID = "template_871z73a";
+      // ── EmailJS creds ──
+      const PUBLIC_KEY   = "Hwn19i2dsu59--iK7";
+      const SERVICE_ID   = "service_t9v5nqi";
+      const TEMPLATE_ID  = "template_871z73a";
 
-      // --- Lenis Lifecycle Management ---
-      let lenis: Lenis;
-      
+      // ── Lenis smooth scroll ──
+      let lenis: any;
       const initLenis = () => {
         lenis = new Lenis({
-          duration: 1, 
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           smoothWheel: true,
           touchMultiplier: 1.5,
         });
-
-        function raf(time: number) {
-          lenis?.raf(time);
-          requestAnimationFrame(raf);
-        }
+        const raf = (time: number) => { lenis?.raf(time); requestAnimationFrame(raf); };
         requestAnimationFrame(raf);
+        lenis.on('scroll', () => ScrollTrigger.update());
       };
 
-      // --- Contact Form Engine (Barba-Safe) ---
-      const initContactForm = () => {
-          // @ts-ignore
-          const emailjs = window.emailjs;
-          if (!emailjs) return;
+      // ── Custom magnetic cursor ──
+      const initCursor = () => {
+        const dot  = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        if (!dot || !ring) return;
 
-          emailjs.init(PUBLIC_KEY);
+        if (window.matchMedia('(pointer:fine)').matches) {
+          let mouseX = 0, mouseY = 0;
+          let ringX = 0, ringY = 0;
 
-          const form = document.getElementById('contact-form') as HTMLFormElement;
-          const successOverlay = document.getElementById('form-success');
-          const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-          const btnText = document.getElementById('btn-text');
-          const btnIcon = document.getElementById('btn-icon');
-          const btnLoader = document.getElementById('btn-loader');
-          const resetBtn = document.getElementById('reset-form');
-
-          if (!form) return; // Not on contact page
-
-          form.addEventListener('submit', (e) => {
-              e.preventDefault();
-
-              submitBtn.disabled = true;
-              btnText!.textContent = "Transmitting...";
-              btnIcon?.classList.add('hidden');
-              btnLoader?.classList.remove('hidden');
-
-              // --- GLOBAL VARIABLE MAPPING ---
-              // We send all common versions of keys to ensure they match your EmailJS Template structure
-              const nameVal = (document.getElementById('name') as HTMLInputElement).value;
-              const emailVal = (document.getElementById('email') as HTMLInputElement).value;
-              const messageVal = (document.getElementById('message') as HTMLTextAreaElement).value;
-
-              const templateParams = {
-                  // Names
-                  from_name: nameVal,
-                  user_name: nameVal,
-                  name: nameVal,
-                  
-                  // Emails
-                  from_email: emailVal,
-                  user_email: emailVal,
-                  email: emailVal,
-                  reply_to: emailVal,
-                  
-                  // Content
-                  message: messageVal,
-                  to_name: "Zentrix Technology",
-              };
-
-              emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
-                  .then(() => {
-                      form.classList.add('opacity-0', 'pointer-events-none');
-                      successOverlay?.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-10');
-                      successOverlay?.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-                      form.reset();
-                  })
-                  .catch((error: any) => {
-                      console.error('EmailJS Error:', error);
-                      alert('Submission failed. Check your EmailJS account status.');
-                      submitBtn.disabled = false;
-                      btnText!.textContent = "Transmit Inquiry";
-                      btnIcon?.classList.remove('hidden');
-                      btnLoader?.classList.add('hidden');
-                  });
+          document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            dot.style.left  = mouseX + 'px';
+            dot.style.top   = mouseY + 'px';
           });
 
-          resetBtn?.addEventListener('click', () => {
-              form.classList.remove('opacity-0', 'pointer-events-none');
-              successOverlay?.classList.add('opacity-0', 'pointer-events-none', 'translate-y-10');
-              successOverlay?.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-              submitBtn.disabled = false;
-              btnText!.textContent = "Transmit Inquiry";
-              btnIcon?.classList.remove('hidden');
-              btnLoader?.classList.add('hidden');
+          // Smooth ring follow
+          const animateRing = () => {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.left = ringX + 'px';
+            ring.style.top  = ringY + 'px';
+            requestAnimationFrame(animateRing);
+          };
+          animateRing();
+
+          // Hover states
+          const addHoverEvents = () => {
+            document.querySelectorAll('a, button, [role="button"], .card, .service-card').forEach(el => {
+              el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+              el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+            });
+          };
+          addHoverEvents();
+
+          // Click pulse
+          document.addEventListener('mousedown', () => {
+            ring.classList.add('clicking');
+            dot.style.transform = 'translate(-50%,-50%) scale(0.5)';
           });
+          document.addEventListener('mouseup', () => {
+            ring.classList.remove('clicking');
+            dot.style.transform = 'translate(-50%,-50%) scale(1)';
+          });
+
+          // Hide on leave, show on enter
+          document.addEventListener('mouseleave', () => {
+            dot.style.opacity = '0';
+            ring.style.opacity = '0';
+          });
+          document.addEventListener('mouseenter', () => {
+            dot.style.opacity = '1';
+            ring.style.opacity = '1';
+          });
+
+          document.addEventListener('astro:page-load', addHoverEvents);
+        } else {
+          dot.style.display = 'none';
+          ring.style.display = 'none';
+        }
       };
 
-      // --- Preloader Logic ---
-      const handlePreloader = () => {
-        const tl = gsap.timeline({
-          onComplete: () => {
-            document.querySelector('.preloader')?.remove();
-            lenis?.start();
-            initScrollAnimations();
-            initContactForm(); 
-          }
-        });
-
-        tl.to('.preloader-bar', {
-          scaleX: 1,
-          duration: 1.2,
-          ease: 'power3.inOut'
-        })
-        .to('.preloader-text', {
-          y: -10,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power4.in'
-        }, '-=0.4')
-        .to('.preloader-bar', {
-          xPercent: 100,
-          duration: 0.8,
-          ease: 'power4.in'
-        }, '<')
-        .to('.preloader', {
-          yPercent: -100,
-          duration: 1,
-          ease: 'expo.inOut'
+      // ── Metrics counter (bidirectional: resets on scroll back) ──
+      const initCounters = () => {
+        document.querySelectorAll('[data-counter]').forEach(el => {
+          const target = parseInt((el as HTMLElement).dataset['counter'] ?? '0', 10);
+          const prefix = (el as HTMLElement).dataset['prefix'] ?? '';
+          const suffix = (el as HTMLElement).dataset['suffix'] ?? '';
+          let raf: number;
+          const animate = (toValue: number, duration: number) => {
+            cancelAnimationFrame(raf);
+            const startVal = parseFloat(el.textContent?.replace(/[^0-9.]/g, '') || '0');
+            const start = performance.now();
+            const tick = (now: number) => {
+              const progress = Math.min((now - start) / duration, 1);
+              const ease = 1 - Math.pow(1 - progress, 4);
+              const current = startVal + (toValue - startVal) * ease;
+              el.textContent = prefix + Math.round(current) + suffix;
+              if (progress < 1) raf = requestAnimationFrame(tick);
+            };
+            raf = requestAnimationFrame(tick);
+          };
+          ScrollTrigger.create({
+            trigger: el,
+            start: 'top 92%',
+            toggleActions: 'play none none reverse',
+            onEnter: () => animate(target, 1400),
+            onLeaveBack: () => animate(0, 600),
+          });
         });
       };
 
-      // --- Global Animations ---
-      const initScrollAnimations = () => {
+      // ── BIDIRECTIONAL SCROLL REVEALS ──
+      // toggleActions: 'play none none reverse'
+      // → play when entering from bottom (scroll down)
+      // → reverse when leaving at bottom (scroll back up past trigger)
+      const initReveals = () => {
         ScrollTrigger.getAll().forEach(t => t.kill());
-        const reveals = document.querySelectorAll('.reveal-on-scroll');
-        
-        reveals.forEach(el => {
-           // Reset before animating
-           gsap.set(el, { opacity: 0, y: 40 });
-           
-           gsap.to(el, {
-             y: 0,
-             opacity: 1,
-             duration: 1.5,
-             ease: 'expo.out',
-             scrollTrigger: {
-               trigger: el,
-               start: 'top 92%',
-               toggleActions: 'play none none none',
-               onEnter: () => {
-                 el.classList.add('is-visible');
-               }
-             }
-           });
+
+        // ── reveal (from below) ──
+        gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
+          const delay = parseFloat((el as HTMLElement).dataset['delay'] ?? '0');
+          gsap.fromTo(el,
+            { opacity: 0, y: 52 },
+            {
+              opacity: 1, y: 0,
+              duration: 0.85,
+              delay,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 92%',
+                toggleActions: 'play none none reverse',
+              }
+            }
+          );
         });
+
+        // ── reveal-left (from left) ──
+        gsap.utils.toArray<HTMLElement>('.reveal-left').forEach((el) => {
+          const delay = parseFloat((el as HTMLElement).dataset['delay'] ?? '0');
+          gsap.fromTo(el,
+            { opacity: 0, x: -72 },
+            {
+              opacity: 1, x: 0,
+              duration: 0.9,
+              delay,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%',
+                toggleActions: 'play none none reverse',
+              }
+            }
+          );
+        });
+
+        // ── reveal-right (from right) ──
+        gsap.utils.toArray<HTMLElement>('.reveal-right').forEach((el) => {
+          const delay = parseFloat((el as HTMLElement).dataset['delay'] ?? '0');
+          gsap.fromTo(el,
+            { opacity: 0, x: 72 },
+            {
+              opacity: 1, x: 0,
+              duration: 0.9,
+              delay,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%',
+                toggleActions: 'play none none reverse',
+              }
+            }
+          );
+        });
+
+        // ── reveal-scale (scale up) ──
+        gsap.utils.toArray<HTMLElement>('.reveal-scale').forEach((el) => {
+          const delay = parseFloat((el as HTMLElement).dataset['delay'] ?? '0');
+          gsap.fromTo(el,
+            { opacity: 0, scale: 0.88 },
+            {
+              opacity: 1, scale: 1,
+              duration: 0.8,
+              delay,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%',
+                toggleActions: 'play none none reverse',
+              }
+            }
+          );
+        });
+
+        // ── Stagger groups ──
+        document.querySelectorAll('.stagger-group').forEach((group) => {
+          const children = group.querySelectorAll('.stagger-child');
+          gsap.fromTo(children,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1, y: 0,
+              duration: 0.7,
+              stagger: 0.1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: group,
+                start: 'top 88%',
+                toggleActions: 'play none none reverse',
+              }
+            }
+          );
+        });
+
+        // ── Parallax on .parallax-el ──
+        gsap.utils.toArray<HTMLElement>('.parallax-el').forEach((el) => {
+          const speed = parseFloat((el as HTMLElement).dataset['speed'] ?? '0.2');
+          gsap.to(el, {
+            yPercent: speed * 100,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: el.closest('section') ?? el,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: true,
+            }
+          });
+        });
+
         ScrollTrigger.refresh();
       };
 
-      // --- Page Transitions ---
-      const initBarba = () => {
-        barba.init({
-          sync: true,
-          transitions: [{
-            name: 'lusion-transition',
-            async leave() {
-              lenis?.stop();
-              const tl = gsap.timeline();
-              tl.to('.page-transition', {
-                yPercent: 0,
-                duration: 0.6,
-                ease: 'expo.inOut'
-              });
-              await tl;
-            },
-            async enter() {
-              window.scrollTo(0, 0);
-              lenis?.scrollTo(0, { immediate: true });
-              const tl = gsap.timeline();
-              tl.to('.page-transition', {
-                yPercent: -100,
-                duration: 0.6,
-                ease: 'expo.inOut',
-                onComplete: () => {
-                   gsap.set('.page-transition', { yPercent: 100 });
-                   lenis?.start();
-                   lenis?.resize();
-                   initScrollAnimations();
-                   initContactForm(); 
-                   document.dispatchEvent(new CustomEvent('barba_after'));
-                }
-              });
-            }
-          }]
+      // ── Contact form ──
+      const initContactForm = () => {
+        // @ts-ignore
+        const emailjs = window.emailjs;
+        if (!emailjs) return;
+        emailjs.init(PUBLIC_KEY);
+
+        const form        = document.getElementById('contact-form') as HTMLFormElement;
+        const successBox  = document.getElementById('form-success');
+        const submitBtn   = document.getElementById('submit-btn') as HTMLButtonElement;
+        const btnText     = document.getElementById('btn-text');
+        const btnLoader   = document.getElementById('btn-loader');
+        const resetBtn    = document.getElementById('reset-form');
+
+        if (!form) return;
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          submitBtn.disabled = true;
+          if (btnText) btnText.textContent = 'Sending…';
+          btnLoader?.classList.remove('hidden');
+
+          const nameVal    = (document.getElementById('name') as HTMLInputElement)?.value;
+          const companyVal = (document.getElementById('company') as HTMLInputElement)?.value;
+          const emailVal   = (document.getElementById('email') as HTMLInputElement)?.value;
+          const budgetVal  = (document.getElementById('budget') as HTMLSelectElement)?.value;
+          const msgVal     = (document.getElementById('message') as HTMLTextAreaElement)?.value;
+
+          emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+            from_name: nameVal, name: nameVal,
+            company: companyVal,
+            from_email: emailVal, email: emailVal, reply_to: emailVal,
+            budget: budgetVal,
+            message: msgVal,
+            to_name: 'Zentrix Technology',
+          }).then(() => {
+            form.classList.add('opacity-0', 'pointer-events-none');
+            successBox?.classList.remove('hidden');
+            form.reset();
+          }).catch((err: any) => {
+            console.error(err);
+            alert('Send failed — please email us directly at zentrixtech01@gmail.com');
+            submitBtn.disabled = false;
+            if (btnText) btnText.textContent = 'Send Message →';
+            btnLoader?.classList.add('hidden');
+          });
+        });
+
+        resetBtn?.addEventListener('click', () => {
+          form.classList.remove('opacity-0', 'pointer-events-none');
+          successBox?.classList.add('hidden');
+          submitBtn.disabled = false;
+          if (btnText) btnText.textContent = 'Send Message →';
+          btnLoader?.classList.add('hidden');
         });
       };
 
-      window.addEventListener('load', () => {
-        initLenis();
-        lenis?.stop();
-        handlePreloader();
-        setTimeout(initBarba, 500);
+      // ── Preloader with counter ──
+      const runPreloader = () => {
+        const counter = document.getElementById('preloader-counter');
+        let count = 0;
+        const countInterval = setInterval(() => {
+          count += Math.floor(Math.random() * 12) + 3;
+          if (count >= 100) { count = 100; clearInterval(countInterval); }
+          if (counter) counter.textContent = count + '%';
+        }, 60);
+
+        const tl = gsap.timeline({
+          onComplete: () => {
+            document.getElementById('preloader')?.remove();
+            lenis?.start();
+            initReveals();
+            initCounters();
+            initContactForm();
+          }
+        });
+        tl.to('#preloader-bar', { scaleX: 1, duration: 1.2, ease: 'power3.inOut' })
+          .to('#preloader', { yPercent: -100, duration: 0.9, ease: 'expo.inOut' }, '+=0.15');
+      };
+
+      // ── Status pill close ──
+      const initStatusPill = () => {
+        document.getElementById('pill-close')?.addEventListener('click', () => {
+          const pill = document.getElementById('status-pill');
+          if (pill) {
+            gsap.to(pill, { height: 0, opacity: 0, duration: 0.3, ease: 'power2.inOut',
+              onComplete: () => { pill.style.display = 'none'; }
+            });
+          }
+        });
+      };
+
+      // ── Header scroll state ──
+      const initHeaderScroll = () => {
+        const header = document.getElementById('site-header');
+        if (!header) return;
+        let lastY = 0;
+        window.addEventListener('scroll', () => {
+          const y = window.scrollY;
+          if (y > 60) header.classList.add('scrolled');
+          else header.classList.remove('scrolled');
+          lastY = y;
+        }, { passive: true });
+      };
+
+      // ── Header scroll state ──
+
+      document.addEventListener('astro:page-load', () => {
+        if (!lenis) {
+          initLenis();
+          initCursor();
+          runPreloader();
+        } else {
+          lenis.start();
+          lenis.resize();
+          ScrollTrigger.refresh();
+        }
+        initReveals();
+        initCounters();
+        initContactForm();
+        initStatusPill();
+        initHeaderScroll();
       });
-		</script>
-	</body>
+    </script>
+  </body>
 </html>
