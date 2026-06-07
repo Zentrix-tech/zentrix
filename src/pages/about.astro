@@ -1,170 +1,431 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
-<Layout title="About" description="About Zentrix Technology — Simple. Smart. Effective. We build digital experiences that drive visibility, quality leads, and real conversions.">
 
-<!-- Hero -->
-<section class="about-hero" aria-labelledby="about-h1">
-  <div class="blob blob-violet" style="width:700px;height:700px;top:-200px;left:-150px;opacity:0.45;" aria-hidden="true"></div>
-  <div class="blob blob-cyan" style="width:500px;height:500px;bottom:-100px;right:-100px;opacity:0.3;" aria-hidden="true"></div>
-  <div class="bg-grid" style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
-
-  <div class="container-z" style="position:relative;z-index:2;">
-    <div class="stagger-group">
-      <p class="label stagger-child">Our Story</p>
-      <h1 id="about-h1" class="stagger-child" style="font-size:var(--display);font-weight:800;letter-spacing:-0.05em;line-height:1.03;margin:1.25rem 0 0;max-width:14ch;">
-        Simple.<br/>Smart.<br/><span class="text-gradient">Effective.</span>
-      </h1>
+<Layout
+  title="About"
+  description="About Zentrix Technology — Simple. Smart. Effective. We build digital experiences that drive visibility, quality leads, and real conversions."
+>
+  <!-- Hero -->
+  <section class="about-hero" aria-labelledby="about-h1">
+    <div
+      class="blob blob-violet"
+      style="width:700px;height:700px;top:-200px;left:-150px;opacity:0.45;"
+      aria-hidden="true"
+    >
     </div>
-  </div>
-</section>
-
-<!-- Mission -->
-<section style="padding:clamp(5rem,9vw,9rem) 0;" aria-labelledby="mission-h">
-  <div class="container-z mission-grid">
-    <div class="reveal-left">
-      <p class="label" style="margin-bottom:1.25rem;">The Mission</p>
-      <h2 id="mission-h" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;margin-bottom:1.5rem;line-height:1.07;">
-        We Help Businesses<br/><span class="text-gradient">Grow Online</span>
-      </h2>
-      <p style="font-size:1.0625rem;color:var(--t2);line-height:1.8;margin-bottom:1.25rem;max-width:500px;">
-        Zentrix Technology bridges the gap between complex digital tools and real business results. We're not just a service provider — we're your strategic digital growth partner.
-      </p>
-      <p style="font-size:1.0625rem;color:var(--t2);line-height:1.8;margin-bottom:2.5rem;max-width:500px;">
-        From building high-performance websites to running precision Meta Ads campaigns — we handle every aspect of your digital presence so you can focus on running your business.
-      </p>
-      <a href="/contact" class="btn-primary" id="about-cta">Start Working Together →</a>
+    <div
+      class="blob blob-cyan"
+      style="width:500px;height:500px;bottom:-100px;right:-100px;opacity:0.3;"
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="bg-grid"
+      style="position:absolute;inset:0;pointer-events:none;"
+      aria-hidden="true"
+    >
     </div>
 
-    <div class="reveal-right about-sidebar">
-      <!-- Services card -->
-      <div class="card" style="margin-bottom:1.25rem;">
-        <p class="label" style="margin-bottom:1.25rem;">Our Services</p>
-        <div class="about-services">
-          {[
-            { icon:'🖥️', name:'Web Development', color:'var(--v4)' },
-            { icon:'📱', name:'App Development', color:'var(--v5)' },
-            { icon:'📣', name:'Digital Marketing', color:'var(--v3)' },
-            { icon:'🎯', name:'Meta Ads Management', color:'var(--v4)' },
-            { icon:'🔍', name:'SEO Optimization', color:'var(--v5)' },
-          ].map(s => (
-            <div class="about-svc-row">
-              <span style="font-size:1.25rem;">{s.icon}</span>
-              <span style={`font-size:0.9375rem;font-weight:600;color:var(--t1);`}>{s.name}</span>
-              <span style={`font-size:0.6rem;color:${s.color};margin-left:auto;font-family:'Space Mono',monospace;letter-spacing:0.05em;`}>→</span>
-            </div>
-          ))}
-        </div>
+    <div class="container-z" style="position:relative;z-index:2;">
+      <div class="stagger-group">
+        <p class="label stagger-child">Our Story</p>
+        <h1
+          id="about-h1"
+          class="stagger-child"
+          style="font-size:var(--display);font-weight:800;letter-spacing:-0.05em;line-height:1.03;margin:1.25rem 0 0;max-width:14ch;"
+        >
+          Simple.<br />Smart.<br /><span class="text-gradient">Effective.</span>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section style="padding:clamp(5rem,9vw,9rem) 0;" aria-labelledby="mission-h">
+    <div class="container-z mission-grid">
+      <div class="reveal-left">
+        <p class="label" style="margin-bottom:1.25rem;">The Mission</p>
+        <h2
+          id="mission-h"
+          style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;margin-bottom:1.5rem;line-height:1.07;"
+        >
+          We Help Businesses<br /><span class="text-gradient">Grow Online</span>
+        </h2>
+        <p
+          style="font-size:1.0625rem;color:var(--t2);line-height:1.8;margin-bottom:1.25rem;max-width:500px;"
+        >
+          Zentrix Technology bridges the gap between complex digital tools and
+          real business results. We're not just a service provider — we're your
+          strategic digital growth partner.
+        </p>
+        <p
+          style="font-size:1.0625rem;color:var(--t2);line-height:1.8;margin-bottom:2.5rem;max-width:500px;"
+        >
+          From building high-performance websites to running precision Meta Ads
+          campaigns — we handle every aspect of your digital presence so you can
+          focus on running your business.
+        </p>
+        <a href="/contact" class="btn-primary" id="about-cta"
+          >Start Working Together →</a
+        >
       </div>
 
-      <!-- Contact card -->
-      <div class="card glass-glow">
-        <p class="label" style="margin-bottom:1.25rem;">Quick Contact</p>
-        <div style="display:flex;flex-direction:column;gap:0.875rem;">
-          <a href="tel:6380957425" class="about-contact-link">
-            <span class="about-contact-icon" style="background:var(--v-dim);border-color:var(--v-border);">📞</span>
-            <div>
-              <p style="font-family:'Space Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);">Phone</p>
-              <p style="font-size:0.9rem;color:var(--t1);font-weight:600;">6380957425</p>
+      <div class="reveal-right about-sidebar">
+        <!-- Services card -->
+        <div class="card" style="margin-bottom:1.25rem;">
+          <p class="label" style="margin-bottom:1.25rem;">Our Services</p>
+          <div class="about-services">
+            {
+              [
+                { icon: "🖥️", name: "Web Development", color: "var(--v4)" },
+                { icon: "📱", name: "App Development", color: "var(--v5)" },
+                { icon: "📣", name: "Digital Marketing", color: "var(--v3)" },
+                { icon: "🎯", name: "Meta Ads Management", color: "var(--v4)" },
+                { icon: "🔍", name: "SEO Optimization", color: "var(--v5)" },
+              ].map((s) => (
+                <div class="about-svc-row">
+                  <span style="font-size:1.25rem;">{s.icon}</span>
+                  <span
+                    style={`font-size:0.9375rem;font-weight:600;color:var(--t1);`}
+                  >
+                    {s.name}
+                  </span>
+                  <span
+                    style={`font-size:0.6rem;color:${s.color};margin-left:auto;font-family:'Space Mono',monospace;letter-spacing:0.05em;`}
+                  >
+                    →
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- Contact card -->
+        <div class="card glass-glow">
+          <p class="label" style="margin-bottom:1.25rem;">Quick Contact</p>
+          <div style="display:flex;flex-direction:column;gap:0.875rem;">
+            <a href="tel:6380957425" class="about-contact-link">
+              <span
+                class="about-contact-icon"
+                style="background:var(--v-dim);border-color:var(--v-border);"
+                >📞</span
+              >
+              <div>
+                <p
+                  style="font-family:'Space Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);"
+                >
+                  Phone
+                </p>
+                <p style="font-size:0.9rem;color:var(--t1);font-weight:600;">
+                  6380957425
+                </p>
+              </div>
+            </a>
+            <a href="mailto:zentrixtech01@gmail.com" class="about-contact-link">
+              <span
+                class="about-contact-icon"
+                style="background:var(--v-dim);border-color:var(--v-border);"
+                >✉️</span
+              >
+              <div>
+                <p
+                  style="font-family:'Space Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);"
+                >
+                  Email
+                </p>
+                <p
+                  style="font-size:0.8rem;color:var(--t1);font-weight:600;word-break:break-all;"
+                >
+                  zentrixtech01@gmail.com
+                </p>
+              </div>
+            </a>
+            <div
+              style="display:flex;align-items:center;gap:0.5rem;padding-top:0.5rem;border-top:1px solid var(--b1);"
+            >
+              <span
+                style="width:7px;height:7px;background:var(--v4);border-radius:50%;flex-shrink:0;"
+                class="pulse"></span>
+              <span
+                style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;"
+                >Currently Accepting Projects</span
+              >
             </div>
-          </a>
-          <a href="mailto:zentrixtech01@gmail.com" class="about-contact-link">
-            <span class="about-contact-icon" style="background:var(--v-dim);border-color:var(--v-border);">✉️</span>
-            <div>
-              <p style="font-family:'Space Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);">Email</p>
-              <p style="font-size:0.8rem;color:var(--t1);font-weight:600;word-break:break-all;">zentrixtech01@gmail.com</p>
-            </div>
-          </a>
-          <div style="display:flex;align-items:center;gap:0.5rem;padding-top:0.5rem;border-top:1px solid var(--b1);">
-            <span style="width:7px;height:7px;background:var(--v4);border-radius:50%;flex-shrink:0;" class="pulse"></span>
-            <span style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--t3);letter-spacing:0.08em;text-transform:uppercase;">Currently Accepting Projects</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Values -->
-<section style="padding:clamp(5rem,9vw,8rem) 0;background:var(--surface);" aria-labelledby="values-h">
-  <div class="container-z">
-    <div class="stagger-group" style="margin-bottom:clamp(3rem,5vw,5rem);">
-      <p class="label stagger-child">Our Principles</p>
-      <h2 id="values-h" class="stagger-child" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;max-width:16ch;">
-        What We Stand <span class="text-gradient">For</span>
-      </h2>
+  <!-- Values -->
+  <section
+    style="padding:clamp(5rem,9vw,8rem) 0;background:var(--surface);"
+    aria-labelledby="values-h"
+  >
+    <div class="container-z">
+      <div class="stagger-group" style="margin-bottom:clamp(3rem,5vw,5rem);">
+        <p class="label stagger-child">Our Principles</p>
+        <h2
+          id="values-h"
+          class="stagger-child"
+          style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;max-width:16ch;"
+        >
+          What We Stand <span class="text-gradient">For</span>
+        </h2>
+      </div>
+      <div class="values-grid">
+        {
+          [
+            {
+              icon: "⚡",
+              title: "Performance First",
+              desc: "Every solution is optimized for speed, Core Web Vitals, and user experience. No compromise on quality.",
+              color: "var(--v3)",
+            },
+            {
+              icon: "🎯",
+              title: "Results-Driven",
+              desc: "We measure success by your business growth — visibility, leads, and conversions. Not vanity metrics.",
+              color: "var(--v4)",
+            },
+            {
+              icon: "🤝",
+              title: "True Partnership",
+              desc: "We embed as your strategic digital partner, proactively bringing ideas and solutions to accelerate your growth.",
+              color: "var(--v5)",
+            },
+          ].map((v, i) => (
+            <div class="card reveal" data-delay={`${i * 0.1}`}>
+              <div
+                class="value-icon"
+                style={`background:${v.color}15;border-color:${v.color}25;`}
+              >
+                <span style="font-size:1.75rem;">{v.icon}</span>
+              </div>
+              <h3 style="font-size:1.25rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem;">
+                {v.title}
+              </h3>
+              <p style="font-size:0.9375rem;color:var(--t2);line-height:1.7;">
+                {v.desc}
+              </p>
+            </div>
+          ))
+        }
+      </div>
     </div>
-    <div class="values-grid">
-      {[
-        { icon:'⚡', title:'Performance First', desc:'Every solution is optimized for speed, Core Web Vitals, and user experience. No compromise on quality.', color:'var(--v3)' },
-        { icon:'🎯', title:'Results-Driven', desc:'We measure success by your business growth — visibility, leads, and conversions. Not vanity metrics.', color:'var(--v4)' },
-        { icon:'🤝', title:'True Partnership', desc:'We embed as your strategic digital partner, proactively bringing ideas and solutions to accelerate your growth.', color:'var(--v5)' },
-      ].map((v, i) => (
-        <div class="card reveal" data-delay={`${i * 0.1}`}>
-          <div class="value-icon" style={`background:${v.color}15;border-color:${v.color}25;`}>
-            <span style="font-size:1.75rem;">{v.icon}</span>
+  </section>
+
+  <!-- Founder -->
+  <section style="padding:clamp(5rem,9vw,8rem) 0;" aria-labelledby="founder-h">
+    <div class="container-z">
+      <div
+        class="stagger-group"
+        style="margin-bottom:clamp(3rem,5vw,5rem); text-align:center;"
+      >
+        <p class="label stagger-child" style="justify-content:center;">
+          Leadership
+        </p>
+        <h2
+          id="founder-h"
+          class="stagger-child"
+          style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;"
+        >
+          Meet the <span class="text-gradient">Founders</span>
+        </h2>
+      </div>
+
+      <div class="founder-grid">
+        <div
+          class="card reveal-scale"
+          style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; text-align: center;"
+        >
+          <div
+            class="founder-img-wrapper"
+            style="width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 2px solid var(--v-border); margin-bottom: 1.5rem; background: var(--surface);"
+          >
+            <img
+              src="/620123205027.jpg.jpeg"
+              alt="Founder of Zentrix"
+              style="width: 100%; height: 100%; object-fit: cover;"
+            />
           </div>
-          <h3 style="font-size:1.25rem;font-weight:800;letter-spacing:-0.03em;margin-bottom:0.75rem;">{v.title}</h3>
-          <p style="font-size:0.9375rem;color:var(--t2);line-height:1.7;">{v.desc}</p>
+          <h3
+            style="font-size: 1.5rem; font-weight: 800; color: var(--t1); margin-bottom: 0.5rem;"
+          >
+            Leadership Team
+          </h3>
+          <p
+            style="color: var(--v4); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem;"
+          >
+            Founder & CEO
+          </p>
+          <p style="color: var(--t2); font-size: 0.9375rem; line-height: 1.6;">
+            Driving innovation and excellence at Zentrix Technology. Dedicated
+            to building digital solutions that create real business value.
+          </p>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
 
-<!-- CTA -->
-<section style="padding:var(--section-y) 0;background:var(--void);text-align:center;position:relative;overflow:hidden;" aria-labelledby="about-cta-h">
-  <div class="blob blob-violet" style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.4;" aria-hidden="true"></div>
-  <div class="container-z stagger-group" style="position:relative;z-index:1;">
-    <h2 id="about-cta-h" class="stagger-child" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;max-width:16ch;margin:0 auto 2rem;">
-      The Future Is <span class="text-gradient">Digital</span>
-    </h2>
-    <div class="stagger-child" style="display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;">
-      <a href="/contact" class="btn-primary" id="about-final-cta">Start a Project →</a>
-      <a href="/services" class="btn-secondary" id="about-svcs-link">View Services</a>
+        <div
+          class="card reveal-scale"
+          data-delay="0.2"
+          style="padding: 2.5rem 2rem; display: flex; flex-direction: column; align-items: center; text-align: center;"
+        >
+          <div
+            class="founder-img-wrapper"
+            style="width: 180px; height: 180px; border-radius: 50%; overflow: hidden; border: 2px solid var(--v-border); margin-bottom: 1.5rem; background: var(--surface);"
+          >
+            <img
+              src="/Pi7_Passport_Photo_imgupscaler.ai_V1(Fast)_2K.jpg"
+              alt="Founder of Zentrix"
+              style="width: 100%; height: 100%; object-fit: cover;"
+            />
+          </div>
+          <h3
+            style="font-size: 1.5rem; font-weight: 800; color: var(--t1); margin-bottom: 0.5rem;"
+          >
+            Strategic Vision
+          </h3>
+          <p
+            style="color: var(--v4); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1rem;"
+          >
+            Co-Founder
+          </p>
+          <p style="color: var(--t2); font-size: 0.9375rem; line-height: 1.6;">
+            Orchestrating operations and shaping the future of digital
+            experiences with a relentless focus on quality and performance.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- CTA -->
+  <section
+    style="padding:var(--section-y) 0;background:var(--void);text-align:center;position:relative;overflow:hidden;"
+    aria-labelledby="about-cta-h"
+  >
+    <div
+      class="blob blob-violet"
+      style="width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.4;"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="container-z stagger-group" style="position:relative;z-index:1;">
+      <h2
+        id="about-cta-h"
+        class="stagger-child"
+        style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;max-width:16ch;margin:0 auto 2rem;"
+      >
+        The Future Is <span class="text-gradient">Digital</span>
+      </h2>
+      <div
+        class="stagger-child"
+        style="display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;"
+      >
+        <a href="/contact" class="btn-primary" id="about-final-cta"
+          >Start a Project →</a
+        >
+        <a href="/services" class="btn-secondary" id="about-svcs-link"
+          >View Services</a
+        >
+      </div>
+    </div>
+  </section>
 </Layout>
 
 <style>
-.about-hero {
-  position: relative; overflow: hidden;
-  padding: clamp(7rem,13vw,10rem) 0 clamp(4rem,7vw,6rem);
-}
-.mission-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3.5rem;
-  align-items: start;
-}
-@media (min-width: 1024px) { .mission-grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
-.about-services { display: flex; flex-direction: column; gap: 0; }
-.about-svc-row {
-  display: flex; align-items: center; gap: 0.875rem;
-  padding: 0.875rem 0;
-  border-bottom: 1px solid var(--b0);
-  transition: background 200ms;
-}
-.about-svc-row:last-child { border-bottom: none; }
-.about-contact-link {
-  display: flex; align-items: center; gap: 1rem;
-  transition: opacity 150ms;
-}
-.about-contact-link:hover { opacity: 0.75; }
-.about-contact-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  border: 1px solid;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; flex-shrink: 0;
-}
-.values-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
-@media (min-width: 640px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
-.value-icon {
-  width: 56px; height: 56px; border-radius: 14px;
-  border: 1px solid;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.5rem;
-}
+  .about-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(7rem, 13vw, 10rem) 0 clamp(4rem, 7vw, 6rem);
+  }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (min-width: 1024px) {
+    .mission-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+  }
+  .about-services {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .about-svc-row {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid var(--b0);
+    transition: background 200ms;
+  }
+  .about-svc-row:last-child {
+    border-bottom: none;
+  }
+  .about-contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: opacity 150ms;
+  }
+  .about-contact-link:hover {
+    opacity: 0.75;
+  }
+  .about-contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .values-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .value-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .founder-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .founder-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+  .founder-img-wrapper img {
+    transition: transform 500ms var(--expo);
+  }
+  .card:hover .founder-img-wrapper img {
+    transform: scale(1.08);
+  }
 </style>

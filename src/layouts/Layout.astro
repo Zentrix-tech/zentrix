@@ -74,19 +74,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
     <!-- Custom Cursor (desktop) -->
     <div id="cursor-dot" aria-hidden="true"></div>
     <div id="cursor-ring" aria-hidden="true"></div>
-
-    <!-- Preloader -->
-    <div class="preloader" id="preloader" aria-hidden="true">
-      <div class="preloader-logo">
-        <div class="preloader-icon">Z</div>
-        <span class="preloader-wordmark">Zentrix</span>
-        <span class="preloader-sub">Technology</span>
-      </div>
-      <div class="preloader-bar-track">
-        <div class="preloader-bar-fill" id="preloader-bar"></div>
-      </div>
-      <span class="preloader-counter" id="preloader-counter">0%</span>
-    </div>
+    <div id="text-spotlight" aria-hidden="true"></div>
 
     <!-- Page transition curtain -->
     <div class="page-transition" id="page-transition" aria-hidden="true"></div>
@@ -132,32 +120,51 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
       const initCursor = () => {
         const dot  = document.getElementById('cursor-dot');
         const ring = document.getElementById('cursor-ring');
+        const textSpotlight = document.getElementById('text-spotlight');
         if (!dot || !ring) return;
 
         if (window.matchMedia('(pointer:fine)').matches) {
           let mouseX = 0, mouseY = 0;
           let ringX = 0, ringY = 0;
+          let isInitialized = false;
 
           document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
+            
+            if (!isInitialized) {
+              document.body.classList.add('has-custom-cursor');
+              dot.style.opacity = '1';
+              ring.style.opacity = '1';
+              if (textSpotlight) textSpotlight.style.opacity = '1';
+              ringX = mouseX;
+              ringY = mouseY;
+              isInitialized = true;
+            }
+            
             dot.style.left  = mouseX + 'px';
             dot.style.top   = mouseY + 'px';
+            if (textSpotlight) {
+              textSpotlight.style.left = mouseX + 'px';
+              textSpotlight.style.top  = mouseY + 'px';
+            }
           });
 
           // Smooth ring follow
           const animateRing = () => {
-            ringX += (mouseX - ringX) * 0.12;
-            ringY += (mouseY - ringY) * 0.12;
-            ring.style.left = ringX + 'px';
-            ring.style.top  = ringY + 'px';
+            if (isInitialized) {
+              ringX += (mouseX - ringX) * 0.15;
+              ringY += (mouseY - ringY) * 0.15;
+              ring.style.left = ringX + 'px';
+              ring.style.top  = ringY + 'px';
+            }
             requestAnimationFrame(animateRing);
           };
           animateRing();
 
           // Hover states
           const addHoverEvents = () => {
-            document.querySelectorAll('a, button, [role="button"], .card, .service-card').forEach(el => {
+            document.querySelectorAll('a, button, [role="button"], .card, .service-card, input, select, textarea').forEach(el => {
               el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
               el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
             });
@@ -176,18 +183,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
 
           // Hide on leave, show on enter
           document.addEventListener('mouseleave', () => {
-            dot.style.opacity = '0';
-            ring.style.opacity = '0';
+            if (isInitialized) {
+              dot.style.opacity = '0';
+              ring.style.opacity = '0';
+              if (textSpotlight) textSpotlight.style.opacity = '0';
+            }
           });
           document.addEventListener('mouseenter', () => {
-            dot.style.opacity = '1';
-            ring.style.opacity = '1';
+            if (isInitialized) {
+              dot.style.opacity = '1';
+              ring.style.opacity = '1';
+              if (textSpotlight) textSpotlight.style.opacity = '1';
+            }
           });
 
           document.addEventListener('astro:page-load', addHoverEvents);
         } else {
           dot.style.display = 'none';
           ring.style.display = 'none';
+          if (textSpotlight) textSpotlight.style.display = 'none';
         }
       };
 
@@ -398,28 +412,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
         });
       };
 
-      // ── Preloader with counter ──
-      const runPreloader = () => {
-        const counter = document.getElementById('preloader-counter');
-        let count = 0;
-        const countInterval = setInterval(() => {
-          count += Math.floor(Math.random() * 12) + 3;
-          if (count >= 100) { count = 100; clearInterval(countInterval); }
-          if (counter) counter.textContent = count + '%';
-        }, 60);
 
-        const tl = gsap.timeline({
-          onComplete: () => {
-            document.getElementById('preloader')?.remove();
-            lenis?.start();
-            initReveals();
-            initCounters();
-            initContactForm();
-          }
-        });
-        tl.to('#preloader-bar', { scaleX: 1, duration: 1.2, ease: 'power3.inOut' })
-          .to('#preloader', { yPercent: -100, duration: 0.9, ease: 'expo.inOut' }, '+=0.15');
-      };
 
       // ── Status pill close ──
       const initStatusPill = () => {
@@ -430,6 +423,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
               onComplete: () => { pill.style.display = 'none'; }
             });
           }
+        });
+      };
+
+      // ── Spotlight Hover Tracking ──
+      const initSpotlights = () => {
+        document.querySelectorAll('.card, .svc-item, .why-icon-box').forEach(el => {
+          el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = (e as MouseEvent).clientX - rect.left;
+            const y = (e as MouseEvent).clientY - rect.top;
+            (el as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+            (el as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
+          });
         });
       };
 
@@ -452,7 +458,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
         if (!lenis) {
           initLenis();
           initCursor();
-          runPreloader();
         } else {
           lenis.start();
           lenis.resize();
@@ -463,6 +468,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
         initContactForm();
         initStatusPill();
         initHeaderScroll();
+        initSpotlights();
       });
     </script>
   </body>
