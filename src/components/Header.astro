@@ -99,7 +99,7 @@ const currentPath = Astro.url.pathname;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 100%;
   gap: 2rem;
 }
 
@@ -193,24 +193,17 @@ const currentPath = Astro.url.pathname;
 </style>
 
 <script>
-  const header = document.getElementById('site-header');
-  const menuBtn = document.getElementById('menu-btn');
-  const sheet = document.getElementById('mobile-sheet');
-  const backdrop = document.getElementById('sheet-backdrop');
-  const closeBtn = document.getElementById('sheet-close');
-
+  // Single global scroll listener: queries site-header dynamically so it works on any page load/transition
   window.addEventListener('scroll', () => {
+    const header = document.getElementById('site-header');
     header?.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  const openSheet = () => {
-    sheet?.classList.add('open');
-    backdrop?.classList.add('open');
-    sheet?.setAttribute('aria-hidden', 'false');
-    menuBtn?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  };
-  const closeSheet = () => {
+  // Helper function to close mobile menu dynamically querying active elements
+  const closeMobileSheet = () => {
+    const sheet = document.getElementById('mobile-sheet');
+    const backdrop = document.getElementById('sheet-backdrop');
+    const menuBtn = document.getElementById('menu-btn');
     sheet?.classList.remove('open');
     backdrop?.classList.remove('open');
     sheet?.setAttribute('aria-hidden', 'true');
@@ -218,12 +211,33 @@ const currentPath = Astro.url.pathname;
     document.body.style.overflow = '';
   };
 
-  menuBtn?.addEventListener('click', openSheet);
-  closeBtn?.addEventListener('click', closeSheet);
-  backdrop?.addEventListener('click', closeSheet);
-  sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSheet));
-
+  // Single global keydown listener
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSheet();
+    if (e.key === 'Escape') closeMobileSheet();
+  });
+
+  // Re-bind click event listeners on every page load/swap
+  document.addEventListener('astro:page-load', () => {
+    const menuBtn = document.getElementById('menu-btn');
+    const sheet = document.getElementById('mobile-sheet');
+    const backdrop = document.getElementById('sheet-backdrop');
+    const closeBtn = document.getElementById('sheet-close');
+
+    const openSheet = () => {
+      sheet?.classList.add('open');
+      backdrop?.classList.add('open');
+      sheet?.setAttribute('aria-hidden', 'false');
+      menuBtn?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+
+    menuBtn?.addEventListener('click', openSheet);
+    closeBtn?.addEventListener('click', closeMobileSheet);
+    backdrop?.addEventListener('click', closeMobileSheet);
+    sheet?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileSheet));
+
+    // Run scroll check once on load/swap to set correct state if page is already scrolled
+    const header = document.getElementById('site-header');
+    header?.classList.toggle('scrolled', window.scrollY > 20);
   });
 </script>

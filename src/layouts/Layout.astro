@@ -15,6 +15,26 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-technology.vercel.app');
+
+const anim = {
+  old: {
+    name: 'old-exit-curtain',
+    duration: '300ms',
+    easing: 'ease-in-out',
+    fillMode: 'both',
+  },
+  new: {
+    name: 'new-enter-curtain',
+    duration: '400ms',
+    easing: 'ease-out',
+    fillMode: 'both',
+  }
+};
+
+const customTransition = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
 <!doctype html>
@@ -81,7 +101,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
 
     <Header />
 
-    <main class="min-h-screen" style="padding-top:72px;">
+    <main class="min-h-screen" style="padding-top:72px;" transition:animate={customTransition}>
       <slot />
     </main>
 
@@ -106,9 +126,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
       let lenis: any;
       const initLenis = () => {
         lenis = new Lenis({
-          duration: 1.2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          lerp: 0.07,
           smoothWheel: true,
+          wheelMultiplier: 0.9,
           touchMultiplier: 1.5,
         });
         const raf = (time: number) => { lenis?.raf(time); requestAnimationFrame(raf); };
@@ -150,11 +170,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
             }
           });
 
-          // Smooth ring follow
+          // Smooth ring follow (slightly delayed for premium look)
           const animateRing = () => {
             if (isInitialized) {
-              ringX += (mouseX - ringX) * 0.15;
-              ringY += (mouseY - ringY) * 0.15;
+              ringX += (mouseX - ringX) * 0.12;
+              ringY += (mouseY - ringY) * 0.12;
               ring.style.left = ringX + 'px';
               ring.style.top  = ringY + 'px';
             }
@@ -165,8 +185,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
           // Hover states
           const addHoverEvents = () => {
             document.querySelectorAll('a, button, [role="button"], .card, .service-card, input, select, textarea').forEach(el => {
-              el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
-              el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+              el.addEventListener('mouseenter', () => {
+                ring.classList.add('hovering');
+                dot.classList.add('hovering');
+              });
+              el.addEventListener('mouseleave', () => {
+                ring.classList.remove('hovering');
+                dot.classList.remove('hovering');
+              });
             });
           };
           addHoverEvents();
@@ -347,7 +373,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
               trigger: el.closest('section') ?? el,
               start: 'top bottom',
               end: 'bottom top',
-              scrub: true,
+              scrub: 1.2,
             }
           });
         });
@@ -439,21 +465,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
         });
       };
 
-      // ── Header scroll state ──
-      const initHeaderScroll = () => {
-        const header = document.getElementById('site-header');
-        if (!header) return;
-        let lastY = 0;
-        window.addEventListener('scroll', () => {
-          const y = window.scrollY;
-          if (y > 60) header.classList.add('scrolled');
-          else header.classList.remove('scrolled');
-          lastY = y;
-        }, { passive: true });
-      };
-
-      // ── Header scroll state ──
-
       document.addEventListener('astro:page-load', () => {
         if (!lenis) {
           initLenis();
@@ -467,8 +478,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-
         initCounters();
         initContactForm();
         initStatusPill();
-        initHeaderScroll();
         initSpotlights();
+
+        // Refresh GSAP ScrollTrigger after the view transition animation finishes
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 750);
       });
     </script>
   </body>

@@ -17,6 +17,9 @@ const whys = [
 ---
 <Layout title="Home" description="Zentrix Technology — Digital Solutions For Real Growth. Simple. Smart. Effective. Web Development, App Development, Digital Marketing, Meta Ads & SEO.">
 
+  <!-- Load Lottie Player Component -->
+  <script is:inline src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
 <!-- ════════════════════════════════
      HERO
      ════════════════════════════════ -->
@@ -76,25 +79,15 @@ const whys = [
 
     <!-- Right: Visual -->
     <div class="hero-visual reveal-right" data-delay="0.15" style="position:relative;z-index:2;">
-      <div class="hero-terminal">
-        <div class="terminal-bar">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="t-title">zentrix ~ digital-growth</span>
-        </div>
-        <div class="terminal-body">
-          <p><span class="t-dim">$ </span><span class="t-v">zentrix</span> run --strategy=growth</p>
-          <p class="t-dim">▶  Optimizing digital presence…</p>
-          <p class="t-green">✓  Website performance: 98/100</p>
-          <p class="t-dim">▶  Launching Meta Ads pipeline…</p>
-          <p class="t-green">✓  Lead generation: Active</p>
-          <p class="t-dim">▶  SEO crawler analyzing…</p>
-          <p class="t-green">✓  Keyword rankings: Improving</p>
-          <p class="t-dim">─────────────────────────────</p>
-          <p><span class="t-dim">Visibility  </span><span class="t-c">+340%</span> <span class="t-green">↑</span></p>
-          <p><span class="t-dim">Leads       </span><span class="t-c">+180%</span> <span class="t-green">↑</span></p>
-          <p><span class="t-dim">Conversions </span><span class="t-c">+95%&nbsp; </span> <span class="t-green">↑</span></p>
-          <p class="t-dim">$ <span class="t-cursor"></span></p>
-        </div>
+      <div class="hero-lottie-wrapper">
+        <dotlottie-player
+          src="/PC Coding and Dislay app Mobile.lottie"
+          background="transparent"
+          speed="1"
+          style="width: 100%; height: auto;"
+          loop
+          autoplay
+        ></dotlottie-player>
       </div>
 
       <!-- Badge 1 -->
@@ -416,6 +409,24 @@ const whys = [
 .trust-pill svg { stroke: var(--emerald); }
 
 .hero-visual { position: relative; }
+.hero-lottie-wrapper {
+  position: relative;
+  top: -80px;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 300ms var(--expo);
+}
+.hero-lottie-wrapper:hover {
+  transform: translateY(-8px);
+}
 .hero-scroll {
   position: absolute;
   bottom: 2.5rem; left: 50%;
