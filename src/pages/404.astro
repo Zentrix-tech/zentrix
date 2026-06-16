@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { label: '404 - Page Not Found', href: '/404' }
+];
+---
+<Layout title="404 - Page Not Found" description="The page you are looking for does not exist on Zentrix Technology. Navigate back to our services, blog, or contact page." breadcrumbs={breadcrumbs}>
+
+<section class="error-section">
+  <!-- Blobs -->
+  <div class="blob blob-violet" style="width:700px;height:700px;top:10%;left:50%;transform:translate(-50%,-50%);opacity:0.45;" aria-hidden="true"></div>
+  <div class="blob blob-cyan" style="width:500px;height:500px;bottom:10%;left:20%;opacity:0.3;" aria-hidden="true"></div>
+  <div class="bg-grid" style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
+
+  <div class="container-z error-inner stagger-group" style="position:relative;z-index:2;">
+    <!-- Large 404 badge -->
+    <p class="label stagger-child" style="justify-content:center;margin-bottom:1.5rem;">Error Code: 404</p>
+    
+    <h1 class="stagger-child error-title">
+      <span class="ht-outline">Lost in</span><br/>
+      <span class="text-gradient">Space?</span>
+    </h1>
+
+    <p class="stagger-child error-desc" style="font-size:1.125rem;color:var(--t2);max-width:520px;margin:2rem auto;line-height:1.8;">
+      The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Let's get you back on track.
+    </p>
+
+    <div class="stagger-child error-btns" style="display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-top:2.5rem;">
+      <a href="/" class="btn-primary">
+        Back to Home
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </a>
+      <a href="/services" class="btn-secondary">Browse Services</a>
+      <a href="/blog" class="btn-secondary">Read Our Blog</a>
+    </div>
+
+    <!-- Quick Help list -->
+    <div class="stagger-child card glass-glow help-card" style="max-width:500px;margin:4rem auto 0;text-align:left;padding:2rem;">
+      <h2 style="font-size:1.15rem;font-weight:800;color:var(--t1);margin-bottom:1rem;">Helpful Links</h2>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:0.75rem;">
+        <li><a href="/contact" class="help-link">✉️ Report a broken link / Contact Support →</a></li>
+        <li><a href="/works" class="help-link">💼 Check out our portfolio projects →</a></li>
+        <li><a href="/about" class="help-link">👥 Read about our leadership & values →</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.error-section {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: clamp(6rem, 12vw, 10rem) 0;
+}
+.error-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.help-link {
+  color: var(--t2);
+  font-size: 0.9375rem;
+  transition: color 200ms;
+}
+.help-link:hover {
+  color: var(--v4);
+}
+</style>
