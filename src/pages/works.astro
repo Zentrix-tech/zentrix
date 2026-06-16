@@ -2,10 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 
 const projects = [
-  { id: 1, title: 'E-Commerce Platform', category: 'Web Development', desc: 'A high-converting headless e-commerce experience built for a premium lifestyle brand. Increased conversions by 45%.', image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Next.js', 'Shopify Plus', 'Framer Motion'], color: 'var(--v4)' },
-  { id: 2, title: 'Fintech Mobile App', category: 'App Development', desc: 'A secure, intuitive personal finance app for iOS and Android. Reached 100k+ downloads in the first month.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600', tags: ['React Native', 'Node.js', 'AWS'], color: 'var(--v5)' },
-  { id: 3, title: 'B2B SaaS Marketing', category: 'Digital Marketing', desc: 'Comprehensive inbound marketing strategy that generated a 3x increase in qualified enterprise leads.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Content Strategy', 'HubSpot', 'SEO'], color: 'var(--v3)' },
-  { id: 4, title: 'Real Estate Meta Ads', category: 'Meta Ads', desc: 'Targeted lead generation campaign that reduced cost-per-lead by 60% while improving lead quality.', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Facebook Ads', 'Retargeting', 'Lead Gen'], color: 'var(--v4)' },
+  { id: 1, title: 'E-Commerce Platform', category: 'Web Development', desc: 'A high-converting headless e-commerce experience built for a premium lifestyle brand. Increased conversions by 45%.', image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800&h=600&fm=webp', tags: ['Next.js', 'Shopify Plus', 'Framer Motion'], color: 'var(--v4)' },
+  { id: 2, title: 'Fintech Mobile App', category: 'App Development', desc: 'A secure, intuitive personal finance app for iOS and Android. Reached 100k+ downloads in the first month.', image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=600&fm=webp', tags: ['React Native', 'Node.js', 'AWS'], color: 'var(--v5)' },
+  { id: 3, title: 'B2B SaaS Marketing', category: 'Digital Marketing', desc: 'Comprehensive inbound marketing strategy that generated a 3x increase in qualified enterprise leads.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600&fm=webp', tags: ['Content Strategy', 'HubSpot', 'SEO'], color: 'var(--v3)' },
+  { id: 4, title: 'Real Estate Meta Ads', category: 'Meta Ads', desc: 'Targeted lead generation campaign that reduced cost-per-lead by 60% while improving lead quality.', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800&h=600&fm=webp', tags: ['Facebook Ads', 'Retargeting', 'Lead Gen'], color: 'var(--v4)' },
 ];
 const breadcrumbs = [
   { label: 'Work', href: '/works' }
@@ -51,7 +51,7 @@ const worksSchema = {
         <div class="work-card reveal" data-delay={`${(i % 2) * 0.1}`}>
           <!-- Image Container -->
           <div class="work-img-wrap">
-            <img src={p.image} alt={p.title} class="work-img" loading="lazy" />
+            <img src={p.image} alt={`${p.title} - ${p.category} case study by Zentrix`} class="work-img" loading="lazy" decoding="async" />
             <div class="work-overlay" style={`background:linear-gradient(to top, rgba(5,8,15,0.9), transparent);`}></div>
             <div class="work-category-tag" style={`background:${p.color}15;color:${p.color};border:1px solid ${p.color}30;`}>
               {p.category}

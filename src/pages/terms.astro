@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const breadcrumbs = [
+  { label: 'Terms of Service', href: '/terms' }
+];
+---
+<Layout title="Terms of Service" description="Terms of Service for Zentrix Technology. Learn about the terms governing your use of our website and services." breadcrumbs={breadcrumbs}>
+
+<section class="policy-section" aria-labelledby="terms-heading">
+  <div class="blob blob-violet" style="width:600px;height:600px;top:-100px;left:-100px;opacity:0.35;" aria-hidden="true"></div>
+  <div class="bg-grid" style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
+
+  <div class="container-z policy-inner stagger-group" style="position:relative;z-index:2;padding-bottom:clamp(5rem,9vw,9rem);">
+    <h1 id="terms-heading" class="text-gradient" style="font-size:var(--h2);font-weight:800;margin-top:2rem;margin-bottom:3rem;">Terms of Service</h1>
+
+    <div class="card glass-glow policy-content" style="text-align:left;padding:clamp(1.5rem,4vw,3.5rem);max-width:900px;margin:0 auto;color:var(--t2);line-height:1.8;display:flex;flex-direction:column;gap:1.5rem;">
+      <p style="font-size:0.9rem;color:var(--t3);">Last Updated: June 16, 2026</p>
+      
+      <p>
+        Welcome to Zentrix Technology! By accessing this website (https://zentrix-technology.vercel.app) or engaging our services, you agree to comply with and be bound by the following terms and conditions.
+      </p>
+
+      <h2 style="color:var(--t1);font-size:1.4rem;font-weight:800;margin-top:1.5rem;">1. Agreement to Terms</h2>
+      <p>
+        These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity, and Zentrix Technology, concerning your access to and use of the website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto.
+      </p>
+
+      <h2 style="color:var(--t1);font-size:1.4rem;font-weight:800;margin-top:1.5rem;">2. Intellectual Property Rights</h2>
+      <p>
+        Unless otherwise indicated, the Site and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the "Content") and the trademarks, service marks, and logos contained therein are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws.
+      </p>
+
+      <h2 style="color:var(--t1);font-size:1.4rem;font-weight:800;margin-top:1.5rem;">3. User Representations</h2>
+      <p>
+        By using the Site, you represent and warrant that: (1) all registration information you submit will be true, accurate, current, and complete; (2) you will maintain the accuracy of such information and promptly update such registration information as necessary; (3) you have the legal capacity and you agree to comply with these Terms of Service.
+      </p>
+
+      <h2 style="color:var(--t1);font-size:1.4rem;font-weight:800;margin-top:1.5rem;">4. Limitation of Liability</h2>
+      <p>
+        In no event will we or our directors, employees, or agents be liable to you or any third party for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages, including lost profit, lost revenue, loss of data, or other damages arising from your use of the site or services.
+      </p>
+
+      <h2 style="color:var(--t1);font-size:1.4rem;font-weight:800;margin-top:1.5rem;">5. Contact Us</h2>
+      <p>
+        In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at <a href="mailto:zentrixtech01@gmail.com" style="color:var(--v4);font-weight:600;">zentrixtech01@gmail.com</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+</Layout>
+
+<style>
+.policy-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(6rem, 11vw, 8rem);
+}
+</style>
