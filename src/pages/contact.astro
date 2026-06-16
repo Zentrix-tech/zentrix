@@ -1,10 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const breadcrumbs = [
+  { label: 'Contact', href: '/contact' }
+];
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://zentrix-technology.vercel.app/contact#webpage",
+      "url": "https://zentrix-technology.vercel.app/contact",
+      "name": "Contact Zentrix Technology | Web & Software Company Salem",
+      "description": "Get in touch with Zentrix Technology. Start your digital development project today with our expert team in Salem."
+    }
+  ]
+};
 ---
 
 <Layout
-  title="Contact"
-  description="Get in touch with Zentrix Technology. Start your digital growth project today with our expert team in Web Development, App Development, Digital Marketing, and SEO."
+  title="Contact Us | Website & Software Company in Salem"
+  description="Connect with Zentrix Technology, the trusted web development and custom software agency in Salem, Tamil Nadu. Get a free consultation or request a quote."
+  breadcrumbs={breadcrumbs}
+  schema={contactSchema}
 >
   <!-- Hero -->
   <section class="contact-hero" aria-labelledby="contact-h1">
@@ -128,7 +147,7 @@ import Layout from "../layouts/Layout.astro";
                   Location
                 </p>
                 <p style="font-size:1rem;color:var(--t1);font-weight:700;">
-                  Global Remote
+                  Fairlands, Salem, Tamil Nadu, India
                 </p>
               </div>
             </div>

@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = Object.values(import.meta.glob('../../blog-posts/*.md', { eager: true }));
+  return posts.map((post: any) => ({
+    params: { slug: post.frontmatter.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+const { title, description, category, date, author, image, slug } = post.frontmatter;
+
+const breadcrumbs = [
+  { label: 'Blog', href: '/blog' },
+  { label: title, href: `/blog/${slug}` }
+];
+
+const blogPostSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": `https://zentrix-technology.vercel.app/blog/${slug}#post`,
+  "headline": title,
+  "description": description,
+  "image": image,
+  "datePublished": date,
+  "author": {
+    "@type": "Person",
+    "name": author
+  },
+  "publisher": {
+    "@id": "https://zentrix-technology.vercel.app/#localbusiness"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://zentrix-technology.vercel.app/blog/${slug}`
+  }
+};
+---
+<Layout title={title} description={description} breadcrumbs={breadcrumbs} schema={blogPostSchema}>
+
+<article class="post-article" aria-labelledby="post-title">
+  <!-- Top Hero -->
+  <header class="post-header">
+    <div class="blob blob-violet" style="width:600px;height:600px;top:-100px;right:-100px;opacity:0.35;" aria-hidden="true"></div>
+    <div class="bg-grid" style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
+
+    <div class="container-z post-header-inner stagger-group" style="position:relative;z-index:2;">
+      <span class="post-category" style="font-family:'Space Mono',monospace;font-size:0.65rem;text-transform:uppercase;color:var(--v4);border:1px solid var(--v-border);background:var(--v-dim);padding:0.4rem 1rem;border-radius:100px;display:inline-block;letter-spacing:0.1em;">
+        {category}
+      </span>
+      <h1 id="post-title" class="post-main-title stagger-child" style="margin-top:1.5rem;font-size:clamp(2rem, 5vw, 3.75rem);font-weight:800;letter-spacing:-0.04em;line-height:1.1;color:var(--t1);">
+        {title}
+      </h1>
+      <p style="font-family:'Space Mono',monospace;font-size:0.75rem;color:var(--t3);margin-top:1.5rem;" class="stagger-child">
+        Published on {date} · Written by {author}
+      </p>
+    </div>
+  </header>
+
+  <!-- Content & Side block -->
+  <section class="post-body-section" style="position:relative;z-index:2;padding-bottom:clamp(5rem,9vw,9rem);">
+    <div class="container-z post-grid-split">
+      
+      <!-- Main Content -->
+      <div class="post-main-content reveal-left">
+        <div class="post-featured-image-wrap" style="border-radius:20px;overflow:hidden;border:1px solid var(--b1);margin-bottom:3rem;aspect-ratio:16/9;background:var(--surface);">
+          <img src={image} alt={title} style="width:100%;height:100%;object-fit:cover;" class="post-featured-image" decoding="async" />
+        </div>
+
+        <div class="post-rendered-content markdown-body">
+          <Content />
+        </div>
+      </div>
+
+      <!-- Sidebar CTAs -->
+      <aside class="post-sidebar reveal-right">
+        <div class="card glass-glow" style="position:sticky;top:100px;display:flex;flex-direction:column;gap:1.5rem;">
+          <h3 style="font-size:1.25rem;font-weight:800;margin-bottom:0.5rem;color:var(--t1);">Need Digital Growth?</h3>
+          <p style="color:var(--t2);font-size:0.92rem;line-height:1.7;">
+            We help companies in Salem and Tamil Nadu build responsive websites, custom CRM/ERP portals, secure HMS systems, and drive conversions with SEO and Meta Ads.
+          </p>
+          <a href="/contact" class="btn-primary" style="justify-content:center;height:48px;">
+            Get Free Consultation
+          </a>
+          <a href="/services" class="btn-secondary" style="justify-content:center;height:48px;">
+            Explore Services
+          </a>
+          <div style="border-top:1px solid var(--b1);padding-top:1.25rem;display:flex;align-items:center;gap:0.5rem;">
+            <span style="width:6px;height:6px;background:var(--emerald);border-radius:50%;display:inline-block;" class="pulse"></span>
+            <span style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--t3);text-transform:uppercase;letter-spacing:0.08em;">Accepting projects</span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+</article>
+
+</Layout>
+
+<style>
+.post-header {
+  position: relative; overflow: hidden;
+  padding: clamp(6rem,11vw,8rem) 0 clamp(3rem,5vw,4rem);
+}
+.post-grid-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .post-grid-split {
+    grid-template-columns: 1.35fr 0.65fr;
+    gap: 4.5rem;
+  }
+}
+
+/* Scoped styles for rendering markdown content dynamically */
+.markdown-body :global(h2) {
+  font-size: var(--h3);
+  font-weight: 800;
+  color: var(--t1);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.markdown-body :global(h3) {
+  font-size: var(--h4);
+  font-weight: 800;
+  color: var(--t1);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.markdown-body :global(p) {
+  font-size: 1.025rem;
+  color: var(--t2);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.markdown-body :global(p strong) {
+  color: var(--v4);
+  font-weight: 700;
+}
+.markdown-body :global(ul) {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+.markdown-body :global(li) {
+  color: var(--t2);
+  font-size: 1.025rem;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+  list-style: square;
+}
+.markdown-body :global(blockquote) {
+  border-left: 3px solid var(--v3);
+  background: var(--surface);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 10px 10px 0;
+}
+.markdown-body :global(blockquote p) {
+  margin-bottom: 0;
+  font-style: italic;
+}
+</style>

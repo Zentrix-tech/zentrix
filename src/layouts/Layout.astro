@@ -4,17 +4,27 @@ import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
+interface BreadcrumbItem {
+  label: string;
+  href: string;
+}
+
 interface Props {
   title: string;
   description?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  schema?: any;
 }
 
 const {
   title,
-  description = "Zentrix Technology — Digital Solutions For Real Growth. Simple. Smart. Effective. We build digital experiences that drive results."
+  description = "Zentrix Technology — Digital Solutions For Real Growth. Web Development, Custom Software, App Development, Digital Marketing, SEO, and HMS Solutions in Salem, Tamil Nadu, India.",
+  breadcrumbs,
+  schema
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://zentrix-technology.vercel.app');
+const ogImageURL = new URL('/og-image.jpg', Astro.site ?? 'https://zentrix-technology.vercel.app');
 
 const anim = {
   old: {
@@ -46,16 +56,28 @@ const customTransition = {
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href={canonicalURL} />
 
+    <!-- Google Search Console Site Verification -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_KEY_HERE" />
+
+    <!-- Google Analytics (GA4) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+    </script>
+
     <!-- OG / Social -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={`${title} | Zentrix Technology`} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content={ogImageURL} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`${title} | Zentrix Technology`} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="/og-image.jpg" />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="generator" content={Astro.generator} />
@@ -69,7 +91,7 @@ const customTransition = {
       rel="stylesheet"
     />
 
-    <!-- JSON-LD Organization -->
+    <!-- JSON-LD Organization Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -79,13 +101,78 @@ const customTransition = {
       "logo": "https://zentrix-technology.vercel.app/logo.png",
       "email": "zentrixtech01@gmail.com",
       "telephone": "+916380957425",
-      "description": "Digital Solutions For Real Growth. Web Development, App Development, Digital Marketing, Meta Ads, SEO.",
+      "description": "Zentrix Technology is a premium web development, software engineering, and digital marketing company offering bespoke software, mobile apps, and hospital management automation.",
       "areaServed": "Worldwide",
       "sameAs": [
         "https://www.linkedin.com/company/zentrix-technology"
       ]
     }
     </script>
+
+    <!-- JSON-LD Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://zentrix-technology.vercel.app/#localbusiness",
+      "name": "Zentrix Technology",
+      "url": "https://zentrix-technology.vercel.app",
+      "logo": "https://zentrix-technology.vercel.app/logo.png",
+      "image": "https://zentrix-technology.vercel.app/image.png",
+      "telephone": "+916380957425",
+      "email": "zentrixtech01@gmail.com",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Fairlands",
+        "addressLocality": "Salem",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "636016",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 11.6643,
+        "longitude": 78.1460
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/zentrix-technology"
+      ]
+    }
+    </script>
+
+    <!-- Dynamic Breadcrumb Schema -->
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbs.map((crumb, idx) => ({
+          "@type": "ListItem",
+          "position": idx + 1,
+          "name": crumb.label,
+          "item": crumb.href.startsWith('http') ? crumb.href : `https://zentrix-technology.vercel.app${crumb.href}`
+        }))
+      })} />
+    )}
+
+    <!-- Dynamic Page-Specific Custom Schema Injection -->
+    {schema && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    )}
+
     <ClientRouter />
   </head>
 
@@ -102,6 +189,28 @@ const customTransition = {
     <Header />
 
     <main class="min-h-screen" style="padding-top:72px;" transition:animate={customTransition}>
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <nav class="container-z breadcrumbs-nav" aria-label="Breadcrumb">
+          <ol class="breadcrumbs-list">
+            <li class="breadcrumb-item">
+              <a href="/" class="breadcrumb-link">Home</a>
+              <span class="breadcrumb-separator">/</span>
+            </li>
+            {breadcrumbs.map((crumb, idx) => (
+              <li class="breadcrumb-item">
+                {idx < breadcrumbs.length - 1 ? (
+                  <>
+                    <a href={crumb.href} class="breadcrumb-link">{crumb.label}</a>
+                    <span class="breadcrumb-separator">/</span>
+                  </>
+                ) : (
+                  <span class="breadcrumb-current" aria-current="page">{crumb.label}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
       <slot />
     </main>
 

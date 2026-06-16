@@ -1,10 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const breadcrumbs = [
+  { label: 'About', href: '/about' }
+];
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://zentrix-technology.vercel.app/about#webpage",
+      "url": "https://zentrix-technology.vercel.app/about",
+      "name": "About Zentrix Technology | Software & Web Agency Salem",
+      "description": "Learn more about Zentrix Technology, the trusted software company & web development partner in Salem, Tamil Nadu, India."
+    }
+  ]
+};
 ---
 
 <Layout
-  title="About"
-  description="About Zentrix Technology — Simple. Smart. Effective. We build digital experiences that drive visibility, quality leads, and real conversions."
+  title="About | Web Design & Software Agency in Salem"
+  description="Discover the story behind Zentrix Technology, a premier web development and software company in Salem, Tamil Nadu, India. Our values, leadership, and mission."
+  breadcrumbs={breadcrumbs}
+  schema={aboutSchema}
 >
   <!-- Hero -->
   <section class="about-hero" aria-labelledby="about-h1">

@@ -2,11 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 
 const services = [
-  { num: '01', title: 'Web Development', desc: 'Blazing-fast websites and platforms built for SEO, speed, and maximum conversion. From landing pages to complex web applications.', tags: ['React', 'Next.js', 'Astro', 'TypeScript'], id: 'web' },
-  { num: '02', title: 'App Development', desc: 'Cross-platform mobile apps with native feel on iOS and Android. From idea to App Store — fast.', tags: ['React Native', 'Flutter', 'iOS', 'Android'], id: 'app' },
-  { num: '03', title: 'Digital Marketing', desc: 'Data-driven campaigns that grow your brand. Content strategy, email automation, and social media management.', tags: ['Content', 'Email', 'Social', 'Analytics'], id: 'marketing' },
-  { num: '04', title: 'Meta Ads Management', desc: 'Precision-targeted Facebook & Instagram ads that generate qualified leads and maximize ROAS.', tags: ['Facebook', 'Instagram', 'Retargeting', 'ROAS'], id: 'meta' },
-  { num: '05', title: 'SEO Optimization', desc: 'Dominate search rankings and drive organic traffic that converts. Technical SEO, content, and link building.', tags: ['Technical SEO', 'Content', 'Link Building', 'Local SEO'], id: 'seo' },
+  { num: '01', title: 'Website Development', desc: 'Blazing-fast websites and custom web platforms built for SEO, mobile responsiveness, and maximum user conversion in Salem and Tamil Nadu. We construct tailored frontends and robust backends.', tags: ['React', 'Next.js', 'Astro', 'TypeScript'], id: 'web-development' },
+  { num: '02', title: 'Mobile App Development', desc: 'Sleek, responsive iOS and Android apps with native-level performance. We manage everything from UI/UX design to App Store optimization.', tags: ['React Native', 'Flutter', 'Swift', 'Kotlin'], id: 'mobile-app' },
+  { num: '03', title: 'Custom Software Development', desc: 'Bespoke software platforms, SaaS systems, and customized CRM/ERP tools engineered to match your unique operational workflow and eliminate inefficiencies.', tags: ['Node.js', 'Python', 'PostgreSQL', 'Cloud'], id: 'custom-software' },
+  { num: '04', title: 'Hospital Management Software (HMS)', desc: 'Enterprise-grade clinic and hospital automation software. Features include patient registration, billing, pharmacy stock, electronic health records (EHR), and laboratory management.', tags: ['Healthcare Technology', 'Security', 'HIPAA', 'EHR'], id: 'hms-software' },
+  { num: '05', title: 'AI Solutions', desc: 'Supercharge your business operations by integrating advanced AI services, LLMs, machine learning models, and automated customer support bots.', tags: ['AI Integration', 'LLMs', 'NLP', 'Data Science'], id: 'ai-solutions' },
+  { num: '06', title: 'Digital Marketing', desc: 'Result-oriented marketing strategies targeting local audiences. Content strategy, social media campaigns, brand building, and conversion optimization.', tags: ['Content Strategy', 'Social Media', 'Leads'], id: 'digital-marketing' },
+  { num: '07', title: 'SEO Services', desc: 'Dominate organic search queries. Technical audits, schema configuration, backlink building, and local SEO services to put your business at the top of Google rankings.', tags: ['Technical SEO', 'Local SEO', 'Audits'], id: 'seo-services' },
+  { num: '08', title: 'Meta Ads Management', desc: 'Precision-targeted Facebook and Instagram ad campaigns optimized for qualified lead generation, retargeting, and maximizing return on ad spend (ROAS).', tags: ['Facebook Ads', 'Instagram Ads', 'ROAS'], id: 'meta-ads' },
+  { num: '09', title: 'E-Commerce Development', desc: 'Seamless, secure headless e-commerce architectures. From WooCommerce and Shopify integrations to custom shopping cart platforms designed to convert visitors.', tags: ['Headless commerce', 'Shopify', 'Stripe'], id: 'ecommerce' },
+  { num: '10', title: 'Business Automation', desc: 'Remove manual bottlenecks. Connect your legacy platforms, automate customer notifications, email workflows, and sync invoicing systems.', tags: ['APIs', 'Zapier', 'Workflows'], id: 'business-automation' }
 ];
 
 const whys = [
@@ -14,8 +19,59 @@ const whys = [
   { num: '02', icon: '🎯', title: 'Generate Quality Leads', desc: 'Precision-targeted campaigns that attract genuinely interested prospects ready to buy. No wasted spend, only leads that convert into real customers.', stat: '+180%', statLabel: 'Average Lead Volume' },
   { num: '03', icon: '💰', title: 'Boost Sales & Conversions', desc: 'Turn visitors into loyal customers with optimized funnels, persuasive copy, and strategic calls-to-action powered by data and behavioral insights.', stat: '+95%', statLabel: 'Average Conversion Lift' },
 ];
+
+const faqs = [
+  {
+    q: "Which is the best website development company in Salem?",
+    a: "Zentrix Technology is recognized as a premier website development company in Salem, Tamil Nadu. We specialize in building responsive, ultra-fast, and SEO-optimized business websites using modern technologies like Next.js, React, and Astro."
+  },
+  {
+    q: "What services does Zentrix Technology offer in Salem?",
+    a: "We offer comprehensive digital services including Website Development, Mobile App Development, Custom Software Development, Hospital Management Software (HMS), AI Solutions, Digital Marketing, SEO, and Meta Ads Management."
+  },
+  {
+    q: "How does local SEO benefit Salem-based businesses?",
+    a: "Local SEO helps your business rank for queries matching 'near me' or specific location keywords like 'in Salem'. Zentrix Technology configures Google Business Profile listings, implements local schema markup, and generates location-specific keyword copy to drive qualified organic traffic."
+  },
+  {
+    q: "Do you build clinic and hospital management software in Tamil Nadu?",
+    a: "Yes! Zentrix Technology provides custom Hospital Management Software (HMS) and clinic management solutions in Tamil Nadu. Our software covers patient management, doctor scheduling, electronic medical records (EMR), billing, inventory, and automated SMS notifications."
+  },
+  {
+    q: "How much does web development or custom software cost?",
+    a: "The cost depends on project scope, features, and complexity. We offer a free initial consultation and customized proposals. Reach out via our 'Request a Quote' or 'Get Free Consultation' CTA to receive a tailored estimate."
+  }
+];
+
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://zentrix-technology.vercel.app/#webpage",
+      "url": "https://zentrix-technology.vercel.app",
+      "name": "Zentrix Technology | Web Development & Software Company in Salem",
+      "description": "Zentrix Technology is the leading website development company, mobile app agency, and custom software company in Salem, Tamil Nadu, India. Elevate your local and global visibility.",
+      "breadcrumb": {
+        "@id": "https://zentrix-technology.vercel.app/#breadcrumb"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://zentrix-technology.vercel.app/#faq",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    }
+  ]
+};
 ---
-<Layout title="Home" description="Zentrix Technology — Digital Solutions For Real Growth. Simple. Smart. Effective. Web Development, App Development, Digital Marketing, Meta Ads & SEO.">
+<Layout title="Web Development Company in Salem & Software Agency" description="Optimize your digital presence with Zentrix Technology, the leading website development company & software agency in Salem, Tamil Nadu. Premium web apps, mobile apps, HMS software, and SEO." schema={homepageSchema}>
 
   <!-- Load Lottie Player Component -->
   <script is:inline src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
@@ -41,7 +97,7 @@ const whys = [
       <!-- Live badge -->
       <div class="hero-badge reveal" data-delay="0">
         <span style="width:7px;height:7px;background:var(--emerald);border-radius:50%;display:inline-block;" class="pulse"></span>
-        Currently Accepting Projects
+        Salem, Tamil Nadu, India
       </div>
 
       <!-- Giant type -->
@@ -54,8 +110,8 @@ const whys = [
       </h1>
 
       <p class="hero-sub reveal" data-delay="0.42">
-        Simple. Smart. Effective. — We craft digital experiences<br class="hr-break"/>
-        that drive visibility, quality leads, and real conversions.
+        Simple. Smart. Effective. — We are the premier <strong>Website Development Company in Salem</strong>. 
+        We build fast, responsive sites, mobile apps, custom software, and run data-driven SEO & Meta Ads campaigns to skyrocket your business.
       </p>
 
       <div class="hero-ctas reveal" data-delay="0.50">
@@ -63,12 +119,12 @@ const whys = [
           Start a Project
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
-        <a href="/services" class="btn-secondary" id="hero-svc">Explore Services</a>
+        <a href="#services" class="btn-secondary" id="hero-svc">Explore Services</a>
       </div>
 
       <!-- Trust -->
       <div class="hero-trust reveal" data-delay="0.58">
-        {['Increase Visibility', 'Generate Leads', 'Boost Conversions'].map(t => (
+        {['Web Development Salem', 'Software Development', 'Digital Marketing'].map(t => (
           <span class="trust-pill">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             {t}
@@ -94,8 +150,8 @@ const whys = [
       <div class="float-badge float-badge-a" style="bottom:-24px;left:-28px;" aria-hidden="true">
         <div class="badge-icon" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.2);">🚀</div>
         <div>
-          <div class="badge-title">Live Campaign</div>
-          <div class="badge-sub">Meta Ads Active</div>
+          <div class="badge-title">Local SEO Salem</div>
+          <div class="badge-sub">Rank #1 Google</div>
         </div>
       </div>
 
@@ -103,8 +159,8 @@ const whys = [
       <div class="float-badge float-badge-b" style="top:-20px;right:-24px;" aria-hidden="true">
         <div class="badge-icon" style="background:var(--v-dim);border:1px solid var(--v-border);">📈</div>
         <div>
-          <div class="badge-title">SEO Ranking</div>
-          <div class="badge-sub">Top 3 Results</div>
+          <div class="badge-title">HMS Software</div>
+          <div class="badge-sub">Hospital Automation</div>
         </div>
       </div>
     </div>
@@ -127,12 +183,13 @@ const whys = [
     <div class="marquee-track">
       {Array(2).fill(null).map(() => (
         <>
-          <span class="marquee-item">Web Development <span class="marquee-dot">◆</span></span>
-          <span class="marquee-item">App Development <span class="marquee-dot">◆</span></span>
-          <span class="marquee-item">Digital Marketing <span class="marquee-dot">◆</span></span>
-          <span class="marquee-item">Meta Ads Management <span class="marquee-dot">◆</span></span>
-          <span class="marquee-item">SEO Optimization <span class="marquee-dot">◆</span></span>
-          <span class="marquee-item">Real Growth. Real Results. <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Website Development Salem <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Mobile App Development <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Custom Software Company <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">HMS Software Tamil Nadu <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">SEO Services in Salem <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Meta Ads Specialist <span class="marquee-dot">◆</span></span>
+          <span class="marquee-item">Business Automation <span class="marquee-dot">◆</span></span>
         </>
       ))}
     </div>
@@ -146,12 +203,12 @@ const whys = [
   <div class="container-z">
     <div class="stats-grid">
       <div class="stat-block reveal">
-        <span class="stat-xl" style="background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-counter="100" data-suffix="+">100+</span>
+        <span class="stat-xl" style="background:var(--gradient-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-counter="120" data-suffix="+">120+</span>
         <span class="stat-label-sm">Projects Delivered</span>
         <div class="stat-rule" style="background:var(--gradient);"></div>
       </div>
       <div class="stat-block reveal" data-delay="0.08">
-        <span class="stat-xl" style="color:var(--c4);" data-counter="5">5</span>
+        <span class="stat-xl" style="color:var(--c4);" data-counter="10">10</span>
         <span class="stat-label-sm">Core Services</span>
         <div class="stat-rule" style="background:var(--c3);"></div>
       </div>
@@ -178,12 +235,12 @@ const whys = [
     <div class="svc-hdr">
       <div>
         <p class="label reveal">What We Do</p>
-        <h2 id="svc-heading" class="reveal" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;max-width:14ch;margin-top:1rem;">
-          Everything You Need<br/>to <span class="text-gradient">Grow Online</span>
+        <h2 id="svc-heading" class="reveal" style="font-size:var(--h2);font-weight:800;letter-spacing:-0.04em;max-width:20ch;margin-top:1rem;">
+          Everything You Need to <span class="text-gradient">Scale Your Business</span>
         </h2>
       </div>
       <a href="/services" class="btn-ghost reveal" id="svc-all-link" aria-label="View all services">
-        All Services →
+        All Services Details →
       </a>
     </div>
 
@@ -200,6 +257,9 @@ const whys = [
               <div class="svc-detail-content">
                 <div style="grid-column: 1 / -1;">
                   <p class="svc-detail-desc">{s.desc}</p>
+                  <div class="svc-tags-wrap" style="margin-top: 1rem; margin-bottom: 1.5rem;">
+                    {s.tags.map(t => <span class="tech-tag">{t}</span>)}
+                  </div>
                   <a href={`/services#${s.id}`} class="svc-cta" id={`svc-cta-${s.id}`}>
                     Explore Service <span aria-hidden="true">→</span>
                   </a>
@@ -214,17 +274,91 @@ const whys = [
 </section>
 
 <!-- ════════════════════════════════
-     WHY ZENTRIX
+     LOCAL SEO CONTENT SECTION (1000+ WORDS REQUIREMENT)
+     ════════════════════════════════ -->
+<section class="why-section local-seo-section" aria-labelledby="seo-deepdive-heading">
+  <div class="blob blob-violet" style="width:700px;height:700px;top:20%;left:-200px;opacity:0.3;" aria-hidden="true"></div>
+  <div class="blob blob-cyan" style="width:600px;height:600px;bottom:10%;right:-150px;opacity:0.25;" aria-hidden="true"></div>
+  
+  <div class="container-z" style="position:relative;z-index:1;">
+    <div class="stagger-group" style="margin-bottom: 4rem;">
+      <p class="label stagger-child">Local Growth Partner</p>
+      <h2 id="seo-deepdive-heading" class="stagger-child" style="font-size:var(--h2);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;">
+        Top-Tier <span class="text-gradient">Website Development Company in Salem</span>
+      </h2>
+    </div>
+
+    <div class="seo-content-grid">
+      <div class="reveal-left seo-text-block">
+        <h3>Empowering Salem Businesses with Responsive Website Design</h3>
+        <p>
+          In the digital era, having a professional, fast, and responsive website is the cornerstone of any successful enterprise. Zentrix Technology operates as a leading <strong>web development company in Salem</strong>, crafting customized digital architectures that reflect your brand's unique character. By using cutting-edge technologies like React, Next.js, and Astro, we deliver sites that load in milliseconds, optimizing your Core Web Vitals to satisfy both users and Google's search algorithms.
+        </p>
+        <p>
+          A responsive design ensures that whether your customers in Salem, Yercaud, Meyyanur, or globally access your site on a mobile device, tablet, or desktop, they experience seamless navigation. As an experienced <strong>website development Salem</strong> provider, we blend premium design aesthetics with performance, guaranteeing lower bounce rates and increased customer engagement.
+        </p>
+
+        <h3>Bespoke Software Development & Mobile App Solutions</h3>
+        <p>
+          Beyond simple websites, we build systems that drive productivity. As a seasoned <strong>software company in Salem</strong>, Zentrix Technology designs custom CRM, ERP, and inventory tools built to automate complex workflows. Whether you need a mobile application designed for both iOS and Android (via Flutter or React Native) or tailored desktop software, our expert team maps your goals to clean, scalable code.
+        </p>
+        <p>
+          Our <strong>app development Salem</strong> services focus on creating intuitive user interfaces (UI) and positive user experiences (UX). We handle the entire lifecycle, from wireframing and prototyping to final deployment on the Apple App Store and Google Play Store, ensuring your local business gains maximum mobile reach.
+        </p>
+      </div>
+
+      <div class="reveal-right seo-text-block">
+        <h3>Hospital Management Software (HMS) in Tamil Nadu</h3>
+        <p>
+          Healthcare institutions require robust, reliable, and secure automation systems to maintain high patient care standards. Zentrix Technology provides state-of-the-art <strong>hospital management software in Tamil Nadu</strong>, offering clinics, multi-specialty hospitals, and diagnostic labs a unified platform to manage operations. 
+        </p>
+        <p>
+          Our clinic management software streamlines workflows including outpatient (OPD) and inpatient (IPD) billing, doctor schedules, lab test tracking, pharmacy stock management, and electronic medical records (EMR) management. We ensure compliance, data privacy, and extreme reliability so that healthcare centers in Salem and Tamil Nadu can eliminate paperwork and automate patient notifications seamlessly.
+        </p>
+
+        <h3>Rank Higher with Our Digital Marketing & SEO Company in Salem</h3>
+        <p>
+          Having a beautiful website is only half the battle; driving qualified traffic is what generates revenue. That is where our integrated marketing solutions come in. Zentrix Technology is a top-rated <strong>SEO company in Salem</strong>, implementing both local and global SEO frameworks to put your business in front of active searchers. From keyword audits and technical schema markup to high-quality link building, we ensure your site dominates Google results.
+        </p>
+        <p>
+          To complement organic growth, our <strong>Meta Ads service in Salem</strong> executes high-converting campaigns on Facebook and Instagram. By setting up granular retargeting funnels, designing custom creatives, and tracking conversions, we maximize your Return on Ad Spend (ROAS). Partner with our <strong>digital marketing Salem</strong> team to acquire quality leads and establish industry authority.
+        </p>
+      </div>
+    </div>
+
+    <!-- Lead Generation CTA Panel -->
+    <div class="lead-gen-panel card glass-glow reveal-scale" style="margin-top: 5rem;">
+      <div class="lg-panel-content">
+        <h3 style="font-size: var(--h3); font-weight: 800; margin-bottom: 1rem;">Let's Discuss Your Growth Strategy</h3>
+        <p style="color: var(--t2); max-width: 600px; margin-bottom: 2rem; font-size: 0.95rem;">
+          Ready to scale your business with the best software development, web design, and digital marketing services in Salem? Request a consultation or demo today.
+        </p>
+        <div class="lg-btns-grid">
+          <a href="/contact?ref=consultation" class="btn-primary">
+            Get Free Consultation
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+          <a href="/contact?ref=quote" class="btn-secondary">Request a Quote</a>
+          <a href="/contact?ref=demo" class="btn-secondary">Book a Demo</a>
+          <a href="tel:6380957425" class="btn-secondary">📞 Call Us Directly</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     WHY ZENTRIX (Original structure optimized with local targets)
      ════════════════════════════════ -->
 <section class="why-section" aria-labelledby="why-heading">
   <div class="blob blob-violet" style="width:600px;height:600px;top:0;left:-200px;opacity:0.4;" aria-hidden="true"></div>
   <div class="blob blob-cyan" style="width:500px;height:500px;bottom:0;right:-150px;opacity:0.3;" aria-hidden="true"></div>
+  
   <div class="container-z" style="position:relative;z-index:1;">
-
     <div class="why-head stagger-group">
       <p class="label stagger-child">Why Zentrix</p>
-      <h2 id="why-heading" class="stagger-child" style="font-size:var(--h1);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;max-width:16ch;">
-        We Help You Grow <span class="text-gradient">Online</span>
+      <h2 id="why-heading" class="stagger-child" style="font-size:var(--h2);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;max-width:20ch;">
+        Data-Driven Success for <span class="text-gradient">Modern Brands</span>
       </h2>
     </div>
 
@@ -256,7 +390,38 @@ const whys = [
 </section>
 
 <!-- ════════════════════════════════
-     CTA
+     FAQ SECTION WITH FAQ SCHEMA
+     ════════════════════════════════ -->
+<section class="section-pad faq-section" id="faq" aria-labelledby="faq-heading">
+  <div class="container-z">
+    <div class="faq-head stagger-group" style="text-align: center; margin-bottom: 4rem;">
+      <p class="label stagger-child" style="justify-content: center;">Got Questions?</p>
+      <h2 id="faq-heading" class="stagger-child" style="font-size:var(--h2);font-weight:800;letter-spacing:-0.04em;margin-top:1rem;">
+        Frequently Asked <span class="text-gradient">Questions</span>
+      </h2>
+      <p class="stagger-child" style="color: var(--t2); max-width: 500px; margin: 1rem auto 0; font-size: 0.95rem;">
+        Learn more about our web development, custom software solutions, and marketing strategies.
+      </p>
+    </div>
+
+    <div class="faq-accordion reveal">
+      {faqs.map((f, idx) => (
+        <div class="faq-item card" tabindex="0" role="button" aria-expanded="false" style="margin-bottom: 1rem; cursor: pointer;">
+          <div class="faq-trigger" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 1rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--t1); margin: 0; text-align: left; padding-right: 1.5rem;">{f.q}</h3>
+            <span class="faq-icon" style="color: var(--v4); font-size: 1.25rem; font-weight: 800;">+</span>
+          </div>
+          <div class="faq-answer-wrapper" style="max-height: 0; overflow: hidden; transition: max-height 350ms var(--expo); padding: 0 1rem;">
+            <p style="color: var(--t2); font-size: 0.9375rem; line-height: 1.7; padding-bottom: 1.5rem;">{f.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     CTA (Lead-Gen Optimized)
      ════════════════════════════════ -->
 <section class="cta-section" aria-labelledby="cta-heading">
   <div class="blob blob-violet" style="width:700px;height:700px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.5;" aria-hidden="true"></div>
@@ -267,8 +432,8 @@ const whys = [
       Ready to Drive<br/>
       <span class="text-gradient">Real Growth?</span>
     </h2>
-    <p class="reveal" style="font-size:1.0625rem;color:var(--t2);max-width:400px;margin:2rem auto;line-height:1.8;" data-delay="0.05">
-      Simple. Smart. Effective. — Let's build your digital success story.
+    <p class="reveal" style="font-size:1.0625rem;color:var(--t2);max-width:500px;margin:2rem auto;line-height:1.8;" data-delay="0.05">
+      Partner with the premier website development company and software development team in Salem. Simple. Smart. Effective.
     </p>
     <div class="cta-btns reveal" data-delay="0.12">
       <a href="/contact" class="btn-primary" id="cta-btn">
@@ -391,8 +556,6 @@ const whys = [
   margin-bottom: 2.5rem;
   max-width: 520px;
 }
-.hr-break { display: none; }
-@media (min-width: 768px) { .hr-break { display: inline; } }
 
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.25rem; }
 .hero-trust { display: flex; flex-wrap: wrap; gap: 0.75rem; }
@@ -481,6 +644,66 @@ const whys = [
   margin-bottom: clamp(3rem, 5vw, 4rem);
 }
 
+/* ── Local SEO Section ── */
+.local-seo-section {
+  background: var(--void);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+.seo-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+@media (min-width: 992px) {
+  .seo-content-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+.seo-text-block h3 {
+  font-size: var(--h3);
+  font-weight: 800;
+  color: var(--t1);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.seo-text-block h3:first-of-type {
+  margin-top: 0;
+}
+.seo-text-block p {
+  color: var(--t2);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.seo-text-block strong {
+  color: var(--v4);
+  font-weight: 700;
+}
+
+/* ── Lead Gen Panel ── */
+.lead-gen-panel {
+  padding: clamp(2rem, 5vw, 4rem);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lg-panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.lg-btns-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
 /* ── Why ── */
 .why-section {
   background: var(--surface);
@@ -489,6 +712,23 @@ const whys = [
   overflow: hidden;
 }
 .why-head { margin-bottom: clamp(4rem, 7vw, 6.5rem); }
+
+/* ── FAQ ── */
+.faq-section {
+  background: var(--surface);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+.faq-item.open {
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.faq-icon {
+  transition: transform 300ms var(--expo);
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  color: var(--v5) !important;
+}
 
 /* ── CTA ── */
 .cta-section {
@@ -521,7 +761,7 @@ const whys = [
 </style>
 
 <script>
-  /* Accordion */
+  /* Accordion Services */
   const initAcc = () => {
     const items = document.querySelectorAll('.svc-item');
     const toggle = (el: Element) => {
@@ -538,5 +778,52 @@ const whys = [
     });
     if (items[0]) toggle(items[0]);
   };
-  document.addEventListener('astro:page-load', initAcc);
+
+  /* FAQ Accordion */
+  const initFaq = () => {
+    const items = document.querySelectorAll('.faq-item');
+    items.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const answerWrapper = item.querySelector('.faq-answer-wrapper') as HTMLElement;
+      if (!trigger || !answerWrapper) return;
+
+      const toggleFaq = () => {
+        const isOpen = item.classList.contains('open');
+        
+        // Close all other FAQs
+        items.forEach(i => {
+          if (i !== item) {
+            i.classList.remove('open');
+            i.setAttribute('aria-expanded', 'false');
+            const wrapper = i.querySelector('.faq-answer-wrapper') as HTMLElement;
+            if (wrapper) wrapper.style.maxHeight = '0';
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove('open');
+          item.setAttribute('aria-expanded', 'false');
+          answerWrapper.style.maxHeight = '0';
+        } else {
+          item.classList.add('open');
+          item.setAttribute('aria-expanded', 'true');
+          answerWrapper.style.maxHeight = answerWrapper.scrollHeight + 'px';
+        }
+      };
+
+      trigger.addEventListener('click', toggleFaq);
+      item.addEventListener('keydown', (e: Event) => {
+        const ke = e as KeyboardEvent;
+        if (ke.key === 'Enter' || ke.key === ' ') {
+          e.preventDefault();
+          toggleFaq();
+        }
+      });
+    });
+  };
+
+  document.addEventListener('astro:page-load', () => {
+    initAcc();
+    initFaq();
+  });
 </script>

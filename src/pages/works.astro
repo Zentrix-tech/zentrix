@@ -7,8 +7,24 @@ const projects = [
   { id: 3, title: 'B2B SaaS Marketing', category: 'Digital Marketing', desc: 'Comprehensive inbound marketing strategy that generated a 3x increase in qualified enterprise leads.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Content Strategy', 'HubSpot', 'SEO'], color: 'var(--v3)' },
   { id: 4, title: 'Real Estate Meta Ads', category: 'Meta Ads', desc: 'Targeted lead generation campaign that reduced cost-per-lead by 60% while improving lead quality.', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800&h=600', tags: ['Facebook Ads', 'Retargeting', 'Lead Gen'], color: 'var(--v4)' },
 ];
+const breadcrumbs = [
+  { label: 'Work', href: '/works' }
+];
+
+const worksSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://zentrix-technology.vercel.app/works#webpage",
+      "url": "https://zentrix-technology.vercel.app/works",
+      "name": "Case Studies & Work Portfolio | Zentrix Technology",
+      "description": "Browse our portfolio of software development, website design, and mobile app case studies in Salem, Tamil Nadu, and globally."
+    }
+  ]
+};
 ---
-<Layout title="Our Work" description="Explore our portfolio of successful digital projects. See how Zentrix Technology helps businesses achieve real growth through web, app, and marketing solutions.">
+<Layout title="Our Work | Web & Software Portfolio Salem" description="Explore Zentrix Technology's case studies. See how we deliver website design, software engineering, and digital marketing success for brands in Salem." breadcrumbs={breadcrumbs} schema={worksSchema}>
 
 <!-- Hero -->
 <section class="work-hero" aria-labelledby="work-h1">

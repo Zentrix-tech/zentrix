@@ -2,14 +2,124 @@
 import Layout from '../layouts/Layout.astro';
 
 const services = [
-  { id:'web',  num:'01', emoji:'🖥️', title:'Web Development',        color:'var(--v4)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'High-performance websites built for Core Web Vitals, SEO, and maximum conversion. From marketing pages to complex SaaS platforms.',       tags:['React','Next.js','Astro','TypeScript','PostgreSQL'],  features:['Custom design & development','E-commerce & CMS','Performance optimization','SEO-first architecture','Web App development'] },
-  { id:'app',  num:'02', emoji:'📱', title:'App Development',         color:'var(--v5)', colorDim:'var(--v-dim)',   colorBorder:'var(--v-border)',   desc:'Cross-platform mobile apps with native performance. From initial wireframes to both App Stores on time and on budget.',             tags:['React Native','Flutter','iOS','Android','Firebase'],  features:['iOS & Android apps','Cross-platform development','UI/UX design','Backend API integration','App Store submission'] },
-  { id:'mkt',  num:'03', emoji:'📣', title:'Digital Marketing',       color:'var(--v3)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'Full-service digital marketing that grows your brand online. Content strategy, email automation, and social media management.',          tags:['Content Strategy','Email Marketing','Social Media','Analytics'], features:['Content marketing strategy','Email campaign automation','Social media management','Brand positioning','Conversion funnel optimization'] },
-  { id:'meta', num:'04', emoji:'🎯', title:'Meta Ads Management',     color:'var(--v4)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'Expert Facebook & Instagram advertising that generates qualified leads and maximizes your ad spend with precision targeting.',        tags:['Facebook Ads','Instagram Ads','Retargeting','ROAS'],  features:['Campaign strategy & setup','Audience research','Creative design','A/B testing','Performance reporting'] },
-  { id:'seo',  num:'05', emoji:'🔍', title:'SEO Optimization',        color:'var(--v5)', colorDim:'var(--v-dim)',  colorBorder:'var(--v-border)',  desc:'Dominate search rankings and drive organic traffic that actually converts. Technical SEO, content strategy, and link building.',       tags:['Technical SEO','Content SEO','Link Building','Local SEO'], features:['Technical audit & fixes','Keyword research','On-page optimization','Link building','Monthly analytics reporting'] },
+  { 
+    id: 'web',  
+    num: '01', 
+    emoji: '🖥️', 
+    title: 'Website Development', 
+    color: 'var(--v4)', 
+    colorDim: 'var(--v-dim)',  
+    colorBorder: 'var(--v-border)',  
+    desc: 'High-performance website development in Salem. We construct custom, responsive websites optimized for Google Core Web Vitals, SEO structure, and maximum lead conversion. From corporate landing pages to complex headless commerce platforms.', 
+    tags: ['React', 'Next.js', 'Astro', 'TypeScript', 'TailwindCSS'],  
+    features: ['Custom Web Design & Development', 'SEO-first responsive structures', 'E-commerce & Headless Architecture', 'Performance optimization (LCP < 2.5s)', 'CMS Integration (WordPress, Shopify, Strapi)'] 
+  },
+  { 
+    id: 'app',  
+    num: '02', 
+    emoji: '📱', 
+    title: 'Mobile App Development', 
+    color: 'var(--v5)', 
+    colorDim: 'var(--v-dim)',   
+    colorBorder: 'var(--v-border)',   
+    desc: 'Premium mobile application development in Salem. We build native iOS and Android apps using cross-platform frameworks to ensure a flawless experience, rapid deployment, and budget compliance.', 
+    tags: ['React Native', 'Flutter', 'iOS', 'Android', 'Firebase'],  
+    features: ['Custom iOS & Android Application Design', 'Cross-Platform development workflows', 'Intelligent Mobile UI/UX layouts', 'Secure API Integration & Backends', 'App Store and Google Play deployment'] 
+  },
+  { 
+    id: 'software',  
+    num: '03', 
+    emoji: '⚙️', 
+    title: 'Custom Software Development', 
+    color: 'var(--v3)', 
+    colorDim: 'var(--v-dim)',   
+    colorBorder: 'var(--v-border)',   
+    desc: 'Automate operations with custom software development in Salem. We design enterprise-grade CRM, ERP, invoicing portals, and SaaS platforms tailored to fit your specific business processes and eliminate structural bottlenecks.', 
+    tags: ['Node.js', 'Python', 'PostgreSQL', 'AWS Cloud', 'Docker'],  
+    features: ['Tailored CRM & ERP Solutions', 'SaaS Platform architecture', 'Cloud Infrastructure configuration', 'Legacy database migrations', 'Secure API & microservice pipelines'] 
+  },
+  { 
+    id: 'hms',  
+    num: '04', 
+    emoji: '🏥', 
+    title: 'Hospital Management Software (HMS)', 
+    color: 'var(--v4)', 
+    colorDim: 'var(--v-dim)',   
+    colorBorder: 'var(--v-border)',   
+    desc: 'All-in-one Hospital Management Software in Tamil Nadu. Automate doctor scheduling, patient outpatient/inpatient billing, digital prescriptions, pharmacy stock tracking, and laboratory reporting via a highly secure, easy-to-use clinic management dashboard.', 
+    tags: ['Healthcare IT', 'Security Protocols', 'EMR Systems', 'Patient Portal'],  
+    features: ['EHR / EMR Patients Records Management', 'OPD / IPD Billing & Invoicing Systems', 'Doctor Appointment Scheduling', 'Pharmacy & Lab Stock automation', 'Automated SMS / WhatsApp alerts'] 
+  },
+  { 
+    id: 'marketing',  
+    num: '05', 
+    emoji: '📣', 
+    title: 'Digital Marketing', 
+    color: 'var(--v3)', 
+    colorDim: 'var(--v-dim)',  
+    colorBorder: 'var(--v-border)',  
+    desc: 'Data-backed digital marketing agency services in Salem. We orchestrate comprehensive campaigns spanning content marketing, email workflows, and social media to scale brand reach and drive organic interest.', 
+    tags: ['Content Strategy', 'Email Marketing', 'Social Media', 'Google Analytics'], 
+    features: ['Content marketing & scheduling', 'Automated email nurture flows', 'Social Media Management (SMM)', 'Targeted brand architecture', 'Funnel analysis & growth audit'] 
+  },
+  { 
+    id: 'seo',  
+    num: '06', 
+    emoji: '🔍', 
+    title: 'SEO Services', 
+    color: 'var(--v5)', 
+    colorDim: 'var(--v-dim)',  
+    colorBorder: 'var(--v-border)',  
+    desc: 'Dominate organic local search keywords with our SEO company in Salem. We perform technical site audits, clean code syntax, configure structured schemas, and construct contextual backlinks to rank your business page high on Google search results.', 
+    tags: ['Technical SEO', 'Keyword Analysis', 'Local SEO Salem', 'Link Building'], 
+    features: ['Technical site auditing & repair', 'Targeted local keyword strategy', 'Perfect H1-H3 Heading Optimization', 'Structured data & schema configuration', 'Monthly SEO ranking performance logs'] 
+  },
+  { 
+    id: 'meta', 
+    num: '07', 
+    emoji: '🎯', 
+    title: 'Meta Ads Management', 
+    color: 'var(--v4)', 
+    colorDim: 'var(--v-dim)',  
+    colorBorder: 'var(--v-border)',  
+    desc: 'Result-oriented paid advertising in Salem. Our Meta ads management configures optimized target audiences, designs custom visual ad sets, runs precise A/B split testing, and decreases cost-per-acquisition on Facebook and Instagram.', 
+    tags: ['Facebook Ads', 'Instagram Ads', 'A/B Testing', 'ROAS Tracking'],  
+    features: ['Ad campaign design & setup', 'Demographic & behavior targeting', 'High-converting creative design', 'Rigorous A/B split testing', 'Clear conversions & ROAS analytics'] 
+  }
 ];
+
+const breadcrumbs = [
+  { label: 'Services', href: '/services' }
+];
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://zentrix-technology.vercel.app/services#webpage",
+      "url": "https://zentrix-technology.vercel.app/services",
+      "name": "Expert Digital Services | Zentrix Technology",
+      "description": "Explore premium digital services offered by Zentrix Technology. We specialize in Website Development, Mobile Apps, Custom Software, HMS, SEO, and Meta Ads in Salem and Tamil Nadu."
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://zentrix-technology.vercel.app/services#itemlist",
+      "name": "Zentrix Technology Service Offerings",
+      "itemListElement": services.map((s, idx) => ({
+        "@type": "Service",
+        "position": idx + 1,
+        "name": s.title + " in Salem, Tamil Nadu",
+        "description": s.desc,
+        "provider": {
+          "@id": "https://zentrix-technology.vercel.app/#localbusiness"
+        }
+      }))
+    }
+  ]
+};
 ---
-<Layout title="Services" description="Zentrix Technology services — Web Development, App Development, Digital Marketing, Meta Ads & SEO Optimization. Digital solutions for real growth.">
+<Layout title="Premium Services | Website & Software Company in Salem" description="Discover professional digital solutions: Web development, Mobile apps, Custom Software development, Hospital Management Software (HMS), SEO and Meta Ads services in Salem, Tamil Nadu." breadcrumbs={breadcrumbs} schema={servicesSchema}>
 
 <!-- Hero -->
 <section class="svc-hero" aria-labelledby="svc-h1">
@@ -18,16 +128,15 @@ const services = [
   <div class="bg-grid" style="position:absolute;inset:0;pointer-events:none;" aria-hidden="true"></div>
 
   <div class="container-z stagger-group" style="position:relative;z-index:2;text-align:center;">
-    <p class="label stagger-child" style="justify-content:center;">What We Build</p>
     <h1 id="svc-h1" class="stagger-child" style="font-size:var(--display);font-weight:800;letter-spacing:-0.05em;line-height:1.03;margin:1.25rem 0 1.5rem;">
       Our <span class="text-gradient">Services</span>
     </h1>
-    <p class="stagger-child" style="font-size:1.125rem;color:var(--t2);max-width:500px;margin:0 auto 2.5rem;line-height:1.8;">
-      Five specialized areas, one mission — help your business grow online.
+    <p class="stagger-child" style="font-size:1.125rem;color:var(--t2);max-width:600px;margin:0 auto 2.5rem;line-height:1.8;">
+      Seven specialized technology and marketing areas engineered to help local and global businesses grow online.
     </p>
     <div class="stagger-child" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-      <a href="/contact" class="btn-primary" id="svc-hero-cta">Get Started →</a>
-      <a href="#web" class="btn-secondary" id="svc-explore-link">Explore All →</a>
+      <a href="/contact" class="btn-primary" id="svc-hero-cta">Get Free Consultation</a>
+      <a href="#web" class="btn-secondary" id="svc-explore-link">Explore Services</a>
     </div>
   </div>
 </section>
@@ -55,9 +164,20 @@ const services = [
           ))}
         </ul>
 
-        <a href="/contact" class="btn-primary" id={`svc-${s.id}-cta`} style="margin-top:2rem;">
-          Get Started →
-        </a>
+        <div class="svc-tags-wrap" style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          {s.tags.map(t => <span class="tech-tag" style={`color:${s.color};border-color:${s.colorBorder};background:${s.colorDim};`}>{t}</span>)}
+        </div>
+
+        <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+          <a href="/contact" class="btn-primary" id={`svc-${s.id}-cta`}>
+            Get Started
+          </a>
+          {s.id === 'hms' && (
+            <a href="/contact?ref=hms-demo" class="btn-secondary">
+              Book a Demo
+            </a>
+          )}
+        </div>
       </div>
 
       <!-- Visual -->
@@ -97,8 +217,8 @@ const services = [
       Let's Build Your Digital <span class="text-gradient">Success Story</span>
     </h2>
     <div class="stagger-child" style="display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;">
-      <a href="/contact" class="btn-primary" id="svc-final-cta">Start a Project →</a>
-      <a href="tel:6380957425" class="btn-secondary" id="svc-call">📞 6380957425</a>
+      <a href="/contact" class="btn-primary" id="svc-final-cta">Start Your Project</a>
+      <a href="tel:6380957425" class="btn-secondary" id="svc-call">📞 Call 6380957425</a>
     </div>
   </div>
 </section>
